@@ -1,0 +1,31 @@
+local matches = [
+
+  {
+    trigger: ',BB',
+    replace: '¦',
+  },
+  {
+    trigger: ',ED',
+    replace: 'Ʒ',
+  },
+  {
+    trigger: ',IE',
+    replace: 'Є',
+  },
+  {
+    trigger: ',ie',
+    replace: 'є',
+  },
+  {
+    trigger: ',<1',
+    replace: '‹',
+  },
+  {
+    trigger: ',>1',
+    replace: '›',
+  },
+  {
+    trigger: ',vv',
+    replace: '│',
+  },
+],
