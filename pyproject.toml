@@ -1,7 +1,7 @@
 [tool.poetry]
 name = "barista"
 version = "0.1.0"
-description = "A Python and Jsonnet Framework for handling Espanso Configurations"
+description = "A Python and Jsonnet framework for handling espanso configurations"
 authors = ["Jeppe Klitgaard <hi@jeppe.science>"]
 license = "MIT"
 
