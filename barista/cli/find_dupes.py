@@ -21,7 +21,7 @@ def _get_all_matches() -> list[Match]:
         try:
             matches.extend(Match.matches_from_path(path))
         except KeyError:
-            print(f"No matches found in {path}")
+            print(f"🤔 No matches found in {path}")
             continue
 
     return matches
@@ -53,8 +53,11 @@ def find_dupes():
             else:
                 duped_matches[i] = [match]
 
-    print(f"Found {len(duped_matches)} duplicates!")
-    for duped_key, ms in duped_matches.items():
-        print(f"'{duped_key}' is a duplicate in:")
-        for m in ms:
-            print(f"- {m.origin}")
+    if len(duped_matches):
+        print(f"😥 Found {len(duped_matches)} duplicates!")
+        for duped_key, ms in duped_matches.items():
+            print(f"'{duped_key}' is a duplicate in:")
+            for m in ms:
+                print(f"- {m.origin}")
+    else:
+        print("🎉 Found no duplicates!")

@@ -32,5 +32,6 @@ def compile():
     with open(TARGET_PATH / "default.yml", "w") as f:
         f.write(default_yml)
 
-    print(f"Compiled {len(map_)} files.")
-    print(f"Moved over {len(map_) + 1} files.")
+    print(f"💪 Compiled {len(map_)} files.")
+    print(f"📦 Moved over {len(map_) + 1} files.")
+    print("🎉 All done!")
