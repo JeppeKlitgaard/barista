@@ -30,6 +30,10 @@ local rawMatches = [
     replace: '≕',
   },
   {
+    triggers: ['=.'],
+    replace: '≐',
+  },
+  {
     triggers: ['=o'],
     replace: '≗',
   },

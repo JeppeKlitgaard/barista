@@ -4,4 +4,6 @@
 # You can refer to the official documentation:
 # https://espanso.org/docs/
 
+auto_restart: false
+
 matches: []

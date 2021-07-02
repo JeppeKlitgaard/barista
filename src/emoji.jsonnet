@@ -1,12 +1,27 @@
 local g = import 'lib/base.libsonnet';
 
 local rawMatches = [
-  # Section
+  ### Yes/No/Maybe
   {
     triggers: [
-      'tldr',
+      'y',
+      'yes',
     ],
-    replace: 'TL;DR',
+    replace: '✔',
+  },
+  {
+    triggers: [
+      'n',
+      'no',
+    ],
+    replace: '❌',
+  },
+  {
+    triggers: [
+      'm',
+      'maybe',
+    ],
+    replace: '🟡',
   },
 ];
 
