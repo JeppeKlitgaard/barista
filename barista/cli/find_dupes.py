@@ -1,10 +1,8 @@
-from glob import glob
 import click
-from pathlib import Path
 
+from barista.constants import SRC_PATH
 from barista.match import Match
 from barista.utils import find_duplicates, find_jsonnets
-from barista.constants import SRC_PATH
 
 
 def _get_all_matches() -> list[Match]:
@@ -28,7 +26,7 @@ def _get_all_matches() -> list[Match]:
 
 
 @click.command()
-def find_dupes():
+def find_dupes() -> None:
     """
     Find the duplicate triggers.
     """
@@ -41,7 +39,7 @@ def find_dupes():
 
     dupes = find_duplicates(triggers)
 
-    duped_matches = {}
+    duped_matches: dict[str, list[Match]] = {}
     for match in matches:
         overlap = [i for i in match.triggers if i in dupes]
 

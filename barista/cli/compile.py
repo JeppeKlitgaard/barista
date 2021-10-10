@@ -1,12 +1,13 @@
+import os
+
 import click
 
-from barista.constants import SRC_PATH, TARGET_PATH
+from barista.constants import CONFIG_FOLDER, SRC_PATH, TARGET_PATH
 from barista.utils import find_jsonnets, get_yaml_str_from_jsonnet_path
 
-from pathlib import Path
 
 @click.command()
-def compile():
+def compile() -> None:
     paths = find_jsonnets(SRC_PATH)
 
     map_ = {}
@@ -14,22 +15,22 @@ def compile():
         print(f"Loading {path}")
         map_[path] = get_yaml_str_from_jsonnet_path(path)
 
-
     # Copy over files
     for path, content in map_.items():
-        raw_bits = path.parts[1:]
         bits = list(path.parts[1:-1]) + [path.parts[-1].removesuffix(".jsonnet")]
+        bits[-1] += ".yml"
 
-        target = TARGET_PATH / "user" / ("_".join(bits) + ".yml")
+        target = TARGET_PATH.joinpath(*bits)
 
+        os.makedirs(target.parent, exist_ok=True)
         with open(target, "w") as f:
             f.write(content)
 
-    # Copy over "default.yml"
-    with open(SRC_PATH / "default.yml") as f:
+    # Copy over "config/default.yml"
+    with open(SRC_PATH / CONFIG_FOLDER / "default.yml") as f:
         default_yml = f.read()
 
-    with open(TARGET_PATH / "default.yml", "w") as f:
+    with open(TARGET_PATH / CONFIG_FOLDER / "default.yml", "w") as f:
         f.write(default_yml)
 
     print(f"💪 Compiled {len(map_)} files.")

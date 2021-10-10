@@ -15,6 +15,58 @@ PyYAML = "^5.4.1"
 click = "^8.0.1"
 
 [tool.poetry.dev-dependencies]
+mypy = "^0.910"
+black = "^21.9b0"
+isort = "^5.9.3"
+flake8 = "^3.9.2"
+types-PyYAML = "^5.4.10"
+
+# Mypy
+poethepoet = "^0.10.0"
+[tool.mypy]
+python_version = "3.9"
+strict = true
+show_error_codes = true
+
+[[tool.mypy.overrides]]
+module = [
+    "_jsonnet.*",
+]
+ignore_missing_imports = true
+
+# Black
+[tool.black]
+line-length = 100
+target-version = ["py39"]
+
+# Isort
+[tool.isort]
+profile = "black"
+skip_gitignore = true
+line_length = 100
+
+# Tasks
+[tool.poe.tasks]
+flake8 = "flake8 ./barista"
+mypy = "mypy ./barista"
+black_check = "black --check ."
+isort_check = "isort --check-only ."
+
+black = "black ."
+isort = "isort ."
+
+lint = [
+    "flake8",
+    "black_check",
+    "isort_check",
+    "mypy",
+]
+
+fix = [
+    "black",
+    "isort",
+]
+
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

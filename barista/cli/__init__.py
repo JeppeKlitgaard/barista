@@ -1,11 +1,11 @@
 import click
 
-from barista.cli.find_dupes import find_dupes
 from barista.cli.compile import compile
+from barista.cli.find_dupes import find_dupes
 
 
 @click.group()
-def cli():
+def cli() -> None:
     pass
 
 

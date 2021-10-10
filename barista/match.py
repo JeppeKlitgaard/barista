@@ -1,4 +1,5 @@
 from __future__ import annotations
+
 from pathlib import Path
 from typing import Any, Optional
 
@@ -19,7 +20,7 @@ class Match:
         return f"{self.triggers} -> '{self.replace}'"
 
     @classmethod
-    def from_obj(cls, obj: dict[str, Any], origin: Path = None) -> Match:
+    def from_obj(cls, obj: dict[str, Any], origin: Path) -> Match:
         """
         Constructs and returns a `Match` object from a espanso
         configuration 'matches' entry.
