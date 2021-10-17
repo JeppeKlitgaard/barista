@@ -1,8 +1,8 @@
 import click
 
-from barista.constants import SRC_PATH
+from barista.constants import JSONNET_GLOB_PATTERN, SRC_PATH
 from barista.match import Match
-from barista.utils import find_duplicates, find_jsonnets
+from barista.utils import find_duplicates, find_files
 
 
 def _get_all_matches() -> list[Match]:
@@ -11,7 +11,7 @@ def _get_all_matches() -> list[Match]:
     """
     matches = []
 
-    paths = find_jsonnets(SRC_PATH)
+    paths = find_files(SRC_PATH, JSONNET_GLOB_PATTERN)
 
     for path in paths:
         print(f"Loading {path}")

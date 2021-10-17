@@ -5,8 +5,6 @@ from typing import Any, TypeVar, cast
 import _jsonnet
 import yaml
 
-from barista.constants import GLOB_PATTERN
-
 T = TypeVar("T")
 
 
@@ -55,12 +53,13 @@ def find_duplicates(lst: list[T]) -> list[T]:
     return list(dupes)
 
 
-def find_jsonnets(src_path: Path) -> list[Path]:
+def find_files(src_path: Path, glob_pattern: str) -> list[Path]:
     """
-    Returns a list of path objects to jsonnet objects
-    below the target path.
+    Returns a list of path objects to the files matching the glob pattern.
+
+    Searches in `src_path`
     """
-    files = src_path.glob(GLOB_PATTERN)
-    paths = [Path(x) for x in files]
+    files = src_path.glob(glob_pattern)
+    paths = [Path(file) for file in files]
 
     return paths
