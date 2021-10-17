@@ -1,4 +1,4 @@
-local g = import '../lib/base.libsonnet';
+local g = import '../../lib/base.libsonnet';
 
 local rawMatches = [
   ### Yes/No/Maybe

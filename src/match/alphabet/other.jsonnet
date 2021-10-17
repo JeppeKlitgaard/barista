@@ -2,34 +2,31 @@ local g = import '../../lib/base.libsonnet';
 local m = import '../../lib/modifiers.libsonnet';
 
 
-local pre_trigger = g.PRE_DIACRITIC;
-local post_trigger = '0' + g.POST;
+local pre_trigger = g.PRE;
+local post_trigger = g.POST;
 
 local rawMatches = [
-  ### Symbol
   {
-    trigger: "'",
-    replace: '˚',
+    trigger: 'th',
+    replace: 'þ',
+  },
+  {
+    trigger: 'TH',
+    replace: 'Þ',
   },
 
-  ### Lower case
   {
-    trigger: 'u',
-    replace: 'ů',
+    trigger: 'oe',
+    replace: 'œ',
   },
   {
-    trigger: 'w',
-    replace: 'ẘ',
-  },
-  {
-    trigger: 'y',
-    replace: 'ẙ',
+    trigger: 'OE',
+    replace: 'Œ',
   },
 
-  ### Upper case
   {
-    trigger: 'U',
-    replace: 'Ů',
+    trigger: 'ss',
+    replace: 'ß',
   },
 ];
 

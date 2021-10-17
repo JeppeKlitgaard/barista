@@ -1,76 +1,98 @@
-local g = import '../../lib/base.libsonnet';
-local m = import '../../lib/modifiers.libsonnet';
+local g = import '../../../lib/base.libsonnet';
+local m = import '../../../lib/modifiers.libsonnet';
 
 
 local pre_trigger = g.PRE_DIACRITIC;
-local post_trigger = '!' + g.POST;
+local post_trigger = ':' + g.POST;
 
 local rawMatches = [
   ### Symbol
   {
     trigger: "'",
-    replace: '`',
+    replace: '¨¨',
   },
 
   ### Lower case
   {
     trigger: 'a',
-    replace: 'à',
+    replace: 'ä',
   },
   {
     trigger: 'e',
-    replace: 'è',
+    replace: 'ë',
+  },
+  {
+    trigger: 'h',
+    replace: 'ḧ',
   },
   {
     trigger: 'i',
-    replace: 'ì',
+    replace: 'ï',
   },
   {
     trigger: 'o',
-    replace: 'ò',
+    replace: 'ö',
+  },
+  {
+    trigger: 't',
+    replace: 'ẗ',
   },
   {
     trigger: 'u',
-    replace: 'ù',
+    replace: 'ü',
   },
   {
     trigger: 'w',
-    replace: 'ẁ',
+    replace: 'ẅ',
+  },
+  {
+    trigger: 'x',
+    replace: 'ẍ',
   },
   {
     trigger: 'y',
-    replace: 'ỳ',
+    replace: 'ÿ',
   },
 
   ### Upper case
   {
     trigger: 'A',
-    replace: 'À',
+    replace: 'Ä',
   },
   {
     trigger: 'E',
-    replace: 'È',
+    replace: 'Ë',
+  },
+  {
+    trigger: 'H',
+    replace: 'Ḧ',
   },
   {
     trigger: 'I',
-    replace: 'Ì',
+    replace: 'Ï',
   },
   {
     trigger: 'O',
-    replace: 'Ò',
+    replace: 'Ö',
   },
   {
     trigger: 'U',
-    replace: 'Ù',
+    replace: 'Ü',
   },
   {
     trigger: 'W',
-    replace: 'Ẁ',
+    replace: 'Ẅ',
+  },
+  {
+    trigger: 'X',
+    replace: 'Ẍ',
   },
   {
     trigger: 'Y',
-    replace: 'Ỳ',
+    replace: 'Ÿ',
   },
+
+
 ];
 
 std.manifestYamlDoc(

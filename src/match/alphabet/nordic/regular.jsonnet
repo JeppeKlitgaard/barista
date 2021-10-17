@@ -1,18 +1,21 @@
-local g = import '../../lib/base.libsonnet';
-local m = import '../../lib/modifiers.libsonnet';
+local g = import '../../../lib/base.libsonnet';
+local m = import '../../../lib/modifiers.libsonnet';
 
 local rawMatches = [
   {
     trigger: 'ae',
     replace: 'æ',
+    propagate_case: true,
   },
   {
     trigger: 'o/',
     replace: 'ø',
+    propagate_case: true,
   },
   {
     trigger: 'aa',
     replace: 'å',
+    propagate_case: true,
   },
 ];
 

@@ -1,5 +1,5 @@
-local g = import '../../lib/base.libsonnet';
-local m = import '../../lib/modifiers.libsonnet';
+local g = import '../../../lib/base.libsonnet';
+local m = import '../../../lib/modifiers.libsonnet';
 
 local preTrigger = g.PRE_FRAKTUR;
 local postTrigger = g.POST;
