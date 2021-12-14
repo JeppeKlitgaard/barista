@@ -9,11 +9,11 @@ local rawMatches = [
 
   ### Existance
   {
-    triggers: ['thereexists', 'exists', 'te'],
+    triggers: ['thereexists', 'exists', 'te', 'E'],
     replace: '∃',
   },
   {
-    triggers: ['!thereexists', '!exists', '!te'],
+    triggers: ['!thereexists', '!exists', '!te', '!E'],
     replace: '∄',
   },
 
