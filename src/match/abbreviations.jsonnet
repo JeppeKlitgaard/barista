@@ -1,14 +1,8 @@
 local g = import '../lib/base.libsonnet';
 
-local rawMatches = [
-  # Section
-  {
-    triggers: [
-      'tldr',
-    ],
-    replace: 'TL;DR',
-  },
-];
+local rawMatches = g.replacementTableToMatches({
+  "TL;DR": "tldr",
+});
 
 std.manifestYamlDoc(
   {

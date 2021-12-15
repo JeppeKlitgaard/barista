@@ -1,5 +1,34 @@
 local SRC_KEY = 'src';
 
+/*
+# Concepts
+
+## Replacement table
+A replacement table is an object where the key is the replacement
+and the value is an array of triggers
+
+Example:
+{
+    "∫": ["integral", "int"],
+    "∬": ["dintegral", "iint"],
+},
+
+## Matches
+Matches is an array of objects that match the espanso matches configuration
+property
+
+*/
+
+local replacementTableToMatches(replacementTable) = [
+    {
+        [if std.isArray(replacementTable[replacement]) then "triggers" else "trigger"]:
+            replacementTable[replacement],
+
+        replace: replacement,
+    },
+    for replacement in std.objectFields(replacementTable)
+];
+
 local processFilename(filename) =
     local baseDir = std.thisFile;
     local split = std.split(filename, "/");
@@ -96,11 +125,15 @@ local generateUnicodeMatches(normalStartChar, normalEndChar, newStartChar, overr
 
     PRE_DIACRITIC: ',',
     PRE_BBB: self.PRE + 'bb',
+
     PRE_FRAKTUR: self.PRE + 'fk',
     PRE_FRAKTUR_BOLD: self.PRE_FRAKTUR + 'b',
+
+    PRE_GREEK_BBB: self.PRE_BBB + ";",
 
     processFilename: processFilename,
     processTriggers: processTriggers,
     processExtras: processExtras,
     generateUnicodeMatches: generateUnicodeMatches,
+    replacementTableToMatches: replacementTableToMatches,
 }
