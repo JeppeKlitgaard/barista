@@ -6,8 +6,8 @@ local postTrigger = g.POST;
 local lowerOverrides = {};
 local upperOverrides = {};
 
-local lower = g.generateUnicodeMatches("a", "z", "𝖺", lowerOverrides);
-local upper = g.generateUnicodeMatches("A", "Z", "𝖠", upperOverrides);
+local lower = g.generateUnicodeMatches("a", "z", "𝘢", lowerOverrides);
+local upper = g.generateUnicodeMatches("A", "Z", "𝘈", upperOverrides);
 
 local rawMatches = lower + upper;
 local matches = g.processTriggers(rawMatches, preTrigger, postTrigger);
