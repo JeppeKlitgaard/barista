@@ -1,5 +1,4 @@
 local g = import '../../../lib/base.libsonnet';
-local m = import '../../../lib/modifiers.libsonnet';
 
 local L_PRE = g.PRE;
 local L_POST = g.POST;

@@ -1,7 +1,6 @@
 local g = import '../../../lib/base.libsonnet';
-local m = import '../../../lib/modifiers.libsonnet';
 
-local pre_trigger = g.PRE_BBB + ';';
+local pre_trigger = g.PRE_GREEK_BBB;
 local post_trigger = g.POST;
 
 local rawMatches = [

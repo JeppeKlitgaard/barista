@@ -1,5 +1,4 @@
 local g = import '../../lib/base.libsonnet';
-local m = import '../../lib/modifiers.libsonnet';
 
 
 local pre_trigger = g.PRE;
