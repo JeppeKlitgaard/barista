@@ -1,13 +1,13 @@
 local g = import '../../lib/base.libsonnet';
 
 local rawMatches = [
-  ### Iteration
+  //## Iteration
   {
     triggers: ['forall', 'fa'],
     replace: '∀',
   },
 
-  ### Existance
+  //## Existance
   {
     triggers: ['thereexists', 'exists', 'te', 'E'],
     replace: '∃',
@@ -17,7 +17,7 @@ local rawMatches = [
     replace: '∄',
   },
 
-  ### Dots
+  //## Dots
   {
     triggers: ['therefore', 'thus', 'tf', 't4', ':.'],
     replace: '∴',
@@ -35,13 +35,13 @@ local rawMatches = [
     replace: '∷',
   },
 
-  ### Intervals
+  //## Intervals
   {
     triggers: ['between', 'btwn', ')('],
     replace: '≬',
   },
 
-  ### Reading help
+  //## Reading help
   {
     triggers: ['bourbaki', 'danger', 'bend'],
     replace: '☡',

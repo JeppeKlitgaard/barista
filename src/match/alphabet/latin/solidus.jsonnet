@@ -4,7 +4,7 @@ local pre_trigger = g.PRE_DIACRITIC;
 local post_trigger = '/' + g.POST;
 
 local rawMatches = [
-  ### Lower case
+  //## Lower case
   {
     trigger: 'd',
     replace: 'đ',
@@ -30,7 +30,7 @@ local rawMatches = [
     replace: 'ƶ',
   },
 
-  ### Upper case
+  //## Upper case
   {
     trigger: 'D',
     replace: 'Đ',

@@ -1,7 +1,7 @@
 local g = import '../lib/base.libsonnet';
 
 local rawMatches = [
-  # Punctuation
+  // Punctuation
   {
     trigger: '?',
     replace: '¿',
@@ -11,11 +11,11 @@ local rawMatches = [
     replace: '¡',
   },
   {
-    triggers: ['?!','!?'],
+    triggers: ['?!', '!?'],
     replace: '‽',
   },
 
-  # Marks
+  // Marks
   {
     trigger: 'tm',
     replace: '™',
@@ -25,7 +25,7 @@ local rawMatches = [
     replace: '©',
   },
 
-  # Fancy plus
+  // Fancy plus
   {
     trigger: '+',
     replace: '✠',

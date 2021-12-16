@@ -18,7 +18,7 @@ local rawMatches = [
     replace: '⨌',
   },
 
-  ### Contour
+  //## Contour
   {
     triggers: ['oint'],
     replace: '∮',
@@ -32,7 +32,7 @@ local rawMatches = [
     replace: '∰',
   },
 
-  ### Directional
+  //## Directional
   {
     triggers: ['rint'],
     replace: '∱',

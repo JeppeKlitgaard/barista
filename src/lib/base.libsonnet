@@ -1,3 +1,9 @@
+local config = import 'config.libsonnet';
+local consts = import 'consts.libsonnet';
+local filters = import 'filters.libsonnet';
+local hit = import 'hit.libsonnet';
+local utils = import 'utils.libsonnet';
+
 local SRC_KEY = 'src';
 
 /*
@@ -19,15 +25,6 @@ property
 
 */
 
-local replacementTableToMatches(replacementTable) = [
-    {
-        [if std.isArray(replacementTable[replacement]) then "triggers" else "trigger"]:
-            replacementTable[replacement],
-
-        replace: replacement,
-    },
-    for replacement in std.objectFields(replacementTable)
-];
 
 local processFilename(filename) =
     local baseDir = std.thisFile;
@@ -47,93 +44,165 @@ local processFilename(filename) =
     std.join("_", parts);
 
 
-local addPrePost(trigger, pre, post) =
-    pre + trigger + post;
-
-
 local processTriggers(rawMatches, pre, post) = [
     # Function that adds the specified pre/post triggers the triggers of
     # a matches array
     match + {
         [if 'triggers' in match then 'triggers']:
             [
-                addPrePost(trigger, pre, post)
+                pre + trigger + post
 
                 for trigger in match['triggers']
             ],
 
-        [if 'trigger' in match then 'trigger']: addPrePost(match['trigger'], pre, post),
+        [if 'trigger' in match then 'trigger']: pre + match["trigger"] + post,
     }
     for match in rawMatches
 ];
 
 
-local processExtras(rawMatches, extras) = [
-    # Function that adds extra fields to an array of matches
-    # extras should be an array of the attributes to add to each match
-    match + {
-        [extra]: extras[extra]
-        for extra in std.objectFields(extras)
-    }
-    for match in rawMatches
-];
+// local processExtras(rawMatches, extras) = [
+//     # Function that adds extra fields to an array of matches
+//     # extras should be an array of the attributes to add to each match
+//     match + {
+//         [extra]: extras[extra]
+//         for extra in std.objectFields(extras)
+//     }
+//     for match in rawMatches
+// ];
+
+local generateHit = function(
+    triggerOrTriggers,
+    rawReplacement,
+    triggerOverrides,
+)
+    local triggers = utils.asArray(triggerOrTriggers);
+
+    local replacements = [
+        triggerOverrides[trigger]
+        for trigger in triggers
+        if trigger in triggerOverrides
+    ];
+
+    assert std.length(replacements) < 2 : "Found multiple replacements in override!";
+
+    local replacement = if std.length(replacements) == 1
+        then replacements[0]
+        else rawReplacement;
+
+    {
+        triggers: triggers,
+        replace: replacement,
+    };
 
 
-local generateUnicodeMatches(normalStartChar, normalEndChar, newStartChar, overrides={}) = [
+local generateHitsFromUnicodeSequence = function(
+    normalChars,
+    newStartChar,
+    overrides = {},
+)
+    local length = std.length(normalChars);
+
+    local newChars = [
+        std.char(std.codepoint(newStartChar) + i)
+        for i in std.range(0, length)
+    ];
+
+    local hits = [
+        generateHit(
+            normalChars[i],
+            newChars[i],
+            overrides,
+        )
+        for i in std.range(0, length - 1)
+    ];
+
+    hits;
+
+
+local generateHitsFromStartAndEndChars = function(
+    normalStartChar,
+    normalEndChar,
+    newStartChar,
+    overrides = {},
+)
     local length = std.codepoint(normalEndChar) - std.codepoint(normalStartChar);
 
     local normalChars = [
         std.char(std.codepoint(normalStartChar) + i)
         for i in std.range(0, length)
     ];
-    local rawNewChars = [
-        std.char(std.codepoint(newStartChar) + i)
-        for i in std.range(0, length)
+
+    generateHitsFromUnicodeSequence(normalChars, newStartChar, overrides);
+
+local renderTriggers = function(hits, preTrigger, postTrigger)
+    [
+        hit + {
+            triggers: [
+                preTrigger + trigger + postTrigger
+                for trigger in hit.triggers
+            ]
+        },
+        for hit in hits
     ];
-    local newChars = [
-        local normalChar = normalChars[i];
-        local rawNewChar = rawNewChars[i];
 
-        if std.objectHas(overrides, normalChar)
-        then overrides[normalChar] else rawNewChar,
 
-        for i in std.range(0, length)
+local addAdditionalTriggersByTrigger = function(hits, additionalTriggersByTrigger)
+    [
+        local additionalTriggers = [
+            local _additionalTriggers = utils.asArray(additionalTriggersByTrigger[additionalTriggerKey]);
+            local shouldAddTriggers = std.member(hit.triggers, additionalTriggerKey);
+
+            if shouldAddTriggers
+                then _additionalTriggers
+                else null
+            for additionalTriggerKey in std.objectFields(additionalTriggersByTrigger)
+        ];
+
+        local processedAdditionalTriggers =
+            std.uniq(
+                std.sort(
+                    std.flattenArrays(
+                        std.prune(additionalTriggers)
+                    )
+                )
+            );
+
+        hit + {
+            triggers+: processedAdditionalTriggers,
+        }
+
+        for hit in hits
     ];
 
-    {
-        local normalChar = std.char(std.codepoint(normalStartChar) + i),
-        local rawNewChar = std.char(std.codepoint(newStartChar) + i),
 
-        local newChar = if std.objectHas(overrides, normalChar)
-        then overrides[normalChar] else rawNewChar,
+local addAdditionalTriggersByReplacement = function(hits, additionalTriggersByReplacement)
+    [
+        local additionalTriggers = if hit.replace in additionalTriggersByReplacement
+            then utils.asArray(additionalTriggersByReplacement[hit.replace])
+            else [];
 
-        trigger: normalChar,
-        replace: newChar,
-    },
+        hit + {
+            triggers+: additionalTriggers
+        }
 
-    for i in std.range(
-        0,
-        std.codepoint(normalEndChar) - std.codepoint(normalStartChar),
-    )
-];
-
+        for hit in hits
+    ];
 
 {
-    PARENT: 'default',
-    PRE: ':',
-    POST: ' ',
 
-    PRE_DIACRITIC: ',',
-    PRE_BBB: self.PRE + 'bb',
-
-    PRE_FRAKTUR: self.PRE + 'fk',
-    PRE_FRAKTUR_BOLD: self.PRE_FRAKTUR + 'b',
-
-    PRE_GREEK_BBB: self.PRE_BBB + ";",
 
     processFilename: processFilename,
     processTriggers: processTriggers,
-    processExtras: processExtras,
-    generateUnicodeMatches: generateUnicodeMatches,
-    replacementTableToMatches: replacementTableToMatches,
+    renderTriggers: renderTriggers,
+    // processExtras: processExtras,
+    addAdditionalTriggersByTrigger: addAdditionalTriggersByTrigger,
+    addAdditionalTriggersByReplacement: addAdditionalTriggersByReplacement,
+    generateHitsFromUnicodeSequence: generateHitsFromUnicodeSequence,
+    generateHitsFromStartAndEndChars: generateHitsFromStartAndEndChars,
 }
++ config
++ consts
++ filters
++ hit
++ utils

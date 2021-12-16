@@ -1,39 +1,18 @@
 local g = import '../../lib/base.libsonnet';
 
-local rawMatches = [
-  {
-    triggers: ['d', 'partial', 'part'],
-    replace: '∂',
-  },
+local rawMatches = g.replacementTableToHits({
+  '∂': ['d', 'partial', 'part'],
+  '𝛛': ['D', 'Partial', 'Part'],
 
-  {
-    triggers: ['nabla', 'del', 'gra'],
-    replace: '∇',
-  },
-  {
-    triggers: ['Nabla', 'Del', 'Gra'],
-    replace: '𝛁',
-  },
+  '∇': ['nabla', 'del', 'gra'],
+  '𝛁': ['Nabla', 'Del', 'Gra'],
 
-  {
-    triggers: ['divergence', 'div'],
-    replace: '𝛁 ⋅',
-  },
+  '𝛁 ⋅': ['divergence', 'div'],
+  '𝛁 ×': ['curl'],
 
-  {
-    triggers: ['curl'],
-    replace: '𝛁 ×',
-  },
-
-  {
-    triggers: ['laplacian', 'lapl'],
-    replace: '∇²',
-  },
-  {
-    triggers: ['Laplacian', 'Lapl'],
-    replace: '𝛁²',
-  },
-];
+  '∇²': ['laplacian', 'lapl'],
+  '𝛁²': ['Laplacian', 'Lapl'],
+});
 
 std.manifestYamlDoc(
   {

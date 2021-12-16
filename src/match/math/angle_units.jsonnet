@@ -1,15 +1,15 @@
 local g = import '../../lib/base.libsonnet';
 
 local rawMatches = [
-  ### Degree
+  //## Degree
   {
-    triggers: ['deg','^o'],
+    triggers: ['deg', '^o'],
     replace: '°',
   },
 
-  ### Radian
+  //## Radian
   {
-    triggers: ['rad','^c'],
+    triggers: ['rad', '^c'],
     replace: 'ᶜ',
   },
   {
@@ -17,9 +17,9 @@ local rawMatches = [
     replace: '㎭',
   },
 
-  ### Gradian
+  //## Gradian
   {
-    triggers: ['grad','^g'],
+    triggers: ['grad', '^g'],
     replace: 'ᵍ',
   },
 ];

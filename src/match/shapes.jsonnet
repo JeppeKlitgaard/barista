@@ -1,13 +1,13 @@
 local g = import '../lib/base.libsonnet';
 
 local rawMatches = [
-  ### Square
+  //## Square
   {
-    triggers: ['sq', 'square'],  # Also defined in square_operators as '|=|
+    triggers: ['sq', 'square'],  // Also defined in square_operators as '|=|
     replace: '◻',
   },
 
-  ### Triangle
+  //## Triangle
   {
     triggers: ['<|', 'ltangle'],
     replace: '◁',
@@ -17,7 +17,7 @@ local rawMatches = [
     replace: '▷',
   },
 
-  ### Other shapes
+  //## Other shapes
   {
     triggers: ['tangle', 'triangle'],
     replace: '⊿',

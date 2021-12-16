@@ -1,7 +1,7 @@
 local g = import '../lib/base.libsonnet';
 
 local rawMatches = [
-  # Single arrows
+  // Single arrows
   {
     triggers: [
       'la',
@@ -81,7 +81,7 @@ local rawMatches = [
     replace: '↕',
   },
 
-  # Double arrows
+  // Double arrows
   {
     triggers: [
       'La',
@@ -161,12 +161,12 @@ local rawMatches = [
     replace: '⇕',
   },
 
-  # Long single arrows
+  // Long single arrows
   {
     triggers: [
       'la-',
       'longleftarrow',
-      '<---'
+      '<---',
     ],
     replace: '⟵',
   },
@@ -174,7 +174,7 @@ local rawMatches = [
     triggers: [
       'ra-',
       'longrightarrow',
-      '--->'
+      '--->',
     ],
     replace: '⟶',
   },
@@ -182,17 +182,17 @@ local rawMatches = [
     triggers: [
       'lra-',
       'longleftrightarrow',
-      '<--->'
+      '<--->',
     ],
     replace: '⟷',
   },
 
-  # Long double arrows
+  // Long double arrows
   {
     triggers: [
       'La-',
       'longLeftarrow',
-      '<==='
+      '<===',
     ],
     replace: '⟸',
   },
@@ -200,7 +200,7 @@ local rawMatches = [
     triggers: [
       'Ra-',
       'longRightarrow',
-      '===>'
+      '===>',
     ],
     replace: '⟹',
   },
@@ -209,12 +209,12 @@ local rawMatches = [
       'Lra-',
       'longLeftrightarrow',
       '<===>',
-      'iff'
+      'iff',
     ],
     replace: '⟺',
   },
 
-  # Harpoon arrows
+  // Harpoon arrows
   {
     triggers: [
       'Lh',
@@ -305,7 +305,7 @@ local rawMatches = [
     replace: '⥯',
   },
 
-  # Squiggle arrows
+  // Squiggle arrows
   {
     triggers: [
       'rightsquigglearrow',
@@ -344,7 +344,7 @@ local rawMatches = [
     replace: '↭',
   },
 
-  # Bar single arrows
+  // Bar single arrows
   {
     triggers: [
       'barrightarrow',
@@ -388,7 +388,7 @@ local rawMatches = [
     replace: '⟻',
   },
 
-  # Bar double arrow
+  // Bar double arrow
   {
     triggers: [
       'barRightarrow',

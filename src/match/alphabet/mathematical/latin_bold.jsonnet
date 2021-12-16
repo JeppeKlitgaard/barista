@@ -1,13 +1,13 @@
 local g = import '../../../lib/base.libsonnet';
 
-local preTrigger = "MATHBOLD";
+local preTrigger = 'MATHBOLD';
 local postTrigger = g.POST;
 
 local lowerOverrides = {};
 local upperOverrides = {};
 
-local lower = g.generateUnicodeMatches("a", "z", "𝐚", lowerOverrides);
-local upper = g.generateUnicodeMatches("A", "Z", "𝐀", upperOverrides);
+local lower = g.generateHitsFromStartAndEndChars('a', 'z', '𝐚', lowerOverrides);
+local upper = g.generateHitsFromStartAndEndChars('A', 'Z', '𝐀', upperOverrides);
 
 local rawMatches = lower + upper;
 local matches = g.processTriggers(rawMatches, preTrigger, postTrigger);

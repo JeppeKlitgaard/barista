@@ -24,7 +24,7 @@ local rawMatches = [
     replace: '∤',
   },
 
-  #
+  //
   {
     triggers: ['cdot', '.'],
     replace: '⋅',
@@ -34,7 +34,7 @@ local rawMatches = [
     replace: '∙',
   },
 
-  #
+  //
   {
     triggers: ['ring', 'o'],
     replace: '∘',
@@ -49,7 +49,7 @@ local rawMatches = [
     replace: '∗',
   },
 
-  #
+  //
   {
     triggers: ['cross', 'multiplication', 'mult', 'x'],
     replace: '×',
@@ -63,7 +63,7 @@ local rawMatches = [
     replace: '⋇',
   },
 
-  #
+  //
   {
     triggers: ['prod'],
     replace: '∏',
@@ -77,7 +77,7 @@ local rawMatches = [
     replace: '∑',
   },
 
-  #
+  //
   {
     triggers: ['dagger', 'dag', 'hermitian', 'herm', 'h'],
     replace: '†',

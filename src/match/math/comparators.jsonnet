@@ -1,7 +1,7 @@
 local g = import '../../lib/base.libsonnet';
 
 local rawMatches = [
-  # lte/gte
+  // lte/gte
   {
     triggers: ['>=', 'geq'],
     replace: '≥',
@@ -20,7 +20,7 @@ local rawMatches = [
     replace: '≰',
   },
 
-  # gg, ll
+  // gg, ll
   {
     triggers: ['>>', 'gg'],
     replace: '≫',
@@ -30,7 +30,7 @@ local rawMatches = [
     replace: '≪',
   },
 
-  # ggg, lll
+  // ggg, lll
   {
     triggers: ['>>>', 'ggg'],
     replace: '⋙',
@@ -40,7 +40,7 @@ local rawMatches = [
     replace: '⋘',
   },
 
-  # Approximations
+  // Approximations
   {
     triggers: ['>~', 'g~'],
     replace: '≳',
@@ -59,7 +59,7 @@ local rawMatches = [
     replace: '≴',
   },
 
-  # ltgt's
+  // ltgt's
   {
     triggers: ['<>', 'ltgt'],
     replace: '≶',

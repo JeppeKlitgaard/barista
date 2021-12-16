@@ -1,7 +1,7 @@
 local g = import '../../lib/base.libsonnet';
 
 local rawMatches = [
-  # Hbar
+  // Hbar
   {
     trigger: 'hbar',
     replace: 'ℏ',

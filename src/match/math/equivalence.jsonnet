@@ -20,7 +20,7 @@ local rawMatches = [
     replace: '≣',
   },
 
-  # Equalities
+  // Equalities
   {
     triggers: [':='],
     replace: '≔',
@@ -70,7 +70,7 @@ local rawMatches = [
     replace: '≅',
   },
 
-  # Approx
+  // Approx
   {
     triggers: ['~'],
     replace: '∼',

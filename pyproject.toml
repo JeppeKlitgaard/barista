@@ -23,6 +23,7 @@ types-PyYAML = "^5.4.10"
 
 # Mypy
 poethepoet = "^0.10.0"
+ipykernel = "^6.6.0"
 [tool.mypy]
 python_version = "3.9"
 strict = true
@@ -55,6 +56,8 @@ isort_check = "isort --check-only ."
 black = "black ."
 isort = "isort ."
 
+jsonnetfmt = "jsonnetfmt -i **/*.jsonnet"
+
 lint = [
     "flake8",
     "black_check",
@@ -62,9 +65,11 @@ lint = [
     "mypy",
 ]
 
+
 fix = [
     "black",
     "isort",
+    "jsonnetfmt"
 ]
 
 

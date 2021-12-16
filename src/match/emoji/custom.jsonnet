@@ -1,7 +1,7 @@
 local g = import '../../lib/base.libsonnet';
 
 local rawMatches = [
-  ### Yes/No/Maybe
+  //## Yes/No/Maybe
   {
     triggers: [
       'y',

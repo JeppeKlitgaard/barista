@@ -2,7 +2,7 @@ local g = import '../../lib/base.libsonnet';
 
 local rawMatches = [
   {
-    triggers: ['sine','ac'],
+    triggers: ['sine', 'ac'],
     replace: '∿',
   },
 ];

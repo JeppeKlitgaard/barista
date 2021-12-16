@@ -1,7 +1,7 @@
 local g = import '../lib/base.libsonnet';
 
 local rawMatches = [
-  ### Dashes
+  //## Dashes
   {
     triggers: [
       'emdash',
@@ -19,7 +19,7 @@ local rawMatches = [
     replace: '–',
   },
 
-  ### Quotes
+  //## Quotes
   {
     triggers: ['l"'],
     replace: '“',
@@ -29,7 +29,7 @@ local rawMatches = [
     replace: '”',
   },
 
-  ### Ellipsis
+  //## Ellipsis
   {
     triggers: [
       'ellipsis',
@@ -62,8 +62,8 @@ local rawMatches = [
     replace: '⋱',
   },
 
-  ### Partitioners
-  # Paragraphs
+  //## Partitioners
+  // Paragraphs
   {
     triggers: [
       'pilcrow',
@@ -83,7 +83,7 @@ local rawMatches = [
     replace: '⁋',
   },
 
-  # Section
+  // Section
   {
     triggers: [
       'section',

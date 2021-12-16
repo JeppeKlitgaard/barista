@@ -1,7 +1,7 @@
 local g = import '../../lib/base.libsonnet';
 
 local rawMatches = [
-  ### And/or
+  //## And/or
   {
     triggers: ['and', '^'],
     replace: '∧',
@@ -20,7 +20,7 @@ local rawMatches = [
     replace: '⋁',
   },
 
-  ### Negation
+  //## Negation
   {
     triggers: ['neg'],
     replace: '¬',
@@ -30,7 +30,7 @@ local rawMatches = [
     replace: '￢',
   },
 
-  ### Truth/falsum
+  //## Truth/falsum
   {
     triggers: ['true', 't'],
     replace: '〒',
@@ -48,8 +48,8 @@ local rawMatches = [
     replace: '┻',
   },
 
-  ### Turnstiles
-  # Single
+  //## Turnstiles
+  // Single
   {
     triggers: ['|-'],
     replace: '⊢',
@@ -64,7 +64,7 @@ local rawMatches = [
     replace: '⊣',
   },
 
-  # Double
+  // Double
   {
     triggers: ['|='],
     replace: '⊨',
@@ -74,7 +74,7 @@ local rawMatches = [
     replace: '⊭',
   },
 
-  # Other
+  // Other
   {
     triggers: ['||-'],
     replace: '⊩',
@@ -98,7 +98,7 @@ local rawMatches = [
     replace: '⊪',
   },
 
-  # Both sides
+  // Both sides
   {
     triggers: ['-||-'],
     replace: '⟛',

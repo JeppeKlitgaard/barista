@@ -2,11 +2,11 @@ local g = import '../../lib/base.libsonnet';
 
 local rawMatches = [
   {
-    triggers: ['degc','^oc'],
+    triggers: ['degc', '^oc'],
     replace: '℃',
   },
   {
-    triggers: ['degf','^of'],
+    triggers: ['degf', '^of'],
     replace: '℉',
   },
 ];

@@ -1,14 +1,14 @@
 local g = import '../../../lib/base.libsonnet';
 
 local rawMatches = [
-  ### Predefined sets
+  //## Predefined sets
   {
     triggers: ['emptyset', 'empty', 'O\\'],
     replace: '∅',
   },
 
-  ### Common sets
-  # Note these are also defined in alphabet/latin/bbb.jsonnet
+  //## Common sets
+  // Note these are also defined in alphabet/latin/bbb.jsonnet
   {
     triggers: ['N'],
     replace: 'ℕ',

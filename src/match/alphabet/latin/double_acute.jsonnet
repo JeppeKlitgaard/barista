@@ -4,13 +4,13 @@ local pre_trigger = g.PRE_DIACRITIC;
 local post_trigger = '"' + g.POST;
 
 local rawMatches = [
-  ### Symbol
+  //## Symbol
   {
     trigger: "'",
     replace: '˝',
   },
 
-  ### Lower case
+  //## Lower case
   {
     trigger: 'o',
     replace: 'ő',
@@ -20,7 +20,7 @@ local rawMatches = [
     replace: 'ű',
   },
 
-  ### Upper case
+  //## Upper case
   {
     trigger: 'O',
     replace: 'Ő',

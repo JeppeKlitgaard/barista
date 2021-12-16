@@ -1,15 +1,15 @@
 local g = import '../../lib/base.libsonnet';
 
-local pre_trigger = g.PRE + "^";
+local pre_trigger = g.PRE + '^';
 local post_trigger = g.POST;
 
 local overrides = {
-  "1": '¹',
-  "2": '²',
-  "3": '³',
+  '1': '¹',
+  '2': '²',
+  '3': '³',
 };
 
-local rawMatches = g.generateUnicodeMatches("0", "9", "⁰", overrides);
+local rawMatches = g.generateHitsFromStartAndEndChars('0', '9', '⁰', overrides);
 
 std.manifestYamlDoc(
   {

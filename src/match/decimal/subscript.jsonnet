@@ -1,9 +1,9 @@
 local g = import '../../lib/base.libsonnet';
 
-local pre_trigger = g.PRE + "_";
+local pre_trigger = g.PRE + '_';
 local post_trigger = g.POST;
 
-local rawMatches = g.generateUnicodeMatches("0", "9", "₀");
+local rawMatches = g.generateHitsFromStartAndEndChars('0', '9', '₀');
 
 std.manifestYamlDoc(
   {

@@ -1,0 +1,252 @@
+[
+   {
+      "propagate_case": true,
+      "replace": "α",
+      "trigger": "a"
+   },
+   {
+      "propagate_case": true,
+      "replace": "β",
+      "trigger": "b"
+   },
+   {
+      "propagate_case": true,
+      "replace": "γ",
+      "trigger": "g"
+   },
+   {
+      "propagate_case": true,
+      "replace": "δ",
+      "trigger": "d"
+   },
+   {
+      "propagate_case": true,
+      "replace": "ε",
+      "trigger": "e"
+   },
+   {
+      "propagate_case": true,
+      "replace": "ζ",
+      "trigger": "z"
+   },
+   {
+      "propagate_case": true,
+      "replace": "η",
+      "trigger": "h"
+   },
+   {
+      "propagate_case": true,
+      "replace": "θ",
+      "trigger": "q"
+   },
+   {
+      "propagate_case": true,
+      "replace": "ι",
+      "trigger": "i"
+   },
+   {
+      "propagate_case": true,
+      "replace": "κ",
+      "trigger": "k"
+   },
+   {
+      "propagate_case": true,
+      "replace": "λ",
+      "trigger": "l"
+   },
+   {
+      "propagate_case": true,
+      "replace": "μ",
+      "trigger": "m"
+   },
+   {
+      "propagate_case": true,
+      "replace": "ν",
+      "trigger": "n"
+   },
+   {
+      "propagate_case": true,
+      "replace": "ξ",
+      "trigger": "c"
+   },
+   {
+      "propagate_case": true,
+      "replace": "ο",
+      "trigger": "o"
+   },
+   {
+      "propagate_case": true,
+      "replace": "π",
+      "trigger": "p"
+   },
+   {
+      "propagate_case": true,
+      "replace": "ρ",
+      "trigger": "r"
+   },
+   {
+      "propagate_case": true,
+      "replace": "ς",
+      "trigger": "vs"
+   },
+   {
+      "propagate_case": true,
+      "replace": "σ",
+      "trigger": "s"
+   },
+   {
+      "propagate_case": true,
+      "replace": "τ",
+      "trigger": "t"
+   },
+   {
+      "propagate_case": true,
+      "replace": "υ",
+      "trigger": "u"
+   },
+   {
+      "propagate_case": true,
+      "replace": "φ",
+      "trigger": "f"
+   },
+   {
+      "propagate_case": true,
+      "replace": "χ",
+      "trigger": "x"
+   },
+   {
+      "propagate_case": true,
+      "replace": "ψ",
+      "trigger": "y"
+   },
+   {
+      "propagate_case": true,
+      "replace": "ω",
+      "trigger": "w"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Α",
+      "trigger": "A"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Β",
+      "trigger": "B"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Γ",
+      "trigger": "G"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Δ",
+      "trigger": "D"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Ε",
+      "trigger": "E"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Ζ",
+      "trigger": "Z"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Η",
+      "trigger": "H"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Θ",
+      "trigger": "Q"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Ι",
+      "trigger": "I"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Κ",
+      "trigger": "K"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Λ",
+      "trigger": "L"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Μ",
+      "trigger": "M"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Ν",
+      "trigger": "N"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Ξ",
+      "trigger": "C"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Ο",
+      "trigger": "O"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Π",
+      "trigger": "P"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Ρ",
+      "trigger": "R"
+   },
+   {
+      "propagate_case": true,
+      "replace": "΢",
+      "trigger": "VS"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Σ",
+      "trigger": "S"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Τ",
+      "trigger": "T"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Υ",
+      "trigger": "U"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Φ",
+      "trigger": "F"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Χ",
+      "trigger": "X"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Ψ",
+      "trigger": "Y"
+   },
+   {
+      "propagate_case": true,
+      "replace": "Ω",
+      "trigger": "W"
+   }
+]

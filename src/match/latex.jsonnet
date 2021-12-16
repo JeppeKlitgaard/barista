@@ -1,7 +1,7 @@
 local g = import '../lib/base.libsonnet';
 
 local rawMatches = [
-  ### Limits
+  //## Limits
   {
     triggers: ['ii'],
     replace: '_{-∞}^{+∞}',

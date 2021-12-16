@@ -1,7 +1,7 @@
 local g = import '../../../lib/base.libsonnet';
 
 local rawMatches = [
-  ### Membership
+  //## Membership
   {
     triggers: ['in'],
     replace: '∈',
@@ -20,7 +20,7 @@ local rawMatches = [
     replace: '∌',
   },
 
-  ### Relation
+  //## Relation
   {
     triggers: ['subset', 'subs'],
     replace: '⊂',
@@ -54,7 +54,7 @@ local rawMatches = [
     replace: '⊉',
   },
 
-  ### Operations
+  //## Operations
   {
     triggers: ['union', 'U'],
     replace: '∪',

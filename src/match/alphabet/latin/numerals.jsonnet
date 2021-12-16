@@ -4,7 +4,7 @@ local pre_trigger = g.PRE;
 local post_trigger = g.POST;
 
 local rawMatches = [
-  ### Lower Case
+  //## Lower Case
   {
     trigger: 'r1',
     replace: 'ⅰ',
@@ -54,7 +54,7 @@ local rawMatches = [
     replace: 'ⅻ',
   },
 
-  ### Upper Case
+  //## Upper Case
   {
     trigger: 'R1',
     replace: 'Ⅰ',

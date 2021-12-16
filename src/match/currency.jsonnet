@@ -12,12 +12,12 @@ local rawMatches = [
   },
 
   {
-    triggers: ['gbp','pd'],
+    triggers: ['gbp', 'pd'],
     replace: '£',
   },
 
   {
-    triggers: ['eu','euro'],
+    triggers: ['eu', 'euro'],
     replace: '€',
   },
 

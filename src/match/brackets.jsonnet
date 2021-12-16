@@ -2,7 +2,7 @@ local g = import '../lib/base.libsonnet';
 
 local rawMatches = [
 
-  # 〈〉
+  // 〈〉
   {
     trigger: '</',
     replace: '〈',
@@ -12,7 +12,7 @@ local rawMatches = [
     replace: '〉',
   },
 
-  # 《》
+  // 《》
   {
     trigger: '<+',
     replace: '《',
@@ -22,7 +22,7 @@ local rawMatches = [
     replace: '》',
   },
 
-  # «»
+  // «»
   {
     trigger: '<_',
     replace: '«',
@@ -32,7 +32,7 @@ local rawMatches = [
     replace: '»',
   },
 
-  # ⌈ ⌉ ⌊ ⌋
+  // ⌈ ⌉ ⌊ ⌋
   {
     trigger: '|^',
     replace: '⌈',
@@ -50,7 +50,7 @@ local rawMatches = [
     replace: '⌋',
   },
 
-  # 『』
+  // 『』
   {
     trigger: '<"',
     replace: '『',
@@ -60,7 +60,7 @@ local rawMatches = [
     replace: '』',
   },
 
-  # 【】
+  // 【】
   {
     trigger: '("',
     replace: '【',
@@ -70,7 +70,7 @@ local rawMatches = [
     replace: '】',
   },
 
-  # 〔〕
+  // 〔〕
   {
     trigger: "('",
     replace: '〔',
@@ -80,7 +80,7 @@ local rawMatches = [
     replace: '〕',
   },
 
-  # 〖〗
+  // 〖〗
   {
     trigger: '(I',
     replace: '〖',

@@ -1,7 +1,7 @@
 local g = import '../../lib/base.libsonnet';
 
 local rawMatches = [
-  # Real and imaginary parts of
+  // Real and imaginary parts of
   {
     triggers: ['Re', 're'],
     replace: 'ℜ',
@@ -11,7 +11,7 @@ local rawMatches = [
     replace: 'ℑ',
   },
 
-  # Complex i symbol
+  // Complex i symbol
   {
     triggers: ['ci'],
     replace: '𝑖',

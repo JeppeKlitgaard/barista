@@ -10,7 +10,7 @@ local rawMatches = [
   {
     triggers: [
       'cs',
-      'coordsys'
+      'coordsys',
     ],
     replace: 'coordinate system',
   },

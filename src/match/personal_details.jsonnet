@@ -1,7 +1,7 @@
 local g = import '../lib/base.libsonnet';
 
 local rawMatches = [
-  ### Phone
+  //## Phone
   {
     triggers: [
       'uktel',
@@ -28,7 +28,7 @@ local rawMatches = [
     replace: '+45 22461358',
   },
 
-  ### Email
+  //## Email
   {
     triggers: [
       '@cam',
@@ -57,7 +57,7 @@ local rawMatches = [
     triggers: [
       '@',
       '@sci',
-      '@science'
+      '@science',
     ],
     replace: 'hi@jeppe.science',
   },

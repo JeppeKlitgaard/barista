@@ -3,7 +3,7 @@ local g = import '../../../lib/base.libsonnet';
 local pre_trigger = g.PRE_BBB;
 local post_trigger = g.POST;
 
-local rawMatches = g.generateUnicodeMatches("0", "9", "𝟬");
+local rawMatches = g.generateHitsFromStartAndEndChars('0', '9', '𝟬');
 
 std.manifestYamlDoc(
   {

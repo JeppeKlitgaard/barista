@@ -1,7 +1,7 @@
 local g = import '../lib/base.libsonnet';
 
-local rawMatches = g.replacementTableToMatches({
-  "TL;DR": "tldr",
+local rawMatches = g.replacementTableToHits({
+  'TL;DR': 'tldr',
 });
 
 std.manifestYamlDoc(

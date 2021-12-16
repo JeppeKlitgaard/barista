@@ -1,15 +1,15 @@
 local g = import '../../lib/base.libsonnet';
 
 local rawMatches = [
-  # 2
+  // 2
   {
-    triggers: ['half','1/2'],
+    triggers: ['half', '1/2'],
     replace: '½',
   },
 
-  # 3
+  // 3
   {
-    triggers: ['third','1/3'],
+    triggers: ['third', '1/3'],
     replace: '⅓',
   },
   {
@@ -17,9 +17,9 @@ local rawMatches = [
     replace: '⅔',
   },
 
-  # 4
+  // 4
   {
-    triggers: ['fourth','quarter','1/4'],
+    triggers: ['fourth', 'quarter', '1/4'],
     replace: '¼',
   },
   {
@@ -27,9 +27,9 @@ local rawMatches = [
     replace: '¾',
   },
 
-  # 5
+  // 5
   {
-    triggers: ['fifth','1/5'],
+    triggers: ['fifth', '1/5'],
     replace: '⅕',
   },
   {
@@ -45,9 +45,9 @@ local rawMatches = [
     replace: '⅘',
   },
 
-  # 6
+  // 6
   {
-    triggers: ['sixth','1/6'],
+    triggers: ['sixth', '1/6'],
     replace: '⅙',
   },
   {
@@ -55,15 +55,15 @@ local rawMatches = [
     replace: '⅚',
   },
 
-  # 7
+  // 7
   {
-    triggers: ['seventh','1/7'],
+    triggers: ['seventh', '1/7'],
     replace: '⅐',
   },
 
-  # 8
+  // 8
   {
-    triggers: ['eighth','1/8'],
+    triggers: ['eighth', '1/8'],
     replace: '⅛',
   },
   {
@@ -79,17 +79,17 @@ local rawMatches = [
     replace: '⅞',
   },
 
-  # 9
+  // 9
   {
-    triggers: ['ninth','1/9'],
+    triggers: ['ninth', '1/9'],
     replace: '⅑',
   },
 
-  # 10
+  // 10
   {
-    triggers: ['tenth','1/10'],
+    triggers: ['tenth', '1/10'],
     replace: '⅒',
-  }
+  },
 ];
 
 std.manifestYamlDoc(

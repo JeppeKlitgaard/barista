@@ -5,15 +5,15 @@ local postTrigger = g.POST;
 
 local lowerOverrides = {};
 local upperOverrides = {
-    "C": "ℭ",
-    "H": "ℌ",
-    "I": "ℑ",
-    "R": "ℜ",
-    "Z": "ℨ",
+  C: 'ℭ',
+  H: 'ℌ',
+  I: 'ℑ',
+  R: 'ℜ',
+  Z: 'ℨ',
 };
 
-local lower = g.generateUnicodeMatches("a", "z", "𝖆", lowerOverrides);
-local upper = g.generateUnicodeMatches("A", "Z", "𝕬", upperOverrides);
+local lower = g.generateHitsFromStartAndEndChars('a', 'z', '𝖆', lowerOverrides);
+local upper = g.generateHitsFromStartAndEndChars('A', 'Z', '𝕬', upperOverrides);
 
 local rawMatches = lower + upper;
 local matches = g.processTriggers(rawMatches, preTrigger, postTrigger);

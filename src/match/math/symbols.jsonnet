@@ -1,33 +1,33 @@
 local g = import '../../lib/base.libsonnet';
 
 local rawMatches = [
-  ### Infinity
+  //## Infinity
   {
     triggers: ['i', 'inf', 'infty'],
     replace: '∞',
   },
 
-  ### Fancy
-  # E
+  //## Fancy
+  // E
   {
-    triggers: ['euler','e'],
+    triggers: ['euler', 'e'],
     replace: '𝑒',
   },
 
-  # L
+  // L
   {
-    triggers: ['ell','l'],
+    triggers: ['ell', 'l'],
     replace: 'ℓ',
   },
   {
-    triggers: ['Ell','L'],
+    triggers: ['Ell', 'L'],
     replace: 'ℒ',
   },
 
-  # F
+  // F
   {
     triggers: ['fourier', 'Fourier', 'ft', 'FT'],
-    replace: 'ℱ'
+    replace: 'ℱ',
   },
 ];
 
