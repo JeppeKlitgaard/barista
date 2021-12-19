@@ -9,8 +9,8 @@ local upperOverrides = {};
 local lower = g.generateHitsFromStartAndEndChars('a', 'z', '𝐚', lowerOverrides);
 local upper = g.generateHitsFromStartAndEndChars('A', 'Z', '𝐀', upperOverrides);
 
-local rawMatches = lower + upper;
-local matches = g.processTriggers(rawMatches, preTrigger, postTrigger);
+local rawHits = lower + upper;
+local matches = g.processTriggers(rawHits, preTrigger, postTrigger);
 
 std.manifestYamlDoc(
   {
