@@ -1,101 +1,48 @@
 local g = import '../lib/base.libsonnet';
 
-local rawMatches = [
 
+local rawHits = g.replacementTableToHits({
   // 〈〉
-  {
-    trigger: '</',
-    replace: '〈',
-  },
-  {
-    trigger: '/>',
-    replace: '〉',
-  },
+     '〈': '</',
+     '〉': '/>',
 
   // 《》
-  {
-    trigger: '<+',
-    replace: '《',
-  },
-  {
-    trigger: '>+',
-    replace: '》',
-  },
+     '《': '<+',
+     '》': '>+',
 
   // «»
-  {
-    trigger: '<_',
-    replace: '«',
-  },
-  {
-    trigger: '>_',
-    replace: '»',
-  },
+     '«': '<_',
+     '»': '>_',
 
   // ⌈ ⌉ ⌊ ⌋
-  {
-    trigger: '|^',
-    replace: '⌈',
-  },
-  {
-    trigger: '^|',
-    replace: '⌉',
-  },
-  {
-    trigger: '|_',
-    replace: '⌊',
-  },
-  {
-    trigger: '_|',
-    replace: '⌋',
-  },
+     '⌈': '|^',
+     '⌉': '^|',
+     '⌊': '|_',
+     '⌋': '_|',
 
   // 『』
-  {
-    trigger: '<"',
-    replace: '『',
-  },
-  {
-    trigger: '>"',
-    replace: '』',
-  },
+     '『': '<"',
+     '』': '>"',
 
   // 【】
-  {
-    trigger: '("',
-    replace: '【',
-  },
-  {
-    trigger: ')"',
-    replace: '】',
-  },
+     '【': '("',
+     '】': ')"',
 
   // 〔〕
-  {
-    trigger: "('",
-    replace: '〔',
-  },
-  {
-    trigger: ")'",
-    replace: '〕',
-  },
+     '〔': "('",
+     '〕': ")'",
 
   // 〖〗
-  {
-    trigger: '(I',
-    replace: '〖',
-  },
-  {
-    trigger: ')I',
-    replace: '〗',
-  },
-];
+     '〖': '(I',
+     '〗': ')I',
+});
+
 
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),
     parent: g.PARENT,
 
-    matches: g.processTriggers(rawMatches, g.PRE, g.POST),
+    matches: g.renderTriggersAndHits(rawHits, g.PRE, g.POST),
   }
 )

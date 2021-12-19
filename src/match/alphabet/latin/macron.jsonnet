@@ -1,81 +1,38 @@
 local g = import '../../../lib/base.libsonnet';
 
-local pre_trigger = g.PRE_DIACRITIC;
-local post_trigger = '-' + g.POST;
+local PRE = g.PRE_DIACRITIC;
+local POST = g.POST_MACRON;
 
-local rawMatches = [
+
+local rawHits = g.replacementTableToHits({
   //## Symbol
-  {
-    trigger: "'",
-    replace: '¯',
-  },
+     '¯': "'",
 
   //## Lower case
-  {
-    trigger: 'a',
-    replace: 'ā',
-  },
-  {
-    trigger: 'd',
-    replace: 'ð',
-  },
-  {
-    trigger: 'e',
-    replace: 'ē',
-  },
-  {
-    trigger: 'g',
-    replace: 'ḡ',
-  },
-  {
-    trigger: 'i',
-    replace: 'ī',
-  },
-  {
-    trigger: 'o',
-    replace: 'ō',
-  },
-  {
-    trigger: 'u',
-    replace: 'ū',
-  },
+     'ā': 'a',
+     'ð': 'd',
+     'ē': 'e',
+     'ḡ': 'g',
+     'ī': 'i',
+     'ō': 'o',
+     'ū': 'u',
 
   //## Upper case
-  {
-    trigger: 'A',
-    replace: 'Ā',
-  },
-  {
-    trigger: 'D',
-    replace: 'Ð',
-  },
-  {
-    trigger: 'E',
-    replace: 'Ē',
-  },
-  {
-    trigger: 'G',
-    replace: 'Ḡ',
-  },
-  {
-    trigger: 'I',
-    replace: 'Ī',
-  },
-  {
-    trigger: 'O',
-    replace: 'Ō',
-  },
-  {
-    trigger: 'U',
-    replace: 'Ū',
-  },
-];
+     'Ā': 'A',
+     'Ð': 'D',
+     'Ē': 'E',
+     'Ḡ': 'G',
+     'Ī': 'I',
+     'Ō': 'O',
+     'Ū': 'U',
+});
+
 
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),
     parent: g.PARENT,
 
-    matches: g.processTriggers(rawMatches, pre_trigger, post_trigger),
+    matches: g.renderTriggersAndHits(rawHits, PRE, POST),
   }
 )

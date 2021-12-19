@@ -1,6 +1,5 @@
 local g = import '../../../lib/base.libsonnet';
 
-
 local PRE = g.PRE_DIACRITIC;
 local POST = g.POST_ACUTE;
 

@@ -19,6 +19,19 @@
     // Diacritics
     PRE_DIACRITIC: ',',
     POST_ACUTE: "'",
+    POST_BREVE: '(',
+    POST_CARON: '<',
+    POST_CEDILLA: ',',
+    POST_CIRCLE: '0',
+    POST_CIRCUMFLEX: '>',
+    POST_DIAERESIS: ':',
+    POST_DOUBLE_ACUTE: '"',
+    POST_GRAVE: '!',
+    POST_MACRON: '-',
+    POST_OGONEK: ';',
+    POST_SOLIDUS: '/',
+    POST_TILDE: '~',
+
     // --- Fraktur
 
     PRE_FRAKTUR: self.PRE + self.FRAKTUR,

@@ -1,104 +1,43 @@
 local g = import '../../../lib/base.libsonnet';
 
+local PRE = g.PRE_DIACRITIC;
+local POST = g.POST_DIAERESIS;
 
-local pre_trigger = g.PRE_DIACRITIC;
-local post_trigger = ':' + g.POST;
 
-local rawMatches = [
+local rawHits = g.replacementTableToHits({
   //## Symbol
-  {
-    trigger: "'",
-    replace: '¨¨',
-  },
+     '¨¨': "'",
 
   //## Lower case
-  {
-    trigger: 'a',
-    replace: 'ä',
-  },
-  {
-    trigger: 'e',
-    replace: 'ë',
-  },
-  {
-    trigger: 'h',
-    replace: 'ḧ',
-  },
-  {
-    trigger: 'i',
-    replace: 'ï',
-  },
-  {
-    trigger: 'o',
-    replace: 'ö',
-  },
-  {
-    trigger: 't',
-    replace: 'ẗ',
-  },
-  {
-    trigger: 'u',
-    replace: 'ü',
-  },
-  {
-    trigger: 'w',
-    replace: 'ẅ',
-  },
-  {
-    trigger: 'x',
-    replace: 'ẍ',
-  },
-  {
-    trigger: 'y',
-    replace: 'ÿ',
-  },
+     'ä': 'a',
+     'ë': 'e',
+     'ḧ': 'h',
+     'ï': 'i',
+     'ö': 'o',
+     'ẗ': 't',
+     'ü': 'u',
+     'ẅ': 'w',
+     'ẍ': 'x',
+     'ÿ': 'y',
 
   //## Upper case
-  {
-    trigger: 'A',
-    replace: 'Ä',
-  },
-  {
-    trigger: 'E',
-    replace: 'Ë',
-  },
-  {
-    trigger: 'H',
-    replace: 'Ḧ',
-  },
-  {
-    trigger: 'I',
-    replace: 'Ï',
-  },
-  {
-    trigger: 'O',
-    replace: 'Ö',
-  },
-  {
-    trigger: 'U',
-    replace: 'Ü',
-  },
-  {
-    trigger: 'W',
-    replace: 'Ẅ',
-  },
-  {
-    trigger: 'X',
-    replace: 'Ẍ',
-  },
-  {
-    trigger: 'Y',
-    replace: 'Ÿ',
-  },
+     'Ä': 'A',
+     'Ë': 'E',
+     'Ḧ': 'H',
+     'Ï': 'I',
+     'Ö': 'O',
+     'Ü': 'U',
+     'Ẅ': 'W',
+     'Ẍ': 'X',
+     'Ÿ': 'Y',
+});
 
-
-];
 
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),
     parent: g.PARENT,
 
-    matches: g.processTriggers(rawMatches, pre_trigger, post_trigger),
+    matches: g.renderTriggersAndHits(rawHits, PRE, POST),
   }
 )

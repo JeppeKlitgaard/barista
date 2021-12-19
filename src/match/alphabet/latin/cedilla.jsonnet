@@ -1,105 +1,44 @@
 local g = import '../../../lib/base.libsonnet';
 
-local pre_trigger = g.PRE_DIACRITIC;
-local post_trigger = ',' + g.POST;
+local PRE = g.PRE_DIACRITIC;
+local POST = g.POST_CEDILLA;
 
-local rawMatches = [
+
+local rawHits = g.replacementTableToHits({
   //## Symbol
-  {
-    trigger: "'",
-    replace: '¸',
-  },
+     '¸': "'",
 
   //## Lower case
-  {
-    trigger: 'c',
-    replace: 'ç',
-  },
-  {
-    trigger: 'd',
-    replace: 'ḑ',
-  },
-  {
-    trigger: 'g',
-    replace: 'ģ',
-  },
-  {
-    trigger: 'h',
-    replace: 'ḩ',
-  },
-  {
-    trigger: 'k',
-    replace: 'ķ',
-  },
-  {
-    trigger: 'l',
-    replace: 'ļ',
-  },
-  {
-    trigger: 'n',
-    replace: 'ņ',
-  },
-  {
-    trigger: 'r',
-    replace: 'ŗ',
-  },
-  {
-    trigger: 's',
-    replace: 'ş',
-  },
-  {
-    trigger: 't',
-    replace: 'ţ',
-  },
+     'ç': 'c',
+     'ḑ': 'd',
+     'ģ': 'g',
+     'ḩ': 'h',
+     'ķ': 'k',
+     'ļ': 'l',
+     'ņ': 'n',
+     'ŗ': 'r',
+     'ş': 's',
+     'ţ': 't',
 
   //## Upper case
-  {
-    trigger: 'C',
-    replace: 'Ç',
-  },
-  {
-    trigger: 'D',
-    replace: 'Ḑ',
-  },
-  {
-    trigger: 'G',
-    replace: 'Ģ',
-  },
-  {
-    trigger: 'H',
-    replace: 'Ḩ',
-  },
-  {
-    trigger: 'K',
-    replace: 'Ķ',
-  },
-  {
-    trigger: 'L',
-    replace: 'Ļ',
-  },
-  {
-    trigger: 'N',
-    replace: 'Ņ',
-  },
-  {
-    trigger: 'R',
-    replace: 'Ŗ',
-  },
-  {
-    trigger: 'S',
-    replace: 'Ş',
-  },
-  {
-    trigger: 'T',
-    replace: 'Ţ',
-  },
-];
+     'Ç': 'C',
+     'Ḑ': 'D',
+     'Ģ': 'G',
+     'Ḩ': 'H',
+     'Ķ': 'K',
+     'Ļ': 'L',
+     'Ņ': 'N',
+     'Ŗ': 'R',
+     'Ş': 'S',
+     'Ţ': 'T',
+});
+
 
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),
     parent: g.PARENT,
 
-    matches: g.processTriggers(rawMatches, pre_trigger, post_trigger),
+    matches: g.renderTriggersAndHits(rawHits, PRE, POST),
   }
 )

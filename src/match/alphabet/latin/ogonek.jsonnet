@@ -1,66 +1,34 @@
 local g = import '../../../lib/base.libsonnet';
 
+local PRE = g.PRE_DIACRITIC;
+local POST = g.POST_OGONEK;
 
-local pre_trigger = g.PRE_DIACRITIC;
-local post_trigger = ';' + g.POST;
 
-local rawMatches = [
+local rawHits = g.replacementTableToHits({
   //## Symbol
-  {
-    trigger: "'",
-    replace: '˛',
-  },
+     '˛': "'",
 
   //## Lower case
-  {
-    trigger: 'a',
-    replace: 'ą',
-  },
-  {
-    trigger: 'e',
-    replace: 'ę',
-  },
-  {
-    trigger: 'i',
-    replace: 'į',
-  },
-  {
-    trigger: 'o',
-    replace: 'ǫ',
-  },
-  {
-    trigger: 'u',
-    replace: 'ų',
-  },
+     'ą': 'a',
+     'ę': 'e',
+     'į': 'i',
+     'ǫ': 'o',
+     'ų': 'u',
 
   //## Upper case
-  {
-    trigger: 'A',
-    replace: 'Ą',
-  },
-  {
-    trigger: 'E',
-    replace: 'Ę',
-  },
-  {
-    trigger: 'I',
-    replace: 'Į',
-  },
-  {
-    trigger: 'O',
-    replace: 'Ǫ',
-  },
-  {
-    trigger: 'U',
-    replace: 'Ų',
-  },
-];
+     'Ą': 'A',
+     'Ę': 'E',
+     'Į': 'I',
+     'Ǫ': 'O',
+     'Ų': 'U',
+});
+
 
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),
     parent: g.PARENT,
 
-    matches: g.processTriggers(rawMatches, pre_trigger, post_trigger),
+    matches: g.renderTriggersAndHits(rawHits, PRE, POST),
   }
 )
