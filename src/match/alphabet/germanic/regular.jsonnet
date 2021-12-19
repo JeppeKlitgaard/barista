@@ -1,21 +1,17 @@
 local g = import '../../../lib/base.libsonnet';
 
-local rawMatches = [
-  {
-    trigger: 'eszett',
-    replace: 'ß',
-  },
-  {
-    trigger: 'Eszett',
-    replace: 'ẞ',
-  },
-];
+
+local rawHits = g.replacementTableToHits({
+  'ß': 'eszett',
+  'ẞ': 'Eszett',
+});
+
 
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),
     parent: g.PARENT,
 
-    matches: g.processTriggers(rawMatches, g.PRE, g.POST),
+    matches: g.renderTriggersAndHits(rawHits, g.PRE, g.POST),
   }
 )
