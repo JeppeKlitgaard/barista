@@ -3,43 +3,43 @@ local g = import '../lib/base.libsonnet';
 local rawHits = g.replacementTableToHits({
   //## Phone
   '07748966913': [
-      'uktel',
-    ],
+    'uktel',
+  ],
 
   '+44 7748966913': [
-      'uktel+',
-    ],
+    'uktel+',
+  ],
 
   '22461358': [
-      'dktel',
-    ],
+    'dktel',
+  ],
 
   '+45 22461358': [
-      'dktel+',
-    ],
+    'dktel+',
+  ],
 
   //## Email
   'jk782@cam.ac.uk': [
-      '@cam',
-    ],
+    '@cam',
+  ],
 
   'jeppe@dapj.dk': [
-      '@dapj',
-    ],
+    '@dapj',
+  ],
 
   'jeppe.klitgaard@gmail.com': [
-      '@gmail',
-    ],
+    '@gmail',
+  ],
 
   'jeppe.klitgaard@nordic-sac.com': [
-      '@nsac',
-    ],
+    '@nsac',
+  ],
 
   'hi@jeppe.science': [
-      '@',
-      '@sci',
-      '@science',
-    ],
+    '@',
+    '@sci',
+    '@science',
+  ],
 });
 
 

@@ -3,15 +3,15 @@ local g = import '../lib/base.libsonnet';
 local rawHits = g.replacementTableToHits({
   //## Dashes
   '—': [
-      'emdash',
-      'em',
-      '--',
-    ],
+    'emdash',
+    'em',
+    '--',
+  ],
   '–': [
-      'endash',
-      'en',
-      '-',
-    ],
+    'endash',
+    'en',
+    '-',
+  ],
 
   //## Quotes
   '“': ['l"'],
@@ -19,46 +19,46 @@ local rawHits = g.replacementTableToHits({
 
   //## Ellipsis
   '…': [
-      'ellipsis',
-      'ellip',
-      '...',
-      '3.',
-    ],
+    'ellipsis',
+    'ellip',
+    '...',
+    '3.',
+  ],
   '⋮': [
-      'vellipsis',
-      'vellip',
-      'v...',
-      'v3.',
-      '...|',
-    ],
+    'vellipsis',
+    'vellip',
+    'v...',
+    'v3.',
+    '...|',
+  ],
   '⋰': [
-      '.../',
-    ],
+    '.../',
+  ],
   '⋱': [
-      '...\\',
-    ],
+    '...\\',
+  ],
 
   //## Partitioners
   // Paragraphs
   '¶': [
-      'pilcrow',
-      'paragraph',
-      'paraph',
-      'q',
-    ],
+    'pilcrow',
+    'paragraph',
+    'paraph',
+    'q',
+  ],
   '⁋': [
-      'rpilcrow',
-      'rparagraph',
-      'rparaph',
-      'p',
-    ],
+    'rpilcrow',
+    'rparagraph',
+    'rparaph',
+    'p',
+  ],
 
   // Section
   '§': [
-      'section',
-      'sect',
-      's',
-    ],
+    'section',
+    'sect',
+    's',
+  ],
 });
 
 

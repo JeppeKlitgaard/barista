@@ -3,7 +3,7 @@ local g = import '../../lib/base.libsonnet';
 
 local rawHits = g.replacementTableToHits({
   // Hbar
-     'ℏ': 'hbar',
+  'ℏ': 'hbar',
 });
 
 

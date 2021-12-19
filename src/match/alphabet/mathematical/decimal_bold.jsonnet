@@ -5,6 +5,7 @@ local POST = g.POST;
 
 local rawHits = g.generateHitsFromStartAndEndChars('0', '9', '𝟎');
 
+
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),

@@ -6,15 +6,15 @@ local POST = g.POST_CIRCLE;
 
 local rawHits = g.replacementTableToHits({
   //## Symbol
-     '˚': "'",
+  '˚': "'",
 
   //## Lower case
-     'ů': 'u',
-     'ẘ': 'w',
-     'ẙ': 'y',
+  'ů': 'u',
+  'ẘ': 'w',
+  'ẙ': 'y',
 
   //## Upper case
-     'Ů': 'U',
+  'Ů': 'U',
 });
 
 

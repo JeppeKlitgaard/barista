@@ -6,15 +6,15 @@ local POST = g.POST_DOUBLE_ACUTE;
 
 local rawHits = g.replacementTableToHits({
   //## Symbol
-     '˝': "'",
+  '˝': "'",
 
   //## Lower case
-     'ő': 'o',
-     'ű': 'u',
+  'ő': 'o',
+  'ű': 'u',
 
   //## Upper case
-     'Ő': 'O',
-     'Ű': 'U',
+  'Ő': 'O',
+  'Ű': 'U',
 });
 
 

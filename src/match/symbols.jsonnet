@@ -3,16 +3,16 @@ local g = import '../lib/base.libsonnet';
 
 local rawHits = g.replacementTableToHits({
   // Punctuation
-     '¿': '?',
-     '¡': '!',
-     '‽': ['?!', '!?'],
+  '¿': '?',
+  '¡': '!',
+  '‽': ['?!', '!?'],
 
   // Marks
-     '™': 'tm',
-     '©': 'cr',
+  '™': 'tm',
+  '©': 'cr',
 
   // Fancy plus
-     '✠': '+',
+  '✠': '+',
 });
 
 

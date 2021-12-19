@@ -5,7 +5,7 @@ local rawHits = g.replacementTableToHits({
   '∧': ['and', '^'],
   '⋀': ['And', '^^'],
 
-  'v': ['or', 'v'],
+  v: ['or', 'v'],
   '⋁': ['Or', 'V'],
 
   //## Negation

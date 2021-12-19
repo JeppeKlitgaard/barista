@@ -10,7 +10,6 @@ local rawHits = g.replacementTableToHits({
 });
 
 
-
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),

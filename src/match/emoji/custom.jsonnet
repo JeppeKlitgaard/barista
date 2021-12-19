@@ -3,19 +3,19 @@ local g = import '../../lib/base.libsonnet';
 local rawHits = g.replacementTableToHits({
   //## Yes/No/Maybe
   '✔': [
-      'y',
-      'yes',
-    ],
+    'y',
+    'yes',
+  ],
 
   '❌': [
-      'n',
-      'no',
-    ],
+    'n',
+    'no',
+  ],
 
   '🟡': [
-      'm',
-      'maybe',
-    ],
+    'm',
+    'maybe',
+  ],
 });
 
 

@@ -5,13 +5,13 @@ local PRE = g.PRE;
 local POST = g.POST;
 
 local rawHits = g.replacementTableToHits({
-     'þ': 'th',
-     'Þ': 'TH',
+  'þ': 'th',
+  'Þ': 'TH',
 
-     'œ': 'oe',
-     'Œ': 'OE',
+  'œ': 'oe',
+  'Œ': 'OE',
 
-     'ß': 'ss',
+  'ß': 'ss',
 });
 
 
