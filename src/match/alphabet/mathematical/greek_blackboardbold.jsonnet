@@ -1,36 +1,37 @@
 local g = import '../../../lib/base.libsonnet';
 
-local pre_trigger = g.PRE_GREEK_BBB;
-local post_trigger = g.POST;
+local PRE = g.PRE_GREEK_BBB;
+local POST = g.POST_GREEK_BBB;
 
-local rawMatches = [
-  {
-    trigger: 'p',
-    replace: 'ℼ',
-  },
-  {
-    trigger: 'P',
-    replace: 'ℿ',
-  },
-  {
-    trigger: 'g',
-    replace: 'ℽ',
-  },
-  {
-    trigger: 'G',
-    replace: 'ℾ',
-  },
-  {
-    trigger: 'S',
-    replace: '⅀',
-  },
-];
+
+local hits = g.replacementTableToHits({
+  // Pi
+  'ℼ': PRE + 'pi' + POST,
+  'ℿ': [
+    PRE + 'Pi' + POST,
+    PRE + 'PI' + POST,
+  ],
+
+  // Gamma
+  'ℽ': PRE + 'gamma' + POST,
+  'ℾ': [
+    PRE + 'Gamma' + POST,
+    PRE + 'GAMMA' + POST,
+  ],
+
+  // Sigma
+  '⅀': [
+    PRE + 'Sigma' + POST,
+    PRE + 'SIGMA' + POST,
+  ],
+});
+
 
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),
     parent: g.PARENT,
 
-    matches: g.processTriggers(rawMatches, pre_trigger, post_trigger),
+    matches: g.renderHits(hits),
   }
 )
