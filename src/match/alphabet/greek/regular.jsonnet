@@ -9,92 +9,7 @@ local S_POST = '';
 local LVAR_PRE = L_PRE + 'var';
 local SVAR_PRE = S_PRE + 'v';
 
-
-local rawMatches = [
-  // Variant: Curly Beta
-  {
-    triggers: [
-      L_PRE + 'curly' + 'beta' + L_POST,
-      LVAR_PRE + 'beta' + L_POST,
-      SVAR_PRE + 'b' + S_POST,
-    ],
-    replace: 'ϐ',
-  },
-  {
-    triggers: [
-      L_PRE + 'epsilon' + L_POST,
-      S_PRE + 'e' + S_POST,
-    ],
-    replace: 'ϵ',
-  },
-  // Variant: Epsilon
-  {
-    triggers: [
-      LVAR_PRE + 'epsilon' + L_POST,
-      SVAR_PRE + 'e' + S_POST,
-    ],
-    replace: 'ε',
-  },
-  // Variant: Script Theta
-  {
-    triggers: [
-      L_PRE + 'script' + 'theta' + L_POST,
-      LVAR_PRE + 'theta' + L_POST,
-      SVAR_PRE + 'q' + S_POST,
-    ],
-    replace: 'ϑ',
-  },
-  // Variant: Pi
-  {
-    triggers: [
-      LVAR_PRE + 'pi' + L_POST,
-      SVAR_PRE + 'p' + S_POST,
-    ],
-    replace: 'ϖ',
-  },
-  // Variant: Rho
-  {
-    triggers: [
-      LVAR_PRE + 'rho' + L_POST,
-      SVAR_PRE + 'r' + S_POST,
-    ],
-    replace: 'ϱ',
-  },
-  // Variant: Sigma
-  {
-    triggers: [
-      LVAR_PRE + 'sigma' + L_POST,
-      SVAR_PRE + 's' + S_POST,
-    ],
-    replace: 'ς',
-  },
-
-  // Variant: Upsilon
-  {
-    triggers: [
-      LVAR_PRE + 'upsilon' + L_POST,
-      SVAR_PRE + 'u' + S_POST,
-    ],
-    replace: 'ϒ',
-  },
-  {
-    triggers: [
-      L_PRE + 'phi' + L_POST,
-      S_PRE + 'f' + S_POST,
-    ],
-    replace: 'φ',
-  },
-  // Variant: Phi
-  {
-    triggers: [
-      LVAR_PRE + 'phi' + L_POST,
-      SVAR_PRE + 'f' + S_POST,
-    ],
-    replace: 'ϕ',
-  },
-
-];
-
+// Regular lower case hits
 local regularLower1 = g.filterHitsByTriggers(
   g.generateHitsFromUnicodeSequence(
     g.UNICODE_ORDERED_LATINISED_GREEK,
@@ -103,14 +18,26 @@ local regularLower1 = g.filterHitsByTriggers(
   ['vs'],
 );
 
-local regularLower2 = g.renderTriggers(
-  regularLower1,
+
+// Regular upper case hits
+local regularUpper1 = g.filterHitsByTriggers(
+  g.generateHitsFromUnicodeSequence(
+    g.asciiUpperArray(g.UNICODE_ORDERED_LATINISED_GREEK),
+    'Α',
+  ),
+  ['VS'],
+);
+
+local regular1 = regularLower1 + regularUpper1;
+local regular2 = g.renderTriggers(
+  regular1,
   S_PRE,
   S_POST,
 );
 
-local newRegularLower = g.addAdditionalTriggersByTrigger(
-  regularLower2,
+
+local regular3 = g.addAdditionalTriggersByTrigger(
+  regular2,
   g.renderKeyOfTriggers(
     g.UNICODE_LATINISED_ADDITIONAL_TRIGGERS_BY_TRIGGER,
     S_PRE,
@@ -120,48 +47,67 @@ local newRegularLower = g.addAdditionalTriggersByTrigger(
   )
 );
 
-newRegularLower
-// [
-//   regularLower2,
-//   g.renderKeyOfTriggers(
-//     g.UNICODE_LATINISED_ADDITIONAL_TRIGGERS_BY_TRIGGER,
-//     S_PRE,
-//     S_POST,
-//     L_PRE,
-//     L_POST,
-//   ),
-//   newRegularLower,
-// ]
+// Regular variant hits
+local variants1 = g.replacementTableToHits({
+  // Variant: Curly Beta
+  'ϐ': [
+    SVAR_PRE + 'b' + S_POST,
+    L_PRE + 'curlybeta' + L_POST,
+    LVAR_PRE + 'beta' + L_POST,
+  ],
 
-// local regularUpper = g.filterHitsByTriggers(
-//   g.generateUnicodeHitsFromSequence(
-//     g.asciiUpperArray(g.UNICODE_ORDERED_LATINISED_GREEK),
-//     "Α",
-//     {},
-//     {},
-//     g.UNICODE_LATINISED_ADDITIONAL_TRIGGERS_BY_TRIGGER,
-//     false
-//   ),
-//   ["VS"],
-// );
+  // Variant: Epsilon
+  'ϵ': [
+    SVAR_PRE + 'e' + S_POST,
+    LVAR_PRE + 'epsilon' + L_POST,
+  ],
 
-// local matches = regularLower + regularUpper;
-// local matches = regularLower;
-// newRegularLower
-// local matches = g.processExtras(rawMatches, {propagate_case: true});
+  // Variant: Script Theta
+  'ϑ': [
+    SVAR_PRE + 'q' + S_POST,
+    L_PRE + 'scripttheta' + L_POST,
+    LVAR_PRE + 'theta' + L_POST,
+  ],
 
-// local matches = g.processExtras(rawMatches, { propagate_case: true });
+  // Variant: Pi
+  'ϖ': [
+    SVAR_PRE + 'p' + S_POST,
+    LVAR_PRE + 'pi' + L_POST,
+  ],
 
-// std.manifestYamlDoc(
-//   {
-//     name: g.processFilename(std.thisFile),
-//     parent: g.PARENT,
+  // Variant: Phi
+  'ϕ': [
+    SVAR_PRE + 'f' + S_POST,
+    LVAR_PRE + 'phi' + L_POST,
+  ],
 
-//     matches: newRegularLower,
-//   }
-// )
+  // Variant: Rho
+  'ϱ': [
+    SVAR_PRE + 'r' + S_POST,
+    LVAR_PRE + 'rho' + L_POST,
+  ],
 
-// matches;
+  // Variant: Sigma
+  'ς': [
+    SVAR_PRE + 's' + S_POST,
+    LVAR_PRE + 'sigma' + L_POST,
+  ],
+
+  // Variant: Upsilon
+  'ϒ': [
+    SVAR_PRE + 'u' + S_POST,
+    LVAR_PRE + 'upsilon' + L_POST,
+  ],
+});
+
+local all = regular3 + variants1;
 
 
+std.manifestYamlDoc(
+  {
+    name: g.processFilename(std.thisFile),
+    parent: g.PARENT,
 
+    matches: g.renderHits(all),
+  }
+)
