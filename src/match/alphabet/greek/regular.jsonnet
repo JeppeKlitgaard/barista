@@ -1,13 +1,16 @@
 local g = import '../../../lib/base.libsonnet';
 
-local L_PRE = g.PRE;
-local L_POST = g.POST;
+local S_PRE = g.PRE_SHORT_GREEK;
+local S_POST = g.POST_SHORT_GREEK;
 
-local S_PRE = ';';
-local S_POST = '';
+local L_PRE = g.PRE_LONG_GREEK;
+local L_POST = g.POST_LONG_GREEK;
 
-local LVAR_PRE = L_PRE + 'var';
-local SVAR_PRE = S_PRE + 'v';
+local SVAR_PRE = g.PRE_SHORT_VARIANT_GREEK;
+local SVAR_POST = g.POST_SHORT_VARIANT_GREEK;
+
+local LVAR_PRE = g.PRE_LONG_VARIANT_GREEK;
+local LVAR_POST = g.POST_LONG_VARIANT_GREEK;
 
 // Regular lower case hits
 local regularLower1 = g.filterHitsByTriggers(
@@ -53,50 +56,50 @@ local variants1 = g.replacementTableToHits({
   'ϐ': [
     SVAR_PRE + 'b' + S_POST,
     L_PRE + 'curlybeta' + L_POST,
-    LVAR_PRE + 'beta' + L_POST,
+    LVAR_PRE + 'beta' + LVAR_POST,
   ],
 
   // Variant: Epsilon
   'ϵ': [
     SVAR_PRE + 'e' + S_POST,
-    LVAR_PRE + 'epsilon' + L_POST,
+    LVAR_PRE + 'epsilon' + LVAR_POST,
   ],
 
   // Variant: Script Theta
   'ϑ': [
     SVAR_PRE + 'q' + S_POST,
     L_PRE + 'scripttheta' + L_POST,
-    LVAR_PRE + 'theta' + L_POST,
+    LVAR_PRE + 'theta' + LVAR_POST,
   ],
 
   // Variant: Pi
   'ϖ': [
     SVAR_PRE + 'p' + S_POST,
-    LVAR_PRE + 'pi' + L_POST,
+    LVAR_PRE + 'pi' + LVAR_POST,
   ],
 
   // Variant: Phi
   'ϕ': [
     SVAR_PRE + 'f' + S_POST,
-    LVAR_PRE + 'phi' + L_POST,
+    LVAR_PRE + 'phi' + LVAR_POST,
   ],
 
   // Variant: Rho
   'ϱ': [
     SVAR_PRE + 'r' + S_POST,
-    LVAR_PRE + 'rho' + L_POST,
+    LVAR_PRE + 'rho' + LVAR_POST,
   ],
 
   // Variant: Sigma
   'ς': [
     SVAR_PRE + 's' + S_POST,
-    LVAR_PRE + 'sigma' + L_POST,
+    LVAR_PRE + 'sigma' + LVAR_POST,
   ],
 
   // Variant: Upsilon
   'ϒ': [
     SVAR_PRE + 'u' + S_POST,
-    LVAR_PRE + 'upsilon' + L_POST,
+    LVAR_PRE + 'upsilon' + LVAR_POST,
   ],
 });
 
