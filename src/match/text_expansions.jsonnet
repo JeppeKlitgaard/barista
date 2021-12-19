@@ -1,28 +1,12 @@
 local g = import '../lib/base.libsonnet';
 
-local rawMatches = [
-  {
-    triggers: [
-      'st',
-    ],
-    replace: 'such that',
-  },
-  {
-    triggers: [
-      'cs',
-      'coordsys',
-    ],
-    replace: 'coordinate system',
-  },
-  {
-    triggers: [
-      'wrt',
-    ],
-    replace: 'with respect to',
-  },
 
+local rawMatches = g.replacementTableToHits({
+  'such that': 'st',
+  'coordinate system': ['cs', 'coordsys'],
+  'with respect to': 'wrt',
+});
 
-];
 
 std.manifestYamlDoc(
   {
