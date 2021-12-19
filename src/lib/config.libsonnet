@@ -20,6 +20,7 @@
     POST_FRAKTUR: self.POST,
 
     PRE_FRAKTUR_BOLD: self.PRE_FRAKTUR + self.BOLD,
+    POST_FRAKTUR_BOLD: self.POST,
 
 
     // --- Greek ---

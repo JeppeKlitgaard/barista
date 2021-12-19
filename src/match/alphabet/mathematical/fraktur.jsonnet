@@ -1,7 +1,7 @@
 local g = import '../../../lib/base.libsonnet';
 
 local preTrigger = g.PRE_FRAKTUR;
-local postTrigger = g.POST;
+local postTrigger = g.POST_FRAKTUR;
 
 local lowerOverrides = {};
 local upperOverrides = {
