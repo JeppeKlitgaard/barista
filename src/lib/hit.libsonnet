@@ -12,6 +12,7 @@ local ExampleHit = {
 */
 
 local utils = import 'utils.libsonnet';
+local base = import 'base.libsonnet';
 
 
 local hitToMatch = function(hit)
@@ -54,9 +55,19 @@ local replacementTableToHits(replacementTable) = [
 local renderHits = function(hits)
     hitsToMatches(hits);
 
+local renderTriggersAndHits = function(hits, pre, post)
+    renderHits(
+        base.processTriggers(
+            hits,
+            pre,
+            post
+        )
+    );
+
 {
     hitToMatch: hitToMatch,
     hitsToMatches: hitsToMatches,
     replacementTableToHits: replacementTableToHits,
     renderHits: renderHits,
+    renderTriggersAndHits: renderTriggersAndHits
 }
