@@ -9,25 +9,29 @@ license = "MIT"
 barista = "barista.__main__:cli"
 
 [tool.poetry.dependencies]
-python = "^3.9"
+python = "^3.10"
 jsonnet = "^0.17.0"
-PyYAML = "^5.4.1"
-click = "^8.0.1"
+PyYAML = "^6.0"
+click = "^8.0.3"
+pydantic = "^1.8.2"
 
 [tool.poetry.dev-dependencies]
-mypy = "^0.910"
+mypy = "^0.920"
 black = "^21.9b0"
 isort = "^5.9.3"
-flake8 = "^3.9.2"
-types-PyYAML = "^5.4.10"
+flake8 = "^4.0.1"
+types-PyYAML = "^6.0.1"
+poethepoet = "^0.11.0"
+ipykernel = "^6.6.0"
 
 # Mypy
-poethepoet = "^0.10.0"
-ipykernel = "^6.6.0"
 [tool.mypy]
-python_version = "3.9"
+python_version = "3.10"
 strict = true
 show_error_codes = true
+plugins = [
+    "pydantic.mypy",
+]
 
 [[tool.mypy.overrides]]
 module = [
@@ -38,7 +42,7 @@ ignore_missing_imports = true
 # Black
 [tool.black]
 line-length = 100
-target-version = ["py39"]
+target-version = ["py310"]
 
 # Isort
 [tool.isort]
