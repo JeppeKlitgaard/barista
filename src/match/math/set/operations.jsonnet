@@ -1,75 +1,34 @@
 local g = import '../../../lib/base.libsonnet';
 
-local rawMatches = [
+local rawHits = g.replacementTableToHits({
   //## Membership
-  {
-    triggers: ['in'],
-    replace: '∈',
-  },
-  {
-    triggers: ['!in'],
-    replace: '∉',
-  },
+  '∈': ['in'],
+  '∉': ['!in'],
 
-  {
-    triggers: ['contains', 'ni'],
-    replace: '∋',
-  },
-  {
-    triggers: ['!contains', '!ni'],
-    replace: '∌',
-  },
+  '∋': ['contains', 'ni'],
+  '∌': ['!contains', '!ni'],
 
   //## Relation
-  {
-    triggers: ['subset', 'subs'],
-    replace: '⊂',
-  },
-  {
-    triggers: ['superset', 'supers', 'sups'],
-    replace: '⊃',
-  },
-  {
-    triggers: ['!subset', '!subs'],
-    replace: '⊄',
-  },
-  {
-    triggers: ['!superset', '!supers', '!sups'],
-    replace: '⊅',
-  },
-  {
-    triggers: ['subseteq', 'subseq', 'subs='],
-    replace: '⊆',
-  },
-  {
-    triggers: ['superseteq', 'superseq', 'supseq', 'sups='],
-    replace: '⊇',
-  },
-  {
-    triggers: ['!subseteq', '!subsneq', 'subs!=', '!subs='],
-    replace: '⊈',
-  },
-  {
-    triggers: ['!superseteq', '!superseq', '!supseq', '!sups=', 'sups!='],
-    replace: '⊉',
-  },
+  '⊂': ['subset', 'subs'],
+  '⊃': ['superset', 'supers', 'sups'],
+  '⊄': ['!subset', '!subs'],
+  '⊅': ['!superset', '!supers', '!sups'],
+  '⊆': ['subseteq', 'subseq', 'subs='],
+  '⊇': ['superseteq', 'superseq', 'supseq', 'sups='],
+  '⊈': ['!subseteq', '!subsneq', 'subs!=', '!subs='],
+  '⊉': ['!superseteq', '!superseq', '!supseq', '!sups=', 'sups!='],
 
   //## Operations
-  {
-    triggers: ['union', 'U'],
-    replace: '∪',
-  },
-  {
-    triggers: ['intersection', 'inter', 'UI', '!U'],
-    replace: '∩',
-  },
-];
+  '∪': ['union', 'U'],
+  '∩': ['intersection', 'inter', 'UI', '!U'],
+});
+
 
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),
     parent: g.PARENT,
 
-    matches: g.processTriggers(rawMatches, g.PRE, g.POST),
+    matches: g.processTriggers(rawHits, g.PRE, g.POST),
   }
 )

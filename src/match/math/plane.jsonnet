@@ -1,21 +1,16 @@
 local g = import '../../lib/base.libsonnet';
 
-local rawMatches = [
-  {
-    triggers: ['into'],  // Also defined in circle_operators as 'ox'
-    replace: '⊗',
-  },
-  {
-    triggers: ['outof'],  // Also defined in circle_operators as 'o.'
-    replace: '⊙',
-  },
-];
+local rawHits = g.replacementTableToHits({
+  '⊗': ['into'],  // Also defined in circle_operators as 'ox'
+  '⊙': ['outof'],  // Also defined in circle_operators as 'o.'
+});
+
 
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),
     parent: g.PARENT,
 
-    matches: g.processTriggers(rawMatches, g.PRE, g.POST),
+    matches: g.processTriggers(rawHits, g.PRE, g.POST),
   }
 )

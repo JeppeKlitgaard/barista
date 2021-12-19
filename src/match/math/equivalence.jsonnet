@@ -1,103 +1,41 @@
 local g = import '../../lib/base.libsonnet';
 
-local rawMatches = [
-  {
-    triggers: ['neq', '=/', '!='],
-    replace: '≠',
-  },
+local rawHits = g.replacementTableToHits({
+  '≠': ['neq', '=/', '!='],
 
-  {
-    triggers: ['equiv', 'eq', '3-'],
-    replace: '≡',
-  },
-  {
-    triggers: ['!equiv', '!eq', '!3-'],
-    replace: '≢',
-  },
+  '≡': ['equiv', 'eq', '3-'],
+  '≢': ['!equiv', '!eq', '!3-'],
 
-  {
-    triggers: ['4-'],
-    replace: '≣',
-  },
+  '≣': ['4-'],
 
   // Equalities
-  {
-    triggers: [':='],
-    replace: '≔',
-  },
-  {
-    triggers: ['=:'],
-    replace: '≕',
-  },
-  {
-    triggers: ['=.'],
-    replace: '≐',
-  },
-  {
-    triggers: ['=o'],
-    replace: '≗',
-  },
-  {
-    triggers: ['=^'],
-    replace: '≙',
-  },
-  {
-    triggers: ['=v'],
-    replace: '≚',
-  },
-  {
-    triggers: ['=*'],
-    replace: '≛',
-  },
-  {
-    triggers: ['=D'],
-    replace: '≜',
-  },
-  {
-    triggers: ['=def'],
-    replace: '≝',
-  },
-  {
-    triggers: ['=m'],
-    replace: '≞',
-  },
-  {
-    triggers: ['=?'],
-    replace: '≟',
-  },
-  {
-    triggers: ['=~'],
-    replace: '≅',
-  },
+  '≔': [':='],
+  '≕': ['=:'],
+  '≐': ['=.'],
+  '≗': ['=o'],
+  '≙': ['=^'],
+  '≚': ['=v'],
+  '≛': ['=*'],
+  '≜': ['=D'],
+  '≝': ['=def'],
+  '≞': ['=m'],
+  '≟': ['=?'],
+  '≅': ['=~'],
 
   // Approx
-  {
-    triggers: ['~'],
-    replace: '∼',
-  },
-  {
-    triggers: ['approx', 'a', '~~'],
-    replace: '≈',
-  },
-  {
-    triggers: ['!approx', '!a', '!~~'],
-    replace: '≉',
-  },
-  {
-    triggers: ['~~~'],
-    replace: '≋',
-  },
-  {
-    triggers: ['-~', 'sim', 'simeq'],
-    replace: '≃',
-  },
-];
+  '∼': ['~'],
+  '≈': ['approx', 'a', '~~'],
+  '≉': ['!approx', '!a', '!~~'],
+  '≋': ['~~~'],
+  '≃': ['-~', 'sim', 'simeq'],
+});
+
 
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),
     parent: g.PARENT,
 
-    matches: g.processTriggers(rawMatches, g.PRE, g.POST),
+    matches: g.processTriggers(rawHits, g.PRE, g.POST),
   }
 )

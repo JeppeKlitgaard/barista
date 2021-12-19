@@ -1,89 +1,42 @@
 local g = import '../../lib/base.libsonnet';
 
-local rawMatches = [
+local rawHits = g.replacementTableToHits({
   // lte/gte
-  {
-    triggers: ['>=', 'geq'],
-    replace: '≥',
-  },
-  {
-    triggers: ['<=', 'leq'],
-    replace: '≤',
-  },
+  '≥': ['>=', 'geq'],
+  '≤': ['<=', 'leq'],
 
-  {
-    triggers: ['!>=', '!geq'],
-    replace: '≱',
-  },
-  {
-    triggers: ['!<=', '!leq'],
-    replace: '≰',
-  },
+  '≱': ['!>=', '!geq'],
+  '≰': ['!<=', '!leq'],
 
   // gg, ll
-  {
-    triggers: ['>>', 'gg'],
-    replace: '≫',
-  },
-  {
-    triggers: ['<<', 'll'],
-    replace: '≪',
-  },
+  '≫': ['>>', 'gg'],
+  '≪': ['<<', 'll'],
 
   // ggg, lll
-  {
-    triggers: ['>>>', 'ggg'],
-    replace: '⋙',
-  },
-  {
-    triggers: ['<<<', 'lll'],
-    replace: '⋘',
-  },
+  '⋙': ['>>>', 'ggg'],
+  '⋘': ['<<<', 'lll'],
 
   // Approximations
-  {
-    triggers: ['>~', 'g~'],
-    replace: '≳',
-  },
-  {
-    triggers: ['<~', 'l~'],
-    replace: '≲',
-  },
+  '≳': ['>~', 'g~'],
+  '≲': ['<~', 'l~'],
 
-  {
-    triggers: ['!>~', '!g~'],
-    replace: '≱',
-  },
-  {
-    triggers: ['!<~', '!l~'],
-    replace: '≴',
-  },
+  '≵': ['!>~', '!g~'],
+  '≴': ['!<~', '!l~'],
 
   // ltgt's
-  {
-    triggers: ['<>', 'ltgt'],
-    replace: '≶',
-  },
-  {
-    triggers: ['><', 'gtlt'],
-    replace: '≷',
-  },
+  '≶': ['<>', 'ltgt'],
+  '≷': ['><', 'gtlt'],
 
-  {
-    triggers: ['!<>', '!ltgt'],
-    replace: '≸',
-  },
-  {
-    triggers: ['!><', '!gtlt'],
-    replace: '≹',
-  },
-];
+  '≸': ['!<>', '!ltgt'],
+  '≹': ['!><', '!gtlt'],
+});
+
 
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),
     parent: g.PARENT,
 
-    matches: g.processTriggers(rawMatches, g.PRE, g.POST),
+    matches: g.processTriggers(rawHits, g.PRE, g.POST),
   }
 )

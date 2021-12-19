@@ -1,42 +1,25 @@
 local g = import '../lib/base.libsonnet';
 
-local rawMatches = [
+local rawHits = g.replacementTableToHits({
   //## Square
-  {
-    triggers: ['sq', 'square'],  // Also defined in square_operators as '|=|
-    replace: '◻',
-  },
+  '◻': ['sq', 'square'],  // Also defined in square_operators as '|=|
 
   //## Triangle
-  {
-    triggers: ['<|', 'ltangle'],
-    replace: '◁',
-  },
-  {
-    triggers: ['|>', 'rtangle'],
-    replace: '▷',
-  },
+  '◁': ['<|', 'ltangle'],
+  '▷': ['|>', 'rtangle'],
 
   //## Other shapes
-  {
-    triggers: ['tangle', 'triangle'],
-    replace: '⊿',
-  },
-  {
-    triggers: ['house'],
-    replace: '⌂',
-  },
-  {
-    triggers: ['arc', 'arch'],
-    replace: '⌒',
-  },
-];
+  '⊿': ['tangle', 'triangle'],
+  '⌂': ['house'],
+  '⌒': ['arc', 'arch'],
+});
+
 
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),
     parent: g.PARENT,
 
-    matches: g.processTriggers(rawMatches, g.PRE, g.POST),
+    matches: g.processTriggers(rawHits, g.PRE, g.POST),
   }
 )

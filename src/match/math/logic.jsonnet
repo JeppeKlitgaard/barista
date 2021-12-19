@@ -1,119 +1,54 @@
 local g = import '../../lib/base.libsonnet';
 
-local rawMatches = [
+local rawHits = g.replacementTableToHits({
   //## And/or
-  {
-    triggers: ['and', '^'],
-    replace: '∧',
-  },
-  {
-    triggers: ['And', '^^'],
-    replace: '⋀',
-  },
+  '∧': ['and', '^'],
+  '⋀': ['And', '^^'],
 
-  {
-    triggers: ['or', 'v'],
-    replace: 'v',
-  },
-  {
-    triggers: ['Or', 'V'],
-    replace: '⋁',
-  },
+  'v': ['or', 'v'],
+  '⋁': ['Or', 'V'],
 
   //## Negation
-  {
-    triggers: ['neg'],
-    replace: '¬',
-  },
-  {
-    triggers: ['Neg'],
-    replace: '￢',
-  },
+  '¬': ['neg'],
+  '￢': ['Neg'],
 
   //## Truth/falsum
-  {
-    triggers: ['true', 't'],
-    replace: '〒',
-  },
-  {
-    triggers: ['True', 'T'],
-    replace: '┳',
-  },
-  {
-    triggers: ['false', 'f'],
-    replace: '⊥',
-  },
-  {
-    triggers: ['False', 'F'],
-    replace: '┻',
-  },
+  '〒': ['true', 't'],
+  '┳': ['True', 'T'],
+  '⊥': ['false', 'f'],
+  '┻': ['False', 'F'],
 
   //## Turnstiles
   // Single
-  {
-    triggers: ['|-'],
-    replace: '⊢',
-  },
-  {
-    triggers: ['!|-'],
-    replace: '⊬',
-  },
+  '⊢': ['|-'],
+  '⊬': ['!|-'],
 
-  {
-    triggers: ['-|'],
-    replace: '⊣',
-  },
+  '⊣': ['-|'],
 
   // Double
-  {
-    triggers: ['|='],
-    replace: '⊨',
-  },
-  {
-    triggers: ['!|='],
-    replace: '⊭',
-  },
+  '⊨': ['|='],
+  '⊭': ['!|='],
 
   // Other
-  {
-    triggers: ['||-'],
-    replace: '⊩',
-  },
-  {
-    triggers: ['!||-'],
-    replace: '⊮',
-  },
+  '⊩': ['||-'],
+  '⊮': ['!||-'],
 
-  {
-    triggers: ['||='],
-    replace: '⊫',
-  },
-  {
-    triggers: ['!||='],
-    replace: '⊯',
-  },
+  '⊫': ['||='],
+  '⊯': ['!||='],
 
-  {
-    triggers: ['|||-'],
-    replace: '⊪',
-  },
+  '⊪': ['|||-'],
 
   // Both sides
-  {
-    triggers: ['-||-'],
-    replace: '⟛',
-  },
-  {
-    triggers: ['=||='],
-    replace: '⟚',
-  },
-];
+  '⟛': ['-||-'],
+  '⟚': ['=||='],
+});
+
 
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),
     parent: g.PARENT,
 
-    matches: g.processTriggers(rawMatches, g.PRE, g.POST),
+    matches: g.processTriggers(rawHits, g.PRE, g.POST),
   }
 )

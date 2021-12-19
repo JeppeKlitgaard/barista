@@ -1,21 +1,16 @@
 local g = import '../../lib/base.libsonnet';
 
-local rawMatches = [
-  {
-    triggers: ['degc', '^oc'],
-    replace: '℃',
-  },
-  {
-    triggers: ['degf', '^of'],
-    replace: '℉',
-  },
-];
+local rawHits = g.replacementTableToHits({
+  '℃': ['degc', '^oc'],
+  '℉': ['degf', '^of'],
+});
+
 
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),
     parent: g.PARENT,
 
-    matches: g.processTriggers(rawMatches, g.PRE, g.POST),
+    matches: g.processTriggers(rawHits, g.PRE, g.POST),
   }
 )

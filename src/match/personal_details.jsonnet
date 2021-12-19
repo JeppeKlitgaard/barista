@@ -1,73 +1,53 @@
 local g = import '../lib/base.libsonnet';
 
-local rawMatches = [
+local rawHits = g.replacementTableToHits({
   //## Phone
-  {
-    triggers: [
+  '07748966913': [
       'uktel',
     ],
-    replace: '07748966913',
-  },
-  {
-    triggers: [
+
+  '+44 7748966913': [
       'uktel+',
     ],
-    replace: '+44 7748966913',
-  },
 
-  {
-    triggers: [
+  '22461358': [
       'dktel',
     ],
-    replace: '22461358',
-  },
-  {
-    triggers: [
+
+  '+45 22461358': [
       'dktel+',
     ],
-    replace: '+45 22461358',
-  },
 
   //## Email
-  {
-    triggers: [
+  'jk782@cam.ac.uk': [
       '@cam',
     ],
-    replace: 'jk782@cam.ac.uk',
-  },
-  {
-    triggers: [
+
+  'jeppe@dapj.dk': [
       '@dapj',
     ],
-    replace: 'jeppe@dapj.dk',
-  },
-  {
-    triggers: [
+
+  'jeppe.klitgaard@gmail.com': [
       '@gmail',
     ],
-    replace: 'jeppe.klitgaard@gmail.com',
-  },
-  {
-    triggers: [
+
+  'jeppe.klitgaard@nordic-sac.com': [
       '@nsac',
     ],
-    replace: 'jeppe.klitgaard@nordic-sac.com',
-  },
-  {
-    triggers: [
+
+  'hi@jeppe.science': [
       '@',
       '@sci',
       '@science',
     ],
-    replace: 'hi@jeppe.science',
-  },
-];
+});
+
 
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),
     parent: g.PARENT,
 
-    matches: g.processTriggers(rawMatches, g.PRE, g.POST),
+    matches: g.processTriggers(rawHits, g.PRE, g.POST),
   }
 )

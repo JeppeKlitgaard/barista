@@ -1,26 +1,18 @@
 local g = import '../lib/base.libsonnet';
 
-local rawMatches = [
+local rawHits = g.replacementTableToHits({
   //## Limits
-  {
-    triggers: ['ii'],
-    replace: '_{-∞}^{+∞}',
-  },
-  {
-    triggers: ['i0'],
-    replace: '_0^{+∞}',
-  },
-  {
-    triggers: ['0i'],
-    replace: '_{-∞}^0',
-  },
-];
+  '_{-∞}^{+∞}': ['ii'],
+  '_0^{+∞}': ['i0'],
+  '_{-∞}^0': ['0i'],
+});
+
 
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),
     parent: g.PARENT,
 
-    matches: g.processTriggers(rawMatches, g.PRE, g.POST),
+    matches: g.processTriggers(rawHits, g.PRE, g.POST),
   }
 )

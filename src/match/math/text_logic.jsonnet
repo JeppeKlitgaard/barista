@@ -1,58 +1,31 @@
 local g = import '../../lib/base.libsonnet';
 
-local rawMatches = [
+local rawHits = g.replacementTableToHits({
   //## Iteration
-  {
-    triggers: ['forall', 'fa'],
-    replace: '∀',
-  },
+  '∀': ['forall', 'fa'],
 
   //## Existance
-  {
-    triggers: ['thereexists', 'exists', 'te', 'E'],
-    replace: '∃',
-  },
-  {
-    triggers: ['!thereexists', '!exists', '!te', '!E'],
-    replace: '∄',
-  },
+  '∃': ['thereexists', 'exists', 'te', 'E'],
+  '∄': ['!thereexists', '!exists', '!te', '!E'],
 
   //## Dots
-  {
-    triggers: ['therefore', 'thus', 'tf', 't4', ':.'],
-    replace: '∴',
-  },
-  {
-    triggers: ['because', 'bc', '.:'],
-    replace: '∵',
-  },
-  {
-    triggers: ['ratio'],
-    replace: '∶',
-  },
-  {
-    triggers: ['proportion', 'prop', '::'],
-    replace: '∷',
-  },
+  '∴': ['therefore', 'thus', 'tf', 't4', ':.'],
+  '∵': ['because', 'bc', '.:'],
+  '∶': ['ratio'],
+  '∷': ['proportion', 'prop', '::'],
 
   //## Intervals
-  {
-    triggers: ['between', 'btwn', ')('],
-    replace: '≬',
-  },
+  '≬': ['between', 'btwn', ')('],
 
   //## Reading help
-  {
-    triggers: ['bourbaki', 'danger', 'bend'],
-    replace: '☡',
-  },
-];
+  '☡': ['bourbaki', 'danger', 'bend'],
+});
 
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),
     parent: g.PARENT,
 
-    matches: g.processTriggers(rawMatches, g.PRE, g.POST),
+    matches: g.processTriggers(rawHits, g.PRE, g.POST),
   }
 )

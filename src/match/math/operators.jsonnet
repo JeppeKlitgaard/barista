@@ -1,98 +1,45 @@
 local g = import '../../lib/base.libsonnet';
 
-local rawMatches = [
-  {
-    triggers: ['pm', '+-'],
-    replace: '±',
-  },
-  {
-    triggers: ['mp', '-+'],
-    replace: '∓',
-  },
+local rawHits = g.replacementTableToHits({
+  '±': ['pm', '+-'],
+  '∓': ['mp', '-+'],
 
-  {
-    triggers: ['propto', 'pt', 'o<'],
-    replace: '∝',
-  },
+  '∝': ['propto', 'pt', 'o<'],
 
-  {
-    triggers: ['divides', 'divs', '|'],
-    replace: '∣',
-  },
-  {
-    triggers: ['!divides', '!divs', '!|'],
-    replace: '∤',
-  },
+  '∣': ['divides', 'divs', '|'],
+  '∤': ['!divides', '!divs', '!|'],
 
   //
-  {
-    triggers: ['cdot', '.'],
-    replace: '⋅',
-  },
-  {
-    triggers: ['Cdot', '*'],
-    replace: '∙',
-  },
+  '⋅': ['cdot', '.'],
+  '∙': ['Cdot', '*'],
 
   //
-  {
-    triggers: ['ring', 'o'],
-    replace: '∘',
-  },
-  {
-    triggers: ['Ring', 'O'],
-    replace: '〇',
-  },
+  '∘': ['ring', 'o'],
+  '〇': ['Ring', 'O'],
 
-  {
-    triggers: ['star'],
-    replace: '∗',
-  },
+  '∗': ['star'],
 
   //
-  {
-    triggers: ['cross', 'multiplication', 'mult', 'x'],
-    replace: '×',
-  },
-  {
-    triggers: ['division', '%', '-:'],
-    replace: '÷',
-  },
-  {
-    triggers: ['divtimes', '%*', '*%'],
-    replace: '⋇',
-  },
+  '×': ['cross', 'multiplication', 'mult', 'x'],
+  '÷': ['division', '%', '-:'],
+  '⋇': ['divtimes', '%*', '*%'],
 
   //
-  {
-    triggers: ['prod'],
-    replace: '∏',
-  },
-  {
-    triggers: ['coprod'],
-    replace: '∐',
-  },
-  {
-    triggers: ['sum'],
-    replace: '∑',
-  },
+  '∏': ['prod'],
+  '∐': ['coprod'],
+  '∑': ['sum'],
 
   //
-  {
-    triggers: ['dagger', 'dag', 'hermitian', 'herm', 'h'],
-    replace: '†',
-  },
-  {
-    triggers: ['ddagger', 'ddag'],
-    replace: '‡',
-  },
-];
+  '†': ['dagger', 'dag', 'hermitian', 'herm', 'h'],
+  '‡': ['ddagger', 'ddag'],
+});
+
 
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),
     parent: g.PARENT,
 
-    matches: g.processTriggers(rawMatches, g.PRE, g.POST),
+    matches: g.processTriggers(rawHits, g.PRE, g.POST),
   }
 )

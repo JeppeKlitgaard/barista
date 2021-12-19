@@ -1,34 +1,23 @@
 local g = import '../../lib/base.libsonnet';
 
-local rawMatches = [
+local rawHits = g.replacementTableToHits({
   //## Degree
-  {
-    triggers: ['deg', '^o'],
-    replace: '°',
-  },
+  '°': ['deg', '^o'],
 
   //## Radian
-  {
-    triggers: ['rad', '^c'],
-    replace: 'ᶜ',
-  },
-  {
-    triggers: ['urad'],
-    replace: '㎭',
-  },
+  'ᶜ': ['rad', '^c'],
+  '㎭': ['urad'],
 
   //## Gradian
-  {
-    triggers: ['grad', '^g'],
-    replace: 'ᵍ',
-  },
-];
+  'ᵍ': ['grad', '^g'],
+});
+
 
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),
     parent: g.PARENT,
 
-    matches: g.processTriggers(rawMatches, g.PRE, g.POST),
+    matches: g.processTriggers(rawHits, g.PRE, g.POST),
   }
 )

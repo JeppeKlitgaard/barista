@@ -1,45 +1,25 @@
 local g = import '../../../lib/base.libsonnet';
 
-local rawMatches = [
+local rawHits = g.replacementTableToHits({
   //## Predefined sets
-  {
-    triggers: ['emptyset', 'empty', 'O\\'],
-    replace: '∅',
-  },
+  '∅': ['emptyset', 'empty', 'O\\'],
 
   //## Common sets
   // Note these are also defined in alphabet/latin/bbb.jsonnet
-  {
-    triggers: ['N'],
-    replace: 'ℕ',
-  },
-  {
-    triggers: ['Z'],
-    replace: 'ℤ',
-  },
-  {
-    triggers: ['Q'],
-    replace: 'ℚ',
-  },
-  {
-    triggers: ['R'],
-    replace: 'ℝ',
-  },
-  {
-    triggers: ['I'],
-    replace: '𝕀',
-  },
-  {
-    triggers: ['C'],
-    replace: 'ℂ',
-  },
-];
+  'ℕ': ['N'],
+  'ℤ': ['Z'],
+  'ℚ': ['Q'],
+  'ℝ': ['R'],
+  '𝕀': ['I'],
+  'ℂ': ['C'],
+});
+
 
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),
     parent: g.PARENT,
 
-    matches: g.processTriggers(rawMatches, g.PRE, g.POST),
+    matches: g.processTriggers(rawHits, g.PRE, g.POST),
   }
 )

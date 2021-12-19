@@ -1,62 +1,30 @@
 local g = import '../../lib/base.libsonnet';
 
-local rawMatches = [
-  {
-    triggers: ['int'],
-    replace: '∫',
-  },
-  {
-    triggers: ['iint'],
-    replace: '∬',
-  },
-  {
-    triggers: ['iiint'],
-    replace: '∭',
-  },
-  {
-    triggers: ['iiiint'],
-    replace: '⨌',
-  },
+local rawHits = g.replacementTableToHits({
+  '∫': ['int'],
+  '∬': ['iint'],
+  '∭': ['iiint'],
+  '⨌': ['iiiint'],
 
   //## Contour
-  {
-    triggers: ['oint'],
-    replace: '∮',
-  },
-  {
-    triggers: ['oiint'],
-    replace: '∯',
-  },
-  {
-    triggers: ['oiiint'],
-    replace: '∰',
-  },
+  '∮': ['oint'],
+  '∯': ['oiint'],
+  '∰': ['oiiint'],
 
   //## Directional
-  {
-    triggers: ['rint'],
-    replace: '∱',
-  },
-  {
-    triggers: ['lint'],
-    replace: '⨑',
-  },
+  '∱': ['rint'],
+  '⨑': ['lint'],
 
-  {
-    triggers: ['roint'],
-    replace: '∲',
-  },
-  {
-    triggers: ['loint'],
-    replace: '∳',
-  },
-];
+  '∲': ['roint'],
+  '∳': ['loint'],
+});
+
 
 std.manifestYamlDoc(
   {
     name: g.processFilename(std.thisFile),
     parent: g.PARENT,
 
-    matches: g.processTriggers(rawMatches, g.PRE, g.POST),
+    matches: g.processTriggers(rawHits, g.PRE, g.POST),
   }
 )
