@@ -7,6 +7,8 @@ Greek sans-serif bold
 Greek sans-serif italics
 Greek sans-serif italics bold
 
+Cyrillic
+
 Including variants
 
 Triggers for mathematicals
