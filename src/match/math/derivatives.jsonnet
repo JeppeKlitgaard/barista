@@ -14,11 +14,10 @@ local rawHits = g.replacementTableToHits({
   '𝛁²': ['Laplacian', 'Lapl'],
 });
 
-std.manifestYamlDoc(
-  {
-    name: g.processFilename(std.thisFile),
-    parent: g.PARENT,
 
-    matches: g.processTriggers(rawHits, g.PRE, g.POST),
-  }
-)
+{
+  name: g.processFilename(std.thisFile),
+  parent: g.PARENT,
+
+  matches: g.processTriggers(rawHits, g.PRE, g.POST),
+}

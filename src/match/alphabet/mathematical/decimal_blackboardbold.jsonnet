@@ -6,11 +6,9 @@ local POST = g.POST;
 local rawHits = g.generateHitsFromStartAndEndChars('0', '9', '𝟘');
 
 
-std.manifestYamlDoc(
-  {
-    name: g.processFilename(std.thisFile),
-    parent: g.PARENT,
+{
+  name: g.processFilename(std.thisFile),
+  parent: g.PARENT,
 
-    matches: g.processTriggers(rawHits, PRE, POST),
-  }
-)
+  matches: g.processTriggers(rawHits, PRE, POST),
+}

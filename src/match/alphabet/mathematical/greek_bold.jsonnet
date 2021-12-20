@@ -13,7 +13,7 @@ local upper = upperRaw[:17] +
               [
                 {
                   replace: upperRaw[17].replace,
-                  matches: ['vQ', 'VQ'],
+                  triggers: ['vQ', 'VQ'],
                 },
               ]
               + upperRaw[18:];
@@ -23,11 +23,10 @@ local upper = upperRaw[:17] +
 local rawMatches = lower + upper;
 local matches = g.processTriggers(rawMatches, preTrigger, postTrigger);
 
-std.manifestYamlDoc(
-  {
-    name: g.processFilename(std.thisFile),
-    parent: g.PARENT,
 
-    matches: matches,
-  }
-)
+{
+  name: g.processFilename(std.thisFile),
+  parent: g.PARENT,
+
+  matches: matches,
+}

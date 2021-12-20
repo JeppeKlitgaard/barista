@@ -34,11 +34,9 @@ local rawHits = g.replacementTableToHits({
 });
 
 
-std.manifestYamlDoc(
-  {
-    name: g.processFilename(std.thisFile),
-    parent: g.PARENT,
+{
+  name: g.processFilename(std.thisFile),
+  parent: g.PARENT,
 
-    matches: g.processTriggers(rawHits, PRE, POST),
-  }
-)
+  matches: g.processTriggers(rawHits, PRE, POST),
+}

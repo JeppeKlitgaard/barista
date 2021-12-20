@@ -106,11 +106,9 @@ local variants1 = g.replacementTableToHits({
 local all = regular3 + variants1;
 
 
-std.manifestYamlDoc(
-  {
-    name: g.processFilename(std.thisFile),
-    parent: g.PARENT,
+{
+  name: g.processFilename(std.thisFile),
+  parent: g.PARENT,
 
-    matches: g.renderHits(all),
-  }
-)
+  matches: g.renderHits(all),
+}

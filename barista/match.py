@@ -3,7 +3,7 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any, Optional
 
-from barista.utils import load_jsonnet_yaml
+from barista.utils import load_jsonnet
 
 
 class Match:
@@ -34,13 +34,13 @@ class Match:
         elif "trigger" in obj:
             triggers = [obj["trigger"]]
         else:
-            raise ValueError("Invalid obj.")
+            raise ValueError(f"Invalid obj from {origin}: {obj}")
 
         return cls(triggers, obj["replace"], origin)
 
     @classmethod
     def matches_from_path(cls, path: Path) -> list[Match]:
-        obj = load_jsonnet_yaml(path)
+        obj = load_jsonnet(path)
 
         matches = []
         for entry in obj["matches"]:

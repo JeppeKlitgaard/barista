@@ -2,6 +2,7 @@ import os
 import shutil
 
 import click
+import yaml
 
 from barista.constants import (
     JSONNET_GLOB_PATTERN,
@@ -10,7 +11,8 @@ from barista.constants import (
     YAML_GLOB_PATTERN,
     YML_GLOB_PATTERN,
 )
-from barista.utils import find_files, get_yaml_str_from_jsonnet_path
+from barista.utils import find_files, load_jsonnet
+from barista.verify import verify_espanso_config_file
 
 
 @click.command()
@@ -21,7 +23,15 @@ def compile() -> None:
     # Compile yaml
     for path in jsonnet_paths:
         print(f"Loading {path}")
-        map_[path] = get_yaml_str_from_jsonnet_path(path)
+        obj = load_jsonnet(path)
+
+        # Verify objects
+        verify_espanso_config_file(obj)
+
+        # Dump as yaml
+        yaml_str = yaml.dump(obj)
+
+        map_[path] = yaml_str
 
     # Copy over jsonnet compiled files
     for path, content in map_.items():

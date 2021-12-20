@@ -11,11 +11,10 @@ local overrides = {
 
 local rawHits = g.generateHitsFromStartAndEndChars('0', '9', '⁰', overrides);
 
-std.manifestYamlDoc(
-  {
-    name: g.processFilename(std.thisFile),
-    parent: g.PARENT,
 
-    matches: g.processTriggers(rawHits, PRE, POST),
-  }
-)
+{
+  name: g.processFilename(std.thisFile),
+  parent: g.PARENT,
+
+  matches: g.processTriggers(rawHits, PRE, POST),
+}

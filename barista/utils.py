@@ -1,38 +1,20 @@
-import ast
+import json
 from pathlib import Path
-from typing import Any, TypeVar, cast
+from typing import Any, TypeVar
 
 import _jsonnet
-import yaml
 
 T = TypeVar("T")
 
 
-def unescape(string: str) -> str:
+def load_jsonnet(path: Path) -> dict[str, Any]:
     """
-    Unescapes a string using `ast.literal_eval`
+    Returns a Python object with the computed contents of a `jsonnet` file.
     """
-    return cast(str, ast.literal_eval(string))
+    path_str = str(path.resolve())
+    json_str = _jsonnet.evaluate_file(path_str)
 
-
-def get_yaml_str_from_jsonnet_path(path: Path) -> str:
-    """
-    Returns the correct yaml-formatted string from a jsonnet
-    file.
-    """
-    raw_str = _jsonnet.evaluate_file(str(path))
-    yaml_str = unescape(raw_str)
-
-    return yaml_str
-
-
-def load_jsonnet_yaml(path: Path) -> dict[str, Any]:
-    """
-    Returns a Python object with the computed contents of a Jsonnet file
-    set up using `std.manifestYamlDoc(...)`.
-    """
-    yaml_str = get_yaml_str_from_jsonnet_path(path)
-    obj: dict[str, Any] = yaml.safe_load(yaml_str)
+    obj: dict[str, Any] = json.loads(json_str)
 
     return obj
 

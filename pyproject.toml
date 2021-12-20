@@ -13,7 +13,8 @@ python = "^3.10"
 jsonnet = "^0.17.0"
 PyYAML = "^6.0"
 click = "^8.0.3"
-pydantic = "^1.8.2"
+# TODO: Undo git once pydantic v2 has been released
+pydantic = {git = "https://github.com/samuelcolvin/pydantic"}
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.920"
@@ -23,6 +24,7 @@ flake8 = "^4.0.1"
 types-PyYAML = "^6.0.1"
 poethepoet = "^0.11.0"
 ipykernel = "^6.6.0"
+pytest = "^6.2.5"
 
 # Mypy
 [tool.mypy]

@@ -20,11 +20,11 @@ local upper = g.generateHitsFromStartAndEndChars('A', 'Z', '𝔸', upperOverride
 local rawHits = lower + upper;
 local matches = g.processTriggers(rawHits, preTrigger, postTrigger);
 
-std.manifestYamlDoc(
-  {
-    name: g.processFilename(std.thisFile),
-    parent: g.PARENT,
 
-    matches: matches,
-  }
-)
+{
+  name: g.processFilename(std.thisFile),
+  parent: g.PARENT,
+
+  matches: matches,
+
+}
