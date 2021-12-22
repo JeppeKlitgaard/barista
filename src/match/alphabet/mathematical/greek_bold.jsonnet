@@ -77,7 +77,15 @@ local rawHits2 = g.addAdditionalTriggersByTrigger(
 
 # Strip conflict with GBP from currency
 local rawHits3 = g.stripTriggers(rawHits2,
-  g.PRE + "gbp" + g.POST);
+  [
+    g.PRE + "gbp" + g.POST,
+  ] +
+  g.renderArray(
+    g.asciiStringToCaseTuple("beta"),
+    g.PRE,
+    g.POST,
+  ),
+);
 
 
 g.renderDocument(
