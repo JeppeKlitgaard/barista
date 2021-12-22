@@ -31,7 +31,8 @@ local processFilename(filename) =
     local split = std.split(filename, "/");
 
     // Find position of key
-    local keyIdx = std.find(SRC_KEY, split)[0];
+    local srcKeyIdx = std.find(SRC_KEY, split)[0];
+    local keyIdx = srcKeyIdx + 1;  // To remove match_
 
     local partsStart = keyIdx + 1;
     local partsEnd = std.length(split) - 1;

@@ -1,3 +1,14 @@
+local config = import 'config.libsonnet';
+local utils = import 'utils.libsonnet';
+
+local VS = config.VARIANT_SHORT;
+local VSU = std.asciiUpper(VS);
+
+local VL = config.VARIANT_LONG;
+local VLU = std.asciiUpper(VL);
+
+local VARIANT_LONGS = utils.asciiStringToCaseTuple(VL);
+
 
 {
     //! Note: For some sequences upper case sequences the 18th element must
@@ -22,7 +33,7 @@
         "o",
         "p",
         "r",
-        "vs",  // Annoying there is final sigma in the middle of our seq
+        VS + "s",  // Annoying there is final sigma in the middle of our seq
         "s",
         "t",
         "u",
@@ -40,6 +51,7 @@
         [18:],
 
     UNICODE_LATINISED_ADDITIONAL_TRIGGERS_BY_TRIGGER: {
+        // Lower
         "a": "alpha",
         "b": "beta",
         "g": "gamma",
@@ -57,7 +69,7 @@
         "o": ["omikron", "omicron"],
         "p": "pi",
         "r": "rho",
-        "vs": "varsigma",  // Annoying there is final sigma in the middle of our seq
+        [VS + "s"]: VL + "sigma",  // Annoying there is final sigma in the middle of our seq
         "s": "sigma",
         "t": "tau",
         "u": "upsilon",
@@ -66,6 +78,7 @@
         "y": "psi",
         "w": "omega",
 
+        // Upper
         "A": ["Alpha", "ALPHA"],
         "B": ["Beta", "BETA"],
         "G": ["Gamma", "GAMMA"],
@@ -90,5 +103,27 @@
         "X": ["Chi", "CHI"],
         "Y": ["Psi", "PSI"],
         "W": ["Omega", "OMEGA"],
+
+        // Variants
+        [VS + "e"]: VL + "epsilon",
+        [VS + "q"]: VL + "theta",
+        [VS + "k"]: VL + "kappa",
+        [VS + "f"]: VL + "phi",
+        [VS + "r"]: VL + "rho",
+        [VS + "p"]:
+            utils.stringArrayOuterProduct(
+                VARIANT_LONGS,
+                utils.asciiStringToCaseTuple("pi"),
+            ),
     },
+
+    // -------
+    UNICODE_ORDERED_LATINISED_ADDITIONAL_GREEK: [
+        VS + "e",
+        VS + "q",
+        VS + "k",
+        VS + "f",
+        VS + "r",
+        VS + "p",
+    ]
 }

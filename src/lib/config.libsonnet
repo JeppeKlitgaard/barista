@@ -87,6 +87,8 @@
     POST_MONO: self.POST,
 
     // --- Greek ---
+    GREEK_INLINE: 'g',
+
     PRE_SHORT_GREEK: ';',
     POST_SHORT_GREEK: '',
     PRE_LONG_GREEK: self.PRE,
@@ -97,6 +99,10 @@
     POST_SHORT_VARIANT_GREEK: self.POST_SHORT_GREEK,
     PRE_LONG_VARIANT_GREEK: self.PRE_LONG_GREEK + self.VARIANT_LONG,
     POST_LONG_VARIANT_GREEK: self.POST_LONG_GREEK,
+
+    // -- Greek bold
+    PRE_GREEK_BOLD: self.PRE + self.GREEK_INLINE + self.BOLD_SHORT,
+    POST_GREEK_BOLD: self.POST,
 
     // -- Greek blackboardbold --
     PRE_GREEK_BBB: self.PRE_BBB,
