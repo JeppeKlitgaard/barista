@@ -105,6 +105,7 @@ local VARIANT_LONGS = utils.asciiStringToCaseTuple(VL);
         "W": ["Omega", "OMEGA"],
 
         // Variants
+        "differential": ['partial', 'part', 'diff'],
         [VS + "e"]: VL + "epsilon",
         [VS + "q"]: VL + "theta",
         [VS + "k"]: VL + "kappa",
@@ -119,6 +120,7 @@ local VARIANT_LONGS = utils.asciiStringToCaseTuple(VL);
 
     // -------
     UNICODE_ORDERED_LATINISED_ADDITIONAL_GREEK: [
+        "differential",
         VS + "e",
         VS + "q",
         VS + "k",

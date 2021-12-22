@@ -123,6 +123,16 @@ local utils = import 'utils.libsonnet';
     ]),
     POST_GREEK_ITALIC: self.POST,
 
+    // -- Greek bold italic
+    PRE_GREEK_BOLD_ITALIC: utils.nStringArrayOuterProduct([
+        self.PRE,
+        self.GREEK_INLINES,
+        utils.stringArrayOuterProduct(
+            utils.asciiStringToCaseTuple([self.BOLD_SHORT, self.BOLD_LONG]),
+            utils.asciiStringToCaseTuple([self.ITALIC_SHORT, self.ITALIC_LONG]),
+        ),
+    ]),
+    POST_GREEK_BOLD_ITALIC: self.POST,
 
     // -- Greek blackboardbold --
     PRE_GREEK_BBB: self.PRE_BBB,

@@ -1,8 +1,8 @@
 local g = import '../../lib/base.libsonnet';
 
 local rawHits = g.replacementTableToHits({
-  '∂': ['d', 'partial', 'part'],
-  '𝛛': ['D', 'Partial', 'Part'],
+  '∂': ['d', 'partial', 'part', 'diff', 'differential'],
+  '𝛛': ['D', 'Partial', 'Part', 'Diff', 'Differential'],
 
   '∇': ['nabla', 'del', 'gra'],
   '𝛁': ['Nabla', 'Del', 'Gra'],

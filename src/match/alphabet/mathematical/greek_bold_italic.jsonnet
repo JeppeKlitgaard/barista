@@ -1,18 +1,21 @@
 local g = import '../../../lib/base.libsonnet';
 
-local PRE = g.PRE_GREEK_ITALIC;
-local POST = g.POST_GREEK_ITALIC;
+local PRE = g.PRE_GREEK_BOLD_ITALIC;
+local POST = g.POST_GREEK_BOLD_ITALIC;
 
-local STYLES = g.asciiStringToCaseTuple(
-  [g.ITALIC, g.ITALIC_SHORT, g.ITALIC_LONG]
+local STYLES_BOLD = [g.BOLD, g.BOLD_SHORT, g.BOLD_LONG];
+local STYLES_ITALIC = [g.ITALIC, g.ITALIC_SHORT, g.ITALIC_LONG];
+local STYLES = g.stringArrayOuterProduct(
+  g.asciiStringToCaseTuple(STYLES_BOLD),
+  g.asciiStringToCaseTuple(STYLES_ITALIC),
 );
 
 local VS = g.VARIANT_SHORT;
 local VSU = std.asciiUpper(VS);
 
-local LOWER_START = '𝛼';
-local UPPER_START = '𝛢';
-local ADDITIONAL_START = '𝜕';
+local LOWER_START = '𝜶';
+local UPPER_START = '𝜜';
+local ADDITIONAL_START = '𝝏';
 
 local ADDITIONAL_TRIGGERS = g.renderKeyOfTriggers(
   g.UNICODE_LATINISED_ADDITIONAL_TRIGGERS_BY_TRIGGER,
