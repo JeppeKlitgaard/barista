@@ -6,7 +6,7 @@ local dateFmt = '%F';  // ISO 8601 Date
 local datetimeFmt = '%Y-%m-%dT%H:%M:%S%:z';  // ISO 8601 Date
 // 2021-06-13T16:55:38+01:00
 
-local rawMatches = [
+local rawHits = [
   {
     triggers: [
       'isod',
@@ -45,5 +45,5 @@ local rawMatches = [
 
 g.renderDocument(
   std.thisFile,
-  g.processTriggers(rawMatches, g.PRE, g.POST),
+  g.renderTriggersAndHits(rawHits, g.PRE, g.POST),
 )
