@@ -1,7 +1,7 @@
 local g = import '../../../lib/base.libsonnet';
 
-local preTrigger = g.PRE_FRAKTUR_BOLD;
-local postTrigger = g.POST;
+local PRE = g.PRE_FRAKTUR_BOLD;
+local POST = g.POST;
 
 local lowerOverrides = {};
 local upperOverrides = {
@@ -16,7 +16,7 @@ local lower = g.generateHitsFromStartAndEndChars('a', 'z', '𝖆', lowerOverride
 local upper = g.generateHitsFromStartAndEndChars('A', 'Z', '𝕬', upperOverrides);
 
 local rawHits = lower + upper;
-local matches = g.processTriggers(rawHits, preTrigger, postTrigger);
+local matches = g.processTriggers(rawHits, PRE, POST);
 
 
 g.renderDocument(std.thisFile, matches)

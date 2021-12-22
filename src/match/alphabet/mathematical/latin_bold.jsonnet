@@ -10,6 +10,8 @@ local lower = g.generateHitsFromStartAndEndChars('a', 'z', '𝐚', lowerOverride
 local upper = g.generateHitsFromStartAndEndChars('A', 'Z', '𝐀', upperOverrides);
 
 local rawHits = lower + upper;
-local matches = g.processTriggers(rawHits, PRE, POST);
 
-g.renderDocument(std.thisFile, matches)
+g.renderDocument(
+  std.thisFile,
+  g.renderTriggersAndHits(rawHits, PRE, POST),
+)

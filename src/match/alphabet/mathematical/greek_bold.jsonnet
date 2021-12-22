@@ -1,7 +1,7 @@
 local g = import '../../../lib/base.libsonnet';
 
-local preTrigger = 'ASD';
-local postTrigger = g.POST;
+local PRE = 'ASD';
+local POST = g.POST;
 
 local lowerOverrides = {};
 local upperOverrides = {};
@@ -21,7 +21,7 @@ local upper = upperRaw[:17] +
 // Bold Nabla covered elsewhere
 
 local rawMatches = lower + upper;
-local matches = g.processTriggers(rawMatches, preTrigger, postTrigger);
+local matches = g.processTriggers(rawMatches, PRE, POST);
 
 
 g.renderDocument(std.thisFile, matches)
