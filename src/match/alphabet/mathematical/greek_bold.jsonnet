@@ -6,8 +6,24 @@ local POST = g.POST_GREEK_BOLD;
 local VS = g.VARIANT_SHORT;
 local VSU = std.asciiUpper(VS);
 
+local ADDITIONAL_TRIGGERS = g.renderKeyOfTriggers(
+  g.UNICODE_LATINISED_ADDITIONAL_TRIGGERS_BY_TRIGGER,
+  PRE[0],
+  POST,
+  PRE,
+  POST,
+) +
+g.renderKeyOfTriggers(
+  g.UNICODE_LATINISED_ADDITIONAL_TRIGGERS_BY_TRIGGER,
+  PRE[0],
+  POST,
+  g.renderArray(g.asciiStringToCaseTuple(g.BOLD_LONG), g.PRE, ""),
+  POST,
+);
+
 local lower = g.generateHitsFromUnicodeSequence(g.UNICODE_ORDERED_LATINISED_GREEK, '𝛂');
 local upperRaw = g.generateHitsFromUnicodeSequence(g.asciiUpperArray(g.UNICODE_ORDERED_LATINISED_GREEK), '𝚨');
+
 
 local upper = upperRaw[:17] +
               [
@@ -38,21 +54,19 @@ local variants2 = g.renderTriggers(
   POST,
 );
 
-local variants3 = g.addAdditionalTriggersByTrigger(
-  variants2,
-  g.renderKeyOfTriggers(
-    g.UNICODE_LATINISED_ADDITIONAL_TRIGGERS_BY_TRIGGER,
-    PRE,
-    POST,
-    PRE,
-    POST,
-  ),
+local rawHits1 = regular2 + variants2;
+
+local rawHits2 = g.addAdditionalTriggersByTrigger(
+  rawHits1,
+  ADDITIONAL_TRIGGERS,
 );
 
-local rawHits = regular2 + variants3;
+# Strip conflict with GBP from currency
+local rawHits3 = g.stripTriggers(rawHits2,
+  g.PRE + "gbp" + g.POST);
 
 
 g.renderDocument(
   std.thisFile,
-  g.renderHits(rawHits),
+  g.renderHits(rawHits3),
 )

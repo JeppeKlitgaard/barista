@@ -1,6 +1,5 @@
 # TODO
 
-- Greek bold
 - Greek italics
 - Greek italics bold
 - Greek sans-serif

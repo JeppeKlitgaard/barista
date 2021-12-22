@@ -1,3 +1,5 @@
+local utils = import 'utils.libsonnet';
+
 {
     PARENT: 'default',
 
@@ -16,9 +18,11 @@
 
     BOLD: 'bo',
     BOLD_SHORT: 'b',
+    BOLD_LONG: 'bold',
 
     MONO: 'mono',
     MONO_SHORT: 'm',
+    MONO_LONG: self.MONO,
 
     BLACKBOARDBOLD: 'bb',
     FRAKTUR: 'fk',
@@ -87,7 +91,9 @@
     POST_MONO: self.POST,
 
     // --- Greek ---
-    GREEK_INLINE: 'g',
+    GREEK_INLINE_SHORT: 'g',
+    GREEK_INLINE_LONG: 'greek',
+    GREEK_INLINES: utils.asciiStringToCaseTuple(['g', 'greek']),
 
     PRE_SHORT_GREEK: ';',
     POST_SHORT_GREEK: '',
@@ -101,7 +107,11 @@
     POST_LONG_VARIANT_GREEK: self.POST_LONG_GREEK,
 
     // -- Greek bold
-    PRE_GREEK_BOLD: self.PRE + self.GREEK_INLINE + self.BOLD_SHORT,
+    PRE_GREEK_BOLD: utils.nStringArrayOuterProduct([
+        self.PRE,
+        self.GREEK_INLINES,
+        utils.asciiStringToCaseTuple([self.BOLD_SHORT, self.BOLD_LONG]),
+    ]),
     POST_GREEK_BOLD: self.POST,
 
     // -- Greek blackboardbold --

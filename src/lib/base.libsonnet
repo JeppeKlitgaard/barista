@@ -132,10 +132,15 @@ local generateHitsFromStartAndEndChars = function(
     generateHitsFromUnicodeSequence(normalChars, newStartChar, overrides);
 
 local renderTriggers = function(hits, preTrigger, postTrigger)
+    local preTriggers = utils.asArray(preTrigger);
+    local postTriggers = utils.asArray(postTrigger);
+
     [
         hit + {
             triggers: [
-                preTrigger + trigger + postTrigger
+                preTrig + trigger + postTrig
+                for preTrig in preTriggers
+                for postTrig in postTriggers
                 for trigger in hit.triggers
             ]
         },
