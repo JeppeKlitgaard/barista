@@ -1,7 +1,7 @@
 local g = import '../../../lib/base.libsonnet';
 
-local PRE = g.PRE_BBB;
-local POST = g.POST;
+local PRE = g.PRE_BOLD;
+local POST = g.POST_BOLD;
 
 local rawHits = g.generateHitsFromStartAndEndChars('0', '9', '𝟎');
 
