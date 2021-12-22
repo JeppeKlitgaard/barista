@@ -1,13 +1,13 @@
 # TODO
 
-Greek italics
-Greek italics bold
-Greek sans-serif
-Greek sans-serif bold
-Greek sans-serif italics
-Greek sans-serif italics bold
-
-Cyrillic
+- Greek bold
+- Greek italics
+- Greek italics bold
+- Greek sans-serif
+- Greek sans-serif bold
+- Greek sans-serif italics
+- Greek sans-serif italics bold
+- Cyrillic
 
 Including variants
 

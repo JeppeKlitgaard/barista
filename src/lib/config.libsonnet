@@ -8,18 +8,20 @@
     VARIANT_SHORT: 'v',
     VARIANT_LONG: 'var',
 
-    MATH: 'm',
-    FRAKTUR: 'fk',
-    BOLD: 'b',
+    SANS_SERIF: 'ss',
+    SCRIPT: 'sc',
+
+    ITALIC: 'it',
+    ITALIC_SHORT: 'i',
+
+    BOLD: 'bo',
+    BOLD_SHORT: 'b',
+
+    MONO: 'mono',
+    MONO_SHORT: 'm',
+
     BLACKBOARDBOLD: 'bb',
-
-    MATH_BOLD: self.MATH + self.BOLD,
-    PRE_MATH_BOLD: self.PRE + self.MATH_BOLD,
-    POST_MATH_BOLD: self.POST,
-
-
-    PRE_BOLD: self.PRE + self.BOLD,
-    PRE_BBB: self.PRE + self.BLACKBOARDBOLD,
+    FRAKTUR: 'fk',
 
     // Diacritics
     PRE_DIACRITIC: ',',
@@ -37,14 +39,52 @@
     POST_SOLIDUS: '/',
     POST_TILDE: '~',
 
-    // --- Fraktur
+    // --- Italic
+    PRE_ITALIC: self.PRE + self.ITALIC,
+    POST_ITALIC: self.POST,
 
+    // --- Bold
+    PRE_BOLD: self.PRE + self.BOLD,
+    POST_BOLD: self.POST,
+
+    // --- Bold italic
+    PRE_BOLD_ITALIC: self.PRE + self.BOLD_SHORT + self.ITALIC_SHORT,
+    POST_BOLD_ITALIC: self.POST,
+
+    // --- Sans Serif
+    PRE_SANS_SERIF: self.PRE + self.SANS_SERIF,
+    POST_SANS_SERIF: self.POST,
+
+    PRE_SANS_SERIF_ITALIC: self.PRE + self.SANS_SERIF + self.ITALIC_SHORT,
+    POST_SANS_SERIF_ITALIC: self.POST,
+
+    PRE_SANS_SERIF_BOLD: self.PRE + self.SANS_SERIF + self.BOLD_SHORT,
+    POST_SANS_SERIF_BOLD: self.POST,
+
+    PRE_SANS_SERIF_BOLD_ITALIC: self.PRE + self.SANS_SERIF + self.BOLD_SHORT + self.ITALIC_SHORT,
+    POST_SANS_SERIF_BOLD_ITALIC: self.POST,
+
+    // --- Script
+    PRE_SCRIPT: self.PRE + self.SCRIPT,
+    POST_SCRIPT: self.POST,
+
+    PRE_SCRIPT_BOLD: self.PRE + self.SCRIPT + self.BOLD_SHORT,
+    POST_SCRIPT_BOLD: self.POST,
+
+    // --- Blackboard bold
+    PRE_BBB: self.PRE + self.BLACKBOARDBOLD,
+    POST_BBB: self.POST,
+
+    // --- Fraktur
     PRE_FRAKTUR: self.PRE + self.FRAKTUR,
     POST_FRAKTUR: self.POST,
 
-    PRE_FRAKTUR_BOLD: self.PRE_FRAKTUR + self.BOLD,
+    PRE_FRAKTUR_BOLD: self.PRE_FRAKTUR + self.BOLD_SHORT,
     POST_FRAKTUR_BOLD: self.POST,
 
+    // --- Mono
+    PRE_MONO: self.PRE + self.MONO,
+    POST_MONO: self.POST,
 
     // --- Greek ---
     PRE_SHORT_GREEK: ';',
@@ -52,7 +92,7 @@
     PRE_LONG_GREEK: self.PRE,
     POST_LONG_GREEK: self.POST,
 
-    // -- Greek variant--
+    // -- Greek variant --
     PRE_SHORT_VARIANT_GREEK: self.PRE_SHORT_GREEK + self.VARIANT_SHORT,
     POST_SHORT_VARIANT_GREEK: self.POST_SHORT_GREEK,
     PRE_LONG_VARIANT_GREEK: self.PRE_LONG_GREEK + self.VARIANT_LONG,

@@ -1,7 +1,7 @@
 local g = import '../../../lib/base.libsonnet';
 
-local PRE = 'MATHBOLD';
-local POST = g.POST;
+local PRE = g.PRE_SCRIPT_BOLD;
+local POST = g.POST_SCRIPT_BOLD;
 
 local lowerOverrides = {};
 local upperOverrides = {};
