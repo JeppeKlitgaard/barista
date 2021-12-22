@@ -71,15 +71,16 @@ local renderDocument = function(thisFile, matches, parent=config.PARENT)
     doc;
 
 
-// local processExtras(rawMatches, extras) = [
-//     # Function that adds extra fields to an array of matches
-//     # extras should be an array of the attributes to add to each match
-//     match + {
-//         [extra]: extras[extra]
-//         for extra in std.objectFields(extras)
-//     }
-//     for match in rawMatches
-// ];
+local addPropertiesToHits(rawHits, properties) = [
+    # Function that adds extra fields to an array of matches
+    # extras should be an array of the attributes to add to each match
+    match + {
+        [propertyName]: properties[propertyName]
+        for propertyName in std.objectFields(properties)
+    }
+    for match in rawHits
+];
+
 
 local generateHit = function(
     triggerOrTriggers,
@@ -206,7 +207,7 @@ local addAdditionalTriggersByReplacement = function(hits, additionalTriggersByRe
     renderDocument: renderDocument,
     processTriggers: processTriggers,
     renderTriggers: renderTriggers,
-    // processExtras: processExtras,
+    addPropertiesToHits: addPropertiesToHits,
     addAdditionalTriggersByTrigger: addAdditionalTriggersByTrigger,
     addAdditionalTriggersByReplacement: addAdditionalTriggersByReplacement,
     generateHitsFromUnicodeSequence: generateHitsFromUnicodeSequence,
