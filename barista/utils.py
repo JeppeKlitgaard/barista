@@ -2,7 +2,7 @@ import json
 from pathlib import Path
 from typing import Any, TypeVar
 
-import _jsonnet
+import _gojsonnet as jsonnet
 
 T = TypeVar("T")
 
@@ -12,7 +12,7 @@ def load_jsonnet(path: Path) -> dict[str, Any]:
     Returns a Python object with the computed contents of a `jsonnet` file.
     """
     path_str = str(path.resolve())
-    json_str = _jsonnet.evaluate_file(path_str)
+    json_str = jsonnet.evaluate_file(path_str)
 
     obj: dict[str, Any] = json.loads(json_str)
 
