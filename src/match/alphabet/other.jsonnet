@@ -15,9 +15,7 @@ local rawHits = g.replacementTableToHits({
 });
 
 
-{
-  name: g.processFilename(std.thisFile),
-  parent: g.PARENT,
-
-  matches: g.processTriggers(rawHits, PRE, POST),
-}
+g.renderDocument(
+  std.thisFile,
+  g.renderTriggersAndHits(rawHits, PRE, POST),
+)

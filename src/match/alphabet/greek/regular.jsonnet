@@ -47,7 +47,7 @@ local regular3 = g.addAdditionalTriggersByTrigger(
     S_POST,
     L_PRE,
     L_POST,
-  )
+  ),
 );
 
 // Regular variant hits
@@ -106,9 +106,7 @@ local variants1 = g.replacementTableToHits({
 local all = regular3 + variants1;
 
 
-{
-  name: g.processFilename(std.thisFile),
-  parent: g.PARENT,
-
-  matches: g.renderHits(all),
-}
+g.renderDocument(
+  std.thisFile,
+  g.renderHits(all),
+)

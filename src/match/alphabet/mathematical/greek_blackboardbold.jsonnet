@@ -27,9 +27,7 @@ local hits = g.replacementTableToHits({
 });
 
 
-{
-  name: g.processFilename(std.thisFile),
-  parent: g.PARENT,
-
-  matches: g.renderHits(hits),
-}
+g.renderDocument(
+  std.thisFile,
+  g.renderHits(hits),
+)

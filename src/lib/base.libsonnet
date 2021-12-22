@@ -60,6 +60,16 @@ local processTriggers(rawMatches, pre, post) = [
     for match in rawMatches
 ];
 
+local renderDocument = function(thisFile, matches, parent=config.PARENT)
+    local doc = {
+        name: processFilename(thisFile),
+        parent: parent,
+
+        matches: matches,
+    };
+
+    doc;
+
 
 // local processExtras(rawMatches, extras) = [
 //     # Function that adds extra fields to an array of matches
@@ -193,6 +203,7 @@ local addAdditionalTriggersByReplacement = function(hits, additionalTriggersByRe
 
 
     processFilename: processFilename,
+    renderDocument: renderDocument,
     processTriggers: processTriggers,
     renderTriggers: renderTriggers,
     // processExtras: processExtras,

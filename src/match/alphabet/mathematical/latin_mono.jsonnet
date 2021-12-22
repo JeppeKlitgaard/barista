@@ -13,9 +13,4 @@ local rawHits = lower + upper;
 local matches = g.processTriggers(rawHits, preTrigger, postTrigger);
 
 
-{
-  name: g.processFilename(std.thisFile),
-  parent: g.PARENT,
-
-  matches: matches,
-}
+g.renderDocument(std.thisFile, matches)

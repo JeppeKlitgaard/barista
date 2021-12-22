@@ -43,9 +43,7 @@ local rawMatches = [
 ];
 
 
-{
-  name: g.processFilename(std.thisFile),
-  parent: g.PARENT,
-
-  matches: g.processTriggers(rawMatches, g.PRE, g.POST),
-}
+g.renderDocument(
+  std.thisFile,
+  g.processTriggers(rawMatches, g.PRE, g.POST),
+)

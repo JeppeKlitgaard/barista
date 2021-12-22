@@ -6,9 +6,7 @@ local POST = g.POST;
 local rawHits = g.generateHitsFromStartAndEndChars('0', '9', '𝟢');
 
 
-{
-  name: g.processFilename(std.thisFile),
-  parent: g.PARENT,
-
-  matches: g.processTriggers(rawHits, PRE, POST),
-}
+g.renderDocument(
+  std.thisFile,
+  g.renderTriggersAndHits(rawHits, PRE, POST),
+)

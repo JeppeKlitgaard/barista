@@ -12,9 +12,7 @@ local overrides = {
 local rawHits = g.generateHitsFromStartAndEndChars('0', '9', '⁰', overrides);
 
 
-{
-  name: g.processFilename(std.thisFile),
-  parent: g.PARENT,
-
-  matches: g.processTriggers(rawHits, PRE, POST),
-}
+g.renderDocument(
+  std.thisFile,
+  g.renderTriggersAndHits(rawHits, PRE, POST),
+)
