@@ -1,7 +1,7 @@
 local g = import '../../../lib/base.libsonnet';
 
-local preTrigger = 'MATHBOLD';
-local postTrigger = g.POST;
+local PRE = g.PRE_MATH_BOLD;
+local POST = g.POST_MATH_BOLD;
 
 local lowerOverrides = {};
 local upperOverrides = {};
@@ -10,12 +10,6 @@ local lower = g.generateHitsFromStartAndEndChars('a', 'z', '𝐚', lowerOverride
 local upper = g.generateHitsFromStartAndEndChars('A', 'Z', '𝐀', upperOverrides);
 
 local rawHits = lower + upper;
-local matches = g.processTriggers(rawHits, preTrigger, postTrigger);
+local matches = g.processTriggers(rawHits, PRE, POST);
 
-
-{
-  name: g.processFilename(std.thisFile),
-  parent: g.PARENT,
-
-  matches: matches,
-}
+g.renderDocument(std.thisFile, matches)

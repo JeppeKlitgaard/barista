@@ -8,9 +8,14 @@
     VARIANT_SHORT: 'v',
     VARIANT_LONG: 'var',
 
+    MATH: 'm',
     FRAKTUR: 'fk',
     BOLD: 'b',
     BLACKBOARDBOLD: 'bb',
+
+    MATH_BOLD: self.MATH + self.BOLD,
+    PRE_MATH_BOLD: self.PRE + self.MATH_BOLD,
+    POST_MATH_BOLD: self.POST,
 
 
     PRE_BOLD: self.PRE + self.BOLD,
