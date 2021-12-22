@@ -15,22 +15,23 @@ local UPPER_START = '𝛢';
 local ADDITIONAL_START = '𝜕';
 
 local ADDITIONAL_TRIGGERS = g.renderKeyOfTriggers(
-  g.UNICODE_LATINISED_ADDITIONAL_TRIGGERS_BY_TRIGGER,
-  PRE[0],
-  POST,
-  PRE,
-  POST,
-) +
-g.renderKeyOfTriggers(
-  g.UNICODE_LATINISED_ADDITIONAL_TRIGGERS_BY_TRIGGER,
-  PRE[0],
-  POST,
-  g.renderArray(
-    STYLES,
-    g.PRE,
-    ""),
-  POST,
-);
+                              g.UNICODE_LATINISED_ADDITIONAL_TRIGGERS_BY_TRIGGER,
+                              PRE[0],
+                              POST,
+                              PRE,
+                              POST,
+                            ) +
+                            g.renderKeyOfTriggers(
+                              g.UNICODE_LATINISED_ADDITIONAL_TRIGGERS_BY_TRIGGER,
+                              PRE[0],
+                              POST,
+                              g.renderArray(
+                                STYLES,
+                                g.PRE,
+                                ''
+                              ),
+                              POST,
+                            );
 
 
 local lower = g.generateHitsFromUnicodeSequence(

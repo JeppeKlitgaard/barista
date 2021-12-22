@@ -15,22 +15,23 @@ local UPPER_START = '𝚨';
 local ADDITIONAL_START = '𝛛';
 
 local ADDITIONAL_TRIGGERS = g.renderKeyOfTriggers(
-  g.UNICODE_LATINISED_ADDITIONAL_TRIGGERS_BY_TRIGGER,
-  PRE[0],
-  POST,
-  PRE,
-  POST,
-) +
-g.renderKeyOfTriggers(
-  g.UNICODE_LATINISED_ADDITIONAL_TRIGGERS_BY_TRIGGER,
-  PRE[0],
-  POST,
-  g.renderArray(
-    STYLES,
-    g.PRE,
-    ""),
-  POST,
-);
+                              g.UNICODE_LATINISED_ADDITIONAL_TRIGGERS_BY_TRIGGER,
+                              PRE[0],
+                              POST,
+                              PRE,
+                              POST,
+                            ) +
+                            g.renderKeyOfTriggers(
+                              g.UNICODE_LATINISED_ADDITIONAL_TRIGGERS_BY_TRIGGER,
+                              PRE[0],
+                              POST,
+                              g.renderArray(
+                                STYLES,
+                                g.PRE,
+                                ''
+                              ),
+                              POST,
+                            );
 
 
 local lower = g.generateHitsFromUnicodeSequence(
@@ -78,13 +79,14 @@ local rawHits2 = g.addAdditionalTriggersByTrigger(
   ADDITIONAL_TRIGGERS,
 );
 
-# Strip conflict with GBP from currency
-local rawHits3 = g.stripTriggers(rawHits2,
+// Strip conflict with GBP from currency
+local rawHits3 = g.stripTriggers(
+  rawHits2,
   [
-    g.PRE + "gbp" + g.POST,
+    g.PRE + 'gbp' + g.POST,
   ] +
   g.renderArray(
-    g.asciiStringToCaseTuple("beta"),
+    g.asciiStringToCaseTuple('beta'),
     g.PRE,
     g.POST,
   ),
