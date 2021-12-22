@@ -11,6 +11,7 @@ local upper = g.generateHitsFromStartAndEndChars('A', 'Z', '𝐀', upperOverride
 
 local rawHits = lower + upper;
 
+
 g.renderDocument(
   std.thisFile,
   g.renderTriggersAndHits(rawHits, PRE, POST),

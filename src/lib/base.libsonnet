@@ -44,22 +44,6 @@ local processFilename(filename) =
     std.join("_", parts);
 
 
-local processTriggers(rawMatches, pre, post) = [
-    # Function that adds the specified pre/post triggers the triggers of
-    # a matches array
-    match + {
-        [if 'triggers' in match then 'triggers']:
-            [
-                pre + trigger + post
-
-                for trigger in match['triggers']
-            ],
-
-        [if 'trigger' in match then 'trigger']: pre + match["trigger"] + post,
-    }
-    for match in rawMatches
-];
-
 local renderDocument = function(thisFile, matches, parent=config.PARENT)
     local doc = {
         name: processFilename(thisFile),
@@ -200,12 +184,10 @@ local addAdditionalTriggersByReplacement = function(hits, additionalTriggersByRe
         for hit in hits
     ];
 
+
 {
-
-
     processFilename: processFilename,
     renderDocument: renderDocument,
-    processTriggers: processTriggers,
     renderTriggers: renderTriggers,
     addPropertiesToHits: addPropertiesToHits,
     addAdditionalTriggersByTrigger: addAdditionalTriggersByTrigger,

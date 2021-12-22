@@ -57,7 +57,7 @@ local renderHits = function(hits)
 
 local renderTriggersAndHits = function(hits, pre, post)
     renderHits(
-        base.processTriggers(
+        base.renderTriggers(
             hits,
             pre,
             post

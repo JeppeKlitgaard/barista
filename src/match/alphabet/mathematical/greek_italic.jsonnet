@@ -27,7 +27,9 @@ local upper = upperRaw[:17] +
               + upperRaw[18:];
 
 local rawHits = lower + upper;
-local matches = g.processTriggers(rawHits, PRE, POST);
 
 
-g.renderDocument(std.thisFile, matches)
+g.renderDocument(
+  std.thisFile,
+  g.renderTriggersAndHits(rawHits, PRE, POST),
+)

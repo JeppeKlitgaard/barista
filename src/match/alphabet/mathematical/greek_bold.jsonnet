@@ -20,8 +20,10 @@ local upper = upperRaw[:17] +
 
 // Bold Nabla covered elsewhere
 
-local rawMatches = lower + upper;
-local matches = g.processTriggers(rawMatches, PRE, POST);
+local rawHits = lower + upper;
 
 
-g.renderDocument(std.thisFile, matches)
+g.renderDocument(
+  std.thisFile,
+  g.renderTriggersAndHits(rawHits, PRE, POST),
+)
