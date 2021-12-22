@@ -3,8 +3,13 @@ local g = import '../../../lib/base.libsonnet';
 local PRE = g.PRE_GREEK_BOLD;
 local POST = g.POST_GREEK_BOLD;
 
+local STYLES = [g.BOLD, g.BOLD_SHORT, g.BOLD_LONG];
+
 local VS = g.VARIANT_SHORT;
 local VSU = std.asciiUpper(VS);
+
+local LOWER_START = '𝛂';
+local UPPER_START = '𝚨';
 
 local ADDITIONAL_TRIGGERS = g.renderKeyOfTriggers(
   g.UNICODE_LATINISED_ADDITIONAL_TRIGGERS_BY_TRIGGER,
@@ -17,13 +22,22 @@ g.renderKeyOfTriggers(
   g.UNICODE_LATINISED_ADDITIONAL_TRIGGERS_BY_TRIGGER,
   PRE[0],
   POST,
-  g.renderArray(g.asciiStringToCaseTuple(g.BOLD_LONG), g.PRE, ""),
+  g.renderArray(
+    g.asciiStringToCaseTuple(STYLES),
+    g.PRE,
+    ""),
   POST,
 );
 
-local lower = g.generateHitsFromUnicodeSequence(g.UNICODE_ORDERED_LATINISED_GREEK, '𝛂');
-local upperRaw = g.generateHitsFromUnicodeSequence(g.asciiUpperArray(g.UNICODE_ORDERED_LATINISED_GREEK), '𝚨');
 
+local lower = g.generateHitsFromUnicodeSequence(
+  g.UNICODE_ORDERED_LATINISED_GREEK,
+  LOWER_START
+);
+local upperRaw = g.generateHitsFromUnicodeSequence(
+  g.asciiUpperArray(g.UNICODE_ORDERED_LATINISED_GREEK),
+  UPPER_START
+);
 
 local upper = upperRaw[:17] +
               [

@@ -15,6 +15,7 @@ local utils = import 'utils.libsonnet';
 
     ITALIC: 'it',
     ITALIC_SHORT: 'i',
+    ITALIC_LONG: 'italic',
 
     BOLD: 'bo',
     BOLD_SHORT: 'b',
@@ -113,6 +114,15 @@ local utils = import 'utils.libsonnet';
         utils.asciiStringToCaseTuple([self.BOLD_SHORT, self.BOLD_LONG]),
     ]),
     POST_GREEK_BOLD: self.POST,
+
+    // -- Greek italic
+    PRE_GREEK_ITALIC: utils.nStringArrayOuterProduct([
+        self.PRE,
+        self.GREEK_INLINES,
+        utils.asciiStringToCaseTuple([self.ITALIC_SHORT, self.ITALIC_LONG]),
+    ]),
+    POST_GREEK_ITALIC: self.POST,
+
 
     // -- Greek blackboardbold --
     PRE_GREEK_BBB: self.PRE_BBB,

@@ -1,35 +1,82 @@
 local g = import '../../../lib/base.libsonnet';
 
-local PRE = 'ASD';
-local POST = g.POST;
+local PRE = g.PRE_GREEK_ITALIC;
+local POST = g.POST_GREEK_ITALIC;
 
-local lowerOverrides = {};
-local upperOverrides = {};
+local STYLES = [g.ITALIC, g.ITALIC_SHORT, g.ITALIC_LONG];
+
+local VS = g.VARIANT_SHORT;
+local VSU = std.asciiUpper(VS);
+
+local LOWER_START = '𝛼';
+local UPPER_START = '𝛢';
+
+local ADDITIONAL_TRIGGERS = g.renderKeyOfTriggers(
+  g.UNICODE_LATINISED_ADDITIONAL_TRIGGERS_BY_TRIGGER,
+  PRE[0],
+  POST,
+  PRE,
+  POST,
+) +
+g.renderKeyOfTriggers(
+  g.UNICODE_LATINISED_ADDITIONAL_TRIGGERS_BY_TRIGGER,
+  PRE[0],
+  POST,
+  g.renderArray(
+    g.asciiStringToCaseTuple(STYLES),
+    g.PRE,
+    ""),
+  POST,
+);
+
 
 local lower = g.generateHitsFromUnicodeSequence(
   g.UNICODE_ORDERED_LATINISED_GREEK,
-  '𝛂',
-  lowerOverrides,
+  LOWER_START
 );
 local upperRaw = g.generateHitsFromUnicodeSequence(
   g.asciiUpperArray(g.UNICODE_ORDERED_LATINISED_GREEK),
-  '𝚨',
-  lowerOverrides,
+  UPPER_START
 );
 
 local upper = upperRaw[:17] +
               [
                 {
                   replace: upperRaw[17].replace,
-                  triggers: ['vQ', 'VQ'],
+                  triggers: [VS + 'Q', VSU + 'Q'],
                 },
               ]
               + upperRaw[18:];
 
-local rawHits = lower + upper;
+// Bold Nabla covered elsewhere
+
+local regular1 = lower + upper;
+local regular2 = g.renderTriggers(
+  regular1,
+  PRE,
+  POST,
+);
+
+local variants1 = g.generateHitsFromUnicodeSequence(
+  g.UNICODE_ORDERED_LATINISED_ADDITIONAL_GREEK,
+  '𝛜'
+);
+
+local variants2 = g.renderTriggers(
+  variants1,
+  PRE,
+  POST,
+);
+
+local rawHits1 = regular2 + variants2;
+
+local rawHits2 = g.addAdditionalTriggersByTrigger(
+  rawHits1,
+  ADDITIONAL_TRIGGERS,
+);
 
 
 g.renderDocument(
   std.thisFile,
-  g.renderTriggersAndHits(rawHits, PRE, POST),
+  g.renderHits(rawHits2),
 )
