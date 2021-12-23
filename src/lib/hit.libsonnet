@@ -64,6 +64,7 @@ local renderTriggersAndHits = function(hits, pre, post)
         )
     );
 
+
 {
     hitToMatch: hitToMatch,
     hitsToMatches: hitsToMatches,

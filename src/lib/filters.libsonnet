@@ -35,6 +35,7 @@ local stripTriggers = function(hits, triggersToStrip)
 
     filteredHits;
 
+
 {
     filterHitsByTriggers: filterHitsByTriggers,
     stripTriggers: stripTriggers,

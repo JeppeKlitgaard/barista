@@ -38,6 +38,7 @@ local asciiCapitalise = function(strOrArr)
 
     std.join("", newStrs);
 
+
 {
   asciiLower: asciiLower,
   asciiUpper: asciiUpper,
