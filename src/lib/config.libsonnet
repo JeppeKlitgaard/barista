@@ -144,7 +144,7 @@ local utils = import 'utils.libsonnet';
     // --- Mono
     PRE_MONO: utils.compositeStringArrayOuterProduct([
         self.PRE,
-        [self.MONO, self.MONO_SHORT, self.MONO_LONG],
+        [self.MONO, self.MONO_LONG],
     ]),
     POST_MONO: self.POST,
 
