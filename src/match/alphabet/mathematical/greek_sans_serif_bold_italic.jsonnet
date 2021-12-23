@@ -8,8 +8,8 @@ local STYLES = g.compositeStringArrayOuterProduct(g.STYLES_GREEK_SANS_SERIF_BOLD
 local VS = g.VARIANT_SHORT;
 local VSU = std.asciiUpper(VS);
 
-local LOWER_START = '𝞐';
-local UPPER_START = '𝞪';
+local LOWER_START = '𝞪';
+local UPPER_START = '𝞐';
 local ADDITIONAL_START = '𝟃';
 
 local ADDITIONAL_TRIGGERS = g.renderKeyOfTriggers(
