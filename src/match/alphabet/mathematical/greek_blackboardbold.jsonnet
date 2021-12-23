@@ -6,28 +6,28 @@ local POST = g.POST_GREEK_BBB;
 
 local hits = g.replacementTableToHits({
   // Pi
-  'ℼ': PRE + 'pi' + POST,
+  'ℼ': 'pi',
   'ℿ': [
-    PRE + 'Pi' + POST,
-    PRE + 'PI' + POST,
+    'Pi',
+    'PI',
   ],
 
   // Gamma
-  'ℽ': PRE + 'gamma' + POST,
+  'ℽ': 'gamma',
   'ℾ': [
-    PRE + 'Gamma' + POST,
-    PRE + 'GAMMA' + POST,
+    'Gamma',
+    'GAMMA',
   ],
 
   // Sigma
   '⅀': [
-    PRE + 'Sigma' + POST,
-    PRE + 'SIGMA' + POST,
+    'Sigma',
+    'SIGMA',
   ],
 });
 
 
 g.renderDocument(
   std.thisFile,
-  g.renderHits(hits),
+  g.renderTriggersAndHits(hits, PRE, POST),
 )
