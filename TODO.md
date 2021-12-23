@@ -1,7 +1,5 @@
 # TODO
 
-- Greek sans-serif bold
-- Greek sans-serif italics bold
 - Cyrillic
 - Update older alphabets to use outer products
 - Document functions

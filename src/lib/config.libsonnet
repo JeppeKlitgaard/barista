@@ -11,6 +11,7 @@ local utils = import 'utils.libsonnet';
     VARIANT_LONG: 'var',
 
     SANS_SERIF: 'ss',
+    SANS_SERIF_LONG: 'SansSerif',
     SCRIPT: 'sc',
 
     ITALIC: 'it',
@@ -144,10 +145,33 @@ local utils = import 'utils.libsonnet';
     ]),
     POST_GREEK_BOLD_ITALIC: self.POST,
 
-            utils.asciiStringToCaseTuple([self.ITALIC_SHORT, self.ITALIC_LONG]),
-        ),
-    ]),
-    POST_GREEK_BOLD_ITALIC: self.POST,
+    // -- Greek sans serif bold
+    STYLES_GREEK_SANS_SERIF_BOLD: [
+        [self.SANS_SERIF, self.SANS_SERIF_LONG],
+        [self.BOLD_SHORT, self.BOLD_LONG],
+    ],
+    PRE_GREEK_SANS_SERIF_BOLD: utils.compositeStringArrayOuterProduct(
+        [
+            self.PRE,
+            self.GREEK_INLINES,
+        ] + self.STYLES_GREEK_SANS_SERIF_BOLD
+    ),
+    POST_GREEK_SANS_SERIF_BOLD: self.POST,
+
+    // -- Greek sans serif bold
+    STYLES_GREEK_SANS_SERIF_BOLD_ITALIC: [
+        [self.SANS_SERIF, self.SANS_SERIF_LONG],
+        [self.BOLD_SHORT, self.BOLD_LONG],
+        [self.ITALIC_SHORT, self.ITALIC_LONG],
+    ],
+
+    PRE_GREEK_SANS_SERIF_BOLD_ITALIC: utils.compositeStringArrayOuterProduct(
+        [
+            self.PRE,
+            self.GREEK_INLINES,
+        ] + self.STYLES_GREEK_SANS_SERIF_BOLD_ITALIC
+    ),
+    POST_GREEK_SANS_SERIF_BOLD_ITALIC: self.POST,
 
     // -- Greek blackboardbold --
     PRE_GREEK_BBB: self.PRE_BBB,
