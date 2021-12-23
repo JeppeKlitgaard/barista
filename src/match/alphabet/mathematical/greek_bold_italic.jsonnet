@@ -42,7 +42,7 @@ local lower = g.generateHitsFromUnicodeSequence(
   LOWER_START
 );
 local upperRaw = g.generateHitsFromUnicodeSequence(
-  g.asciiUpperArray(g.UNICODE_ORDERED_LATINISED_GREEK),
+  g.asciiUpper(g.UNICODE_ORDERED_LATINISED_GREEK),
   UPPER_START
 );
 

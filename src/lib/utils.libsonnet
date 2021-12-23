@@ -1,15 +1,4 @@
-local asciiUpperArray(arr) = [
-    std.asciiUpper(element)
-    for element in arr
-];
-
-local asciiCapitalise = function(str)
-    local strs = std.stringChars(str);
-    local firstChar = std.asciiUpper(strs[0]);
-
-    local newStrs = [firstChar] + strs[1:];
-
-    std.join("", newStrs);
+local asciiutils = import 'asciiutils.libsonnet';
 
 
 local asArray = function(elementOrArray)
@@ -18,24 +7,26 @@ local asArray = function(elementOrArray)
         else [elementOrArray];
 
 
-local asciiStringToCaseTuple = function(strOrStrs)
+local asciiStringToCaseTuple = function(
+    strOrStrs,
+    toLower=true,
+    toCapitalise=true,
+    toUpper=true,
+    toSelf=true
+    )
 
     local strs = asArray(strOrStrs);
 
     local newStrs = [
-        local lower = std.asciiLower(str);
-        local capitalise = asciiCapitalise(str);
-        local upper = std.asciiUpper(str);
-
         local cases = [
-            str,
-            lower,
-            capitalise,
-            upper,
+            if toSelf then str else null,
+            if toLower then asciiutils.asciiLower(str) else null,
+            if toCapitalise then asciiutils.asciiCapitalise(str) else null,
+            if toUpper then asciiutils.asciiUpper(str) else null,
         ];
 
         // Dedup
-        std.uniq(std.sort(cases))
+        std.uniq(std.sort(std.prune(cases)))
 
         for str in strs
     ];
@@ -71,6 +62,20 @@ local nStringArrayOuterProduct = function(outerArr)
     outputs;
 
 
+local compositeStringArrayOuterProduct = function(outerArr)
+    // outerArr is array of parts
+    // where parts are arrays of options
+
+    local strs = nStringArrayOuterProduct(outerArr);
+    local lowers = nStringArrayOuterProduct(asciiutils.asciiLower(outerArr));
+    local capitalises = nStringArrayOuterProduct(asciiutils.asciiCapitalise(outerArr));
+    local uppers = nStringArrayOuterProduct(asciiutils.asciiUpper(outerArr));
+
+    local combined = strs + lowers + capitalises + uppers;
+
+    std.uniq(std.sort(combined));
+
+
 local renderArray = function(array, pre, post)
     nStringArrayOuterProduct([pre, array, post]);
 
@@ -90,12 +95,11 @@ local renderKeyOfTriggers = function(obj, preKeyOrKeys, postKeyOrKeys, preValue,
 
 
 {
-    asciiUpperArray: asciiUpperArray,
-    asciiCapitalise: asciiCapitalise,
     asciiStringToCaseTuple: asciiStringToCaseTuple,
     asArray: asArray,
     renderArray: renderArray,
     renderKeyOfTriggers: renderKeyOfTriggers,
-    nStringArrayOuterProduct: nStringArrayOuterProduct,
     stringArrayOuterProduct: stringArrayOuterProduct,
-}
+    nStringArrayOuterProduct: nStringArrayOuterProduct,
+    compositeStringArrayOuterProduct: compositeStringArrayOuterProduct,
+} + asciiutils
