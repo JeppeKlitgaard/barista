@@ -49,15 +49,24 @@ local stringArrayOuterProduct = function(input1, input2)
 
 
 local nStringArrayOuterProduct = function(outerArr)
-    local outputs = if std.length(outerArr) > 2
-        then
-            // [
+
+    local len = std.length(outerArr);
+
+    local outputs =
+        if len == 0 then
+            []
+
+        else if len == 1 then
+            outerArr[0]
+
+        else if len == 2 then
+            stringArrayOuterProduct(outerArr[0], outerArr[1])
+
+        else
             stringArrayOuterProduct(
                 outerArr[0],
                 nStringArrayOuterProduct(outerArr[1:])
-            )
-        else
-            stringArrayOuterProduct(outerArr[0], outerArr[1]);
+            );
 
     outputs;
 
