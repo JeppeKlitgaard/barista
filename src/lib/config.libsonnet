@@ -94,7 +94,7 @@ local utils = import 'utils.libsonnet';
     // --- Greek ---
     GREEK_INLINE_SHORT: 'g',
     GREEK_INLINE_LONG: 'greek',
-    GREEK_INLINES: utils.asciiStringToCaseTuple(['g', 'greek']),
+    GREEK_INLINES: ['g', 'greek'],
 
     PRE_SHORT_GREEK: ';',
     POST_SHORT_GREEK: '',
@@ -108,27 +108,42 @@ local utils = import 'utils.libsonnet';
     POST_LONG_VARIANT_GREEK: self.POST_LONG_GREEK,
 
     // -- Greek bold
-    PRE_GREEK_BOLD: utils.nStringArrayOuterProduct([
+    STYLES_GREEK_BOLD: [
+        [self.BOLD, self.BOLD_SHORT, self.BOLD_LONG],
+    ],
+    PRE_GREEK_BOLD: utils.compositeStringArrayOuterProduct([
         self.PRE,
         self.GREEK_INLINES,
-        utils.asciiStringToCaseTuple([self.BOLD_SHORT, self.BOLD_LONG]),
+        [self.BOLD_SHORT, self.BOLD_LONG],
     ]),
     POST_GREEK_BOLD: self.POST,
 
     // -- Greek italic
-    PRE_GREEK_ITALIC: utils.nStringArrayOuterProduct([
+    STYLES_GREEK_ITALIC: [
+        [self.ITALIC, self.ITALIC_SHORT, self.ITALIC_LONG],
+    ],
+    PRE_GREEK_ITALIC: utils.compositeStringArrayOuterProduct([
         self.PRE,
         self.GREEK_INLINES,
-        utils.asciiStringToCaseTuple([self.ITALIC_SHORT, self.ITALIC_LONG]),
+        [self.ITALIC_SHORT, self.ITALIC_LONG],
     ]),
     POST_GREEK_ITALIC: self.POST,
 
     // -- Greek bold italic
-    PRE_GREEK_BOLD_ITALIC: utils.nStringArrayOuterProduct([
+    STYLES_GREEK_BOLD_ITALIC: [
+        [self.BOLD, self.BOLD_SHORT, self.BOLD_LONG],
+        [self.ITALIC, self.ITALIC_SHORT, self.ITALIC_LONG],
+    ],
+    PRE_GREEK_BOLD_ITALIC: utils.compositeStringArrayOuterProduct([
         self.PRE,
         self.GREEK_INLINES,
-        utils.stringArrayOuterProduct(
-            utils.asciiStringToCaseTuple([self.BOLD_SHORT, self.BOLD_LONG]),
+        [
+            [self.BOLD_SHORT, self.BOLD_LONG],
+            [self.ITALIC_SHORT, self.ITALIC_LONG],
+        ],
+    ]),
+    POST_GREEK_BOLD_ITALIC: self.POST,
+
             utils.asciiStringToCaseTuple([self.ITALIC_SHORT, self.ITALIC_LONG]),
         ),
     ]),

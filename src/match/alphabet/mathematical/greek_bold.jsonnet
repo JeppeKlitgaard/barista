@@ -7,6 +7,8 @@ local STYLES = g.asciiStringToCaseTuple(
   [g.BOLD, g.BOLD_SHORT, g.BOLD_LONG]
 );
 
+local STYLES = g.compositeStringArrayOuterProduct(g.STYLES_GREEK_BOLD);
+
 local VS = g.VARIANT_SHORT;
 local VSU = std.asciiUpper(VS);
 

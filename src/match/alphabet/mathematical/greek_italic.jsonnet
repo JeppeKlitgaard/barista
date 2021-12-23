@@ -3,9 +3,7 @@ local g = import '../../../lib/base.libsonnet';
 local PRE = g.PRE_GREEK_ITALIC;
 local POST = g.POST_GREEK_ITALIC;
 
-local STYLES = g.asciiStringToCaseTuple(
-  [g.ITALIC, g.ITALIC_SHORT, g.ITALIC_LONG]
-);
+local STYLES = g.compositeStringArrayOuterProduct(g.STYLES_GREEK_ITALIC);
 
 local VS = g.VARIANT_SHORT;
 local VSU = std.asciiUpper(VS);
