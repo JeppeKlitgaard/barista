@@ -25,7 +25,7 @@ local regularLower1 = g.filterHitsByTriggers(
 // Regular upper case hits
 local regularUpper1 = g.filterHitsByTriggers(
   g.generateHitsFromUnicodeSequence(
-    g.asciiUpperArray(g.UNICODE_ORDERED_LATINISED_GREEK),
+    g.asciiUpper(g.UNICODE_ORDERED_LATINISED_GREEK),
     'Α',
   ),
   ['VS'],
