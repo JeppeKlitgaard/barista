@@ -64,6 +64,8 @@ isort = "isort ."
 
 jsonnetfmt = "jsonnetfmt -i **/*.jsonnet"
 
+test = "pytest ."
+
 lint = [
     "flake8",
     "black_check",
@@ -75,7 +77,12 @@ lint = [
 fix = [
     "black",
     "isort",
-    "jsonnetfmt"
+    "jsonnetfmt",
+]
+
+verify = [
+    "test",
+    "lint",
 ]
 
 
