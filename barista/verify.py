@@ -15,9 +15,9 @@ def verify_matches(objs: list[dict[str, Any]]) -> None:
         verify_match(obj)
 
 
-def verify_espanso_config_file(obj: dict[str, Any], verbose: bool = True) -> None:
+def verify_espanso_config_file(obj: dict[str, Any], verbose: bool = True) -> EspansoConfigFile:
     try:
-        EspansoConfigFile.parse_obj(obj)
+        return EspansoConfigFile.parse_obj(obj)
     except Exception as e:
         if verbose:
             print(f"Object: {obj}")

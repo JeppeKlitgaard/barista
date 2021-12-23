@@ -28,6 +28,12 @@ class Match(BaseModel, extra=Extra.forbid):
             case _:
                 return values
 
+    def triggers_as_list(self) -> list[str]:
+        if self.triggers is not None:
+            return self.triggers
+
+        return [self.trigger]
+
 
 class EspansoConfigFile(BaseModel, extra=Extra.forbid):
     matches: list[Match] | None

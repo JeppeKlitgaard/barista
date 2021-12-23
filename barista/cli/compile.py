@@ -20,13 +20,18 @@ def compile() -> None:
     jsonnet_paths = find_files(SRC_PATH, JSONNET_GLOB_PATTERN)
 
     map_ = {}
+    total_triggers = 0
+    total_replacements = 0
     # Compile yaml
     for path in jsonnet_paths:
         print(f"Loading {path}")
         obj = load_jsonnet(path)
 
         # Verify objects
-        verify_espanso_config_file(obj)
+        ecf_obj = verify_espanso_config_file(obj)
+        if ecf_obj.matches is not None:
+            total_replacements += len(ecf_obj.matches)
+            total_triggers += sum(len(match.triggers_as_list()) for match in ecf_obj.matches)
 
         # Dump as yaml
         yaml_str = yaml.dump(obj)
@@ -56,6 +61,9 @@ def compile() -> None:
         shutil.copy2(path, target)
         print(f"Copying over {path}")
 
+    print("-" * 25)
     print(f"💪 Compiled {len(map_)} files.")
     print(f"📦 Moved over {len(map_) + len(yaml_paths)} files.")
+    print(f"🔁 Total replacements: {total_replacements}.")
+    print(f"🔫 Total triggers: {total_triggers}.")
     print("🎉 All done!")
