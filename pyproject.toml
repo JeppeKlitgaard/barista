@@ -6,7 +6,7 @@ authors = ["Jeppe Klitgaard <hi@jeppe.science>"]
 license = "MIT"
 
 [tool.poetry.scripts]
-barista = "barista.__main__:cli"
+barista = "barista.__main__:run"
 
 [tool.poetry.dependencies]
 python = "^3.10"

@@ -1,4 +1,4 @@
-from barista.cli import cli
+from barista.cli import run
 
 if __name__ == "__main__":
-    cli()
+    run()

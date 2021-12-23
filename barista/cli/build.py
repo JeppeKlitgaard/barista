@@ -1,4 +1,5 @@
 import os
+from pathlib import Path
 import shutil
 
 import click
@@ -7,7 +8,7 @@ import yaml
 from barista.constants import (
     JSONNET_GLOB_PATTERN,
     SRC_PATH,
-    TARGET_PATH,
+    DST_PATH,
     YAML_GLOB_PATTERN,
     YML_GLOB_PATTERN,
 )
@@ -16,8 +17,38 @@ from barista.verify import verify_espanso_config_file
 
 
 @click.command()
-def compile() -> None:
-    jsonnet_paths = find_files(SRC_PATH, JSONNET_GLOB_PATTERN)
+@click.argument(
+    "src",
+    nargs=-1,
+    type=click.Path(exists=True, resolve_path=True, readable=True, path_type=Path),
+)
+@click.option(
+    "-o",
+    "--output",
+    "dst",
+    envvar="BUILD_DST",
+    type=click.Path(file_okay=False, resolve_path=True, writable=True, path_type=Path),
+    default=DST_PATH,
+    show_default=True,
+    help="where to put rendered files",
+)
+@click.option(
+    "-c",
+    "--clear/--no-clear",
+    help="DANGER: clear distination folder",
+    default=False,
+    show_default=True,
+)
+def build(src: list[Path], dst: Path, clear: bool) -> None:
+    """
+    Builds the jsonnet files in `SRC`s and outputs them to `DST`.
+    """
+    if not src:
+        src = [SRC_PATH]
+
+    jsonnet_paths = []
+    for path in src:
+        jsonnet_paths.extend(find_files(path, JSONNET_GLOB_PATTERN))
 
     map_ = {}
     total_triggers = 0
@@ -38,12 +69,16 @@ def compile() -> None:
 
         map_[path] = yaml_str
 
+    if clear:
+        print(f"Clearing directory: {dst}")
+        shutil.rmtree(dst)
+
     # Copy over jsonnet compiled files
     for path, content in map_.items():
         bits = list(path.parts[1:-1]) + [path.parts[-1].removesuffix(".jsonnet")]
         bits[-1] += ".yml"
 
-        target = TARGET_PATH.joinpath(*bits)
+        target = dst.joinpath(*bits)
 
         os.makedirs(target.parent, exist_ok=True)
         with open(target, "w") as f:
@@ -55,7 +90,7 @@ def compile() -> None:
         bits = list(path.parts[1:-1]) + [path.parts[-1].removesuffix(".yml").removesuffix("*.yaml")]
         bits[-1] += ".yml"
 
-        target = TARGET_PATH.joinpath(*bits)
+        target = dst.joinpath(*bits)
 
         os.makedirs(target.parent, exist_ok=True)
         shutil.copy2(path, target)
@@ -63,7 +98,7 @@ def compile() -> None:
 
     print("-" * 25)
     print(f"💪 Compiled {len(map_)} files.")
-    print(f"📦 Moved over {len(map_) + len(yaml_paths)} files.")
+    print(f"📦 Moved over {len(map_) + len(yaml_paths)} files to `{dst}`.")
     print(f"🔁 Total replacements: {total_replacements}.")
     print(f"🔫 Total triggers: {total_triggers}.")
     print("🎉 All done!")

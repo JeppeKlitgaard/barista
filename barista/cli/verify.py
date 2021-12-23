@@ -26,7 +26,7 @@ def _get_all_matches() -> list[Match]:
 
 
 @click.command()
-def find_dupes() -> None:
+def verify() -> None:
     """
     Find the duplicate triggers.
     """

@@ -4,3 +4,9 @@ venv
 
 # VSCode
 .vscode
+
+# Distribution
+dist/
+
+# Env
+.envrc

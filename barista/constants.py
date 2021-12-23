@@ -1,7 +1,7 @@
 from pathlib import Path
 
 SRC_PATH = Path("src")
-TARGET_PATH = Path("/mnt/c/Users/jeppe/AppData/Roaming/espanso")
+DST_PATH = Path("dist")
 
 CONFIG_FOLDER = "config"
 MATCH_FOLDER = "match"

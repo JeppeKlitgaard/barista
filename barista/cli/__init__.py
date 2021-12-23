@@ -1,7 +1,7 @@
 import click
 
-from barista.cli.compile import compile
-from barista.cli.find_dupes import find_dupes
+from barista.cli.build import build
+from barista.cli.verify import verify
 
 
 @click.group()
@@ -9,5 +9,8 @@ def cli() -> None:
     pass
 
 
-cli.add_command(compile)
-cli.add_command(find_dupes)
+cli.add_command(build)
+cli.add_command(verify)
+
+def run() -> None:
+    cli(auto_envvar_prefix="BARISTA")
