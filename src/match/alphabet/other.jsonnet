@@ -10,8 +10,6 @@ local rawHits = g.replacementTableToHits({
 
   'œ': 'oe',
   'Œ': 'OE',
-
-  'ß': 'ss',
 });
 
 

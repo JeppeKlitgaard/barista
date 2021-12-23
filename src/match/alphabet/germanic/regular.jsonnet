@@ -2,8 +2,8 @@ local g = import '../../../lib/base.libsonnet';
 
 
 local rawHits = g.replacementTableToHits({
-  'ß': 'eszett',
-  'ẞ': 'Eszett',
+  'ß': ['eszett', 'ss'],
+  'ẞ': ['Eszett', 'Ss', 'SS'],
 });
 
 
