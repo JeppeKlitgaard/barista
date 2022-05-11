@@ -16,6 +16,11 @@ local rawHits = g.replacementTableToHits({
     'm',
     'maybe',
   ],
+
+  '❤': [
+    'hj',
+    'heart',
+  ],
 });
 
 
