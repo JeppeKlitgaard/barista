@@ -1,23 +1,5 @@
 local g = import '../../../lib/base.libsonnet';
 
-local rawMatches = [
-  {
-    trigger: 'ae',
-    replace: 'æ',
-    propagate_case: true,
-  },
-  {
-    trigger: 'o/',
-    replace: 'ø',
-    propagate_case: true,
-  },
-  {
-    trigger: 'aa',
-    replace: 'å',
-    propagate_case: true,
-  },
-];
-
 // Define raw hits
 local rawHits1 = g.replacementTableToHits({
   'æ': 'ae',
@@ -44,8 +26,20 @@ local rawHits4 = g.addAdditionalTriggersByReplacement(
   },
 );
 
+// Add special upper case triggers
+local rawHitsAdditional1 = g.replacementTableToHits({
+  'Æ': ';:',
+  'Ø': ';"',
+  'Å': ';{',
+},
+);
+
+local rawHitsAdditional2 = g.renderTriggers(rawHitsAdditional1, '', '');
+
+local allRawHits = rawHits4 + rawHitsAdditional2;
+
 
 g.renderDocument(
   std.thisFile,
-  g.renderHits(rawHits4),
+  g.renderHits(allRawHits),
 )
