@@ -3,6 +3,7 @@ local g = import '../lib/base.libsonnet';
 local rawHits = g.replacementTableToHits({
   //## Square
   '◻': ['sq', 'square'],  // Also defined in square_operators as '|=|
+  '■': ['fsq', 'filledsquare'],
 
   //## Triangle
   '◁': ['<|', 'ltangle'],

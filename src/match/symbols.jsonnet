@@ -13,6 +13,9 @@ local rawHits = g.replacementTableToHits({
 
   // Fancy plus
   '✠': '+',
+
+  // Place of interest
+  '⌘': 'interest',
 });
 
 
