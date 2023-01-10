@@ -3,22 +3,28 @@ local g = import '../lib/base.libsonnet';
 local rawHits = g.replacementTableToHits({
   // Single arrows
   '←': [
+    'from',
     'la',
     'leftarrow',
     '<--',
   ],
   '↚': [
+    'notfrom',
+    '!from',
     'las',
     'leftarrowstroke',
     '<-/-',
   ],
 
   '→': [
+    'to',
     'ra',
     'rightarrow',
     '-->',
   ],
   '↛': [
+    'notto',
+    '!to',
     'ras',
     'rightarrowstroke',
     '-/->',
@@ -67,23 +73,29 @@ local rawHits = g.replacementTableToHits({
   ],
 
   '⇒': [
+    'implies',
     'Ra',
     'Rightarrow',
     '==>',
   ],
   '⇏': [
+    'notimplies',
+    '!implies',
     'Ras',
     'Rightarrowstroke',
     '=/=>',
   ],
 
   '⇔': [
+    'biimplication',
     'Lra',
     'Leftrightarrow',
     '<==>',
     '=',
   ],
   '⇎': [
+    'notbiimplication',
+    '!biimplication',
     'Lras',
     'Leftrightarrowstroke',
     '<=/=>',
@@ -223,10 +235,12 @@ local rawHits = g.replacementTableToHits({
 
   // Bar single arrows
   '↦': [
+    'mapsto',
     'barrightarrow',
     '|-->',
   ],
   '↤': [
+    'mapsfrom',
     'barleftarrow',
     '<--|',
   ],
@@ -256,6 +270,39 @@ local rawHits = g.replacementTableToHits({
     'barLeftarrow',
     '<==|',
   ],
+
+  // Paired arrows
+  '⇉': [
+    'rightrightarrow',
+    'rra',
+    '2-->',
+  ],
+  '⇇': [
+    'leftleftarrow',
+    'lla',
+    '2<--',
+  ],
+  '⇈': [
+    'upuparrow',
+    'uua',
+    '2--^',
+  ],
+  '⇊': [
+    'downdownarrow',
+    'dda',
+    '2--v',
+  ],
+
+  // Triple rightward arrow
+  '⇶': [
+    'rightrightrightarrow',
+    'rrra',
+    '3-->',
+    'substitute',
+    'substituteinto',
+    'subinto',
+  ],
+
 });
 
 
