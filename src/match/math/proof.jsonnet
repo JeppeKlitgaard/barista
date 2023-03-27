@@ -4,6 +4,7 @@ local rawHits = g.replacementTableToHits({
   '∎': ['qed', 'halmos', 'tomb', 'tombstone'],
   '↯': ['contra', 'lightning', 'bolt'],
   '※': ['vcontra', '::x'],
+  '℞': ['retrograde', 'Rx', 'R_x', 'backwardsproof', 'prescription'],
 });
 
 
