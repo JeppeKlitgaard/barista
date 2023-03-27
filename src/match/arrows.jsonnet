@@ -91,7 +91,7 @@ local rawHits = g.replacementTableToHits({
     'Lra',
     'Leftrightarrow',
     '<==>',
-    '=',
+    'bi',
   ],
   '⇎': [
     'notbiimplication',
