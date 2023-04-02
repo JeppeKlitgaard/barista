@@ -13,6 +13,12 @@ local rawHits = g.replacementTableToHits({
   '⊿': ['tangle', 'triangle'],
   '⌂': ['house'],
   '⌒': ['arc', 'arch'],
+
+  //## Filled circles
+  '⬤': ['DDot', 'ddddot'],
+  '●': ['Dot', 'dddot'],
+  '•': ['ddot', 'bullet'],
+  '⋅': ['dot'],
 });
 
 
