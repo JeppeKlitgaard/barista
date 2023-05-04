@@ -38,6 +38,19 @@ local rawHits = g.replacementTableToHits({
     '...\\',
   ],
 
+  //## Ditto
+  '〃': [
+    'ditto',
+    'sameasabove',
+    'repeat',
+  ],
+  '––〃––': [
+    'Ditto',
+    'dittodk',
+    'Sameasabove',
+    'Repeat',
+  ],
+
   //## Partitioners
   // Paragraphs
   '¶': [
