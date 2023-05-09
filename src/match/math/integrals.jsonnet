@@ -6,6 +6,10 @@ local rawHits = g.replacementTableToHits({
   '∭': ['iiint'],
   '⨌': ['iiiint'],
 
+  //## Limits
+  '∫_0^∞': ['inti'],
+  '∫_∞^∞': ['intii'],
+
   //## Contour
   '∮': ['oint'],
   '∯': ['oiint'],
