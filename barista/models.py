@@ -1,28 +1,38 @@
 from typing import Any, Literal
 
-from pydantic import BaseModel, Extra, root_validator
+from pydantic import BaseModel, ConfigDict, model_validator
 
 
-class MatchVariable(BaseModel, extra=Extra.forbid):
+class MatchVariable(BaseModel):
     name: str
     type: str
     params: dict[str, Any]
 
+    model_config = ConfigDict(extra="forbid")
 
-class Match(BaseModel, extra=Extra.forbid):
+
+class Match(BaseModel):
     replace: str
     trigger: str | None = None
     triggers: list[str] | None = None
     vars: list[MatchVariable] | None = None
     propagate_case: bool | None = None
 
-    @root_validator
+    model_config = ConfigDict(extra="forbid")
+
+    @model_validator(mode="before")
+    @classmethod
     def check_trigger(cls, values: dict[str, Any]) -> dict[str, Any]:
-        match values:
-            case {"trigger": None, "triggers": None}:
+        assert isinstance(values, dict)
+
+        trigger = values.get("trigger")
+        triggers = values.get("triggers")
+
+        match (trigger, triggers):
+            case (None, None):
                 raise ValueError("One of `trigger` or `triggers` must be set")
 
-            case _ if values["trigger"] is not None and values["triggers"] is not None:
+            case _ if trigger is not None and triggers is not None:
                 raise ValueError("Cannot specify both `trigger` and `triggers`.")
 
             case _:
@@ -35,10 +45,12 @@ class Match(BaseModel, extra=Extra.forbid):
         return [self.trigger]
 
 
-class EspansoConfigFile(BaseModel, extra=Extra.forbid):
-    matches: list[Match] | None
+class EspansoConfigFile(BaseModel):
+    matches: list[Match] | None = None
     name: str
-    parent: str | None
+    parent: str | None = None
 
     backend: Literal["Clipboard"] | None = None
     filter_exec: str | None = None
+
+    model_config = ConfigDict(extra="forbid")

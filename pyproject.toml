@@ -10,11 +10,10 @@ barista = "barista.__main__:run"
 
 [tool.poetry.dependencies]
 python = "^3.10"
-gojsonnet = "^0.17.0"
+gojsonnet = "^0.20.0"
 PyYAML = "^6.0"
 click = "^8.0.3"
-# TODO: Undo git once pydantic v2 has been released
-pydantic = {git = "https://github.com/samuelcolvin/pydantic"}
+pydantic = "^2.5.2"
 
 [tool.poetry.dev-dependencies]
 mypy = "^0.920"
