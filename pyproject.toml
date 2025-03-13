@@ -1,31 +1,35 @@
-[tool.poetry]
+[project]
 name = "barista"
 version = "0.1.0"
 description = "A Python and Jsonnet framework for handling espanso configurations"
-authors = ["Jeppe Klitgaard <hi@jeppe.science>"]
+authors = [{ name = "Jeppe Klitgaard", email = "hi@jeppe.science" }]
+# requires-python = "~=3.11"
+requires-python = ">=3.13,<4"
 license = "MIT"
+dependencies = [
+    "gojsonnet==0.21.0rc2",
+    "PyYAML~=6.0",
+    "click>=8.0.3",
+    "pydantic>=2.5.2",
+]
 
-[tool.poetry.scripts]
+[project.scripts]
 barista = "barista.__main__:run"
 
-[tool.poetry.dependencies]
-python = "^3.10"
-gojsonnet = "^0.20.0"
-PyYAML = "^6.0"
-click = "^8.0.3"
-pydantic = "^2.5.2"
+[dependency-groups]
+dev = [
+    "types-PyYAML>=6.0.1",
+    "pytest>=6.2.5,<7",
+    "mypy>=1.15.0",
+    "poethepoet>=0.33.0",
+    "ipykernel>=6.29.5",
+    "ruff>=0.9.10",
+]
 
-[tool.poetry.dev-dependencies]
-mypy = "^0.920"
-black = "^21.9b0"
-isort = "^5.9.3"
-flake8 = "^4.0.1"
-types-PyYAML = "^6.0.1"
-poethepoet = "^0.11.0"
-ipykernel = "^6.6.0"
-pytest = "^6.2.5"
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
 
-# Mypy
 [tool.mypy]
 python_version = "3.10"
 strict = true
@@ -36,46 +40,36 @@ plugins = [
 
 [[tool.mypy.overrides]]
 module = [
+    "_gojsonnet.*",
     "_jsonnet.*",
 ]
 ignore_missing_imports = true
 
-# Black
 [tool.black]
 line-length = 100
 target-version = ["py310"]
 
-# Isort
 [tool.isort]
 profile = "black"
 skip_gitignore = true
 line_length = 100
 
-# Tasks
 [tool.poe.tasks]
-flake8 = "flake8 ./barista"
 mypy = "mypy ./barista"
-black_check = "black --check ."
-isort_check = "isort --check-only ."
-
-black = "black ."
-isort = "isort ."
+ruff_check = "ruff check ."
 
 jsonnetfmt = "jsonnetfmt -i **/*.jsonnet"
 
 test = "pytest ."
 
 lint = [
-    "flake8",
-    "black_check",
-    "isort_check",
+    "ruff_check",
     "mypy",
 ]
 
 
 fix = [
-    "black",
-    "isort",
+    "ruff_check",
     "jsonnetfmt",
 ]
 
@@ -83,8 +77,3 @@ verify = [
     "test",
     "lint",
 ]
-
-
-[build-system]
-requires = ["poetry-core>=1.0.0"]
-build-backend = "poetry.core.masonry.api"

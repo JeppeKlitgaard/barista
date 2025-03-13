@@ -5,7 +5,7 @@ from barista.models import Match
 
 def test_both_trigger_and_triggers():
     with pytest.raises(ValueError):
-        Match.parse_obj(
+        Match.model_validate(
             {
                 "replace": "asd",
                 "trigger": "asd",
@@ -16,11 +16,11 @@ def test_both_trigger_and_triggers():
 
 def test_neither_trigger_or_triggers():
     with pytest.raises(ValueError):
-        Match.parse_obj({"replace": "asd"})
+        Match.model_validate({"replace": "asd"})
 
 
 def test_trigger():
-    Match.parse_obj(
+    Match.model_validate(
         {
             "replace": "asd",
             "trigger": "ads",
@@ -29,7 +29,7 @@ def test_trigger():
 
 
 def test_triggers():
-    Match.parse_obj(
+    Match.model_validate(
         {
             "replace": "asd",
             "triggers": ["ads", "ads2"],

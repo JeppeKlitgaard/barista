@@ -42,8 +42,10 @@ class Match(BaseModel):
         if self.triggers is not None:
             return self.triggers
 
-        return [self.trigger]
+        if self.trigger is not None:
+            return [self.trigger]
 
+        return []
 
 class EspansoConfigFile(BaseModel):
     matches: list[Match] | None = None
