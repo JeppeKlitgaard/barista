@@ -53,6 +53,7 @@ class EspansoConfigFile(BaseModel):
     parent: str | None = None
 
     backend: Literal["Clipboard"] | None = None
+    backspace_delay: int | None = None
     filter_exec: str | None = None
 
     model_config = ConfigDict(extra="forbid")
