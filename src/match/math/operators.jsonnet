@@ -17,7 +17,8 @@ local rawHits = g.replacementTableToHits({
   '∘': ['ring', 'o'],
   '〇': ['Ring', 'O'],
 
-  '∗': ['star'],
+  '∗': ['asterisk', 'ast'],
+  '⋆': ['star'],
 
   //
   '×': ['cross', 'multiplication', 'mult', 'x'],
