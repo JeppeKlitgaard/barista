@@ -5,5 +5,5 @@
   name: 'vscode',
   filter_exec: 'Code.exe',
   backend: 'Clipboard',
-  backspace_delay: 15,
+  backspace_delay: 10,
 }

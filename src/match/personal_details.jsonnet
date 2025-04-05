@@ -42,8 +42,17 @@ local rawHits = g.replacementTableToHits({
   ],
 });
 
+local rawHitsNoPrePost = g.replacementTableToHits({
+  '@jeppe.science': [
+    '@@',
+  ],
+});
+
+local rendered_1 = g.renderTriggersAndHits(rawHits, g.PRE, g.POST);
+local rendered_2 = g.renderTriggersAndHits(rawHitsNoPrePost, '', '');
+local rendered = rendered_1 + rendered_2;
 
 g.renderDocument(
   std.thisFile,
-  g.renderTriggersAndHits(rawHits, g.PRE, g.POST),
+  rendered,
 )
