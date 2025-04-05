@@ -15,7 +15,6 @@ local rawHits = g.replacementTableToHits({
   '❌': [
     'n',
     'no',
-    'N',
     'No',
   ],
 
