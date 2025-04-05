@@ -23,6 +23,14 @@ local rawHits = g.replacementTableToHits({
   '≵': ['!>~', '!g~'],
   '≴': ['!<~', '!l~'],
 
+  // (Partially) ordered set operations
+  // https://en.wikipedia.org/wiki/Ordered_set_operators
+  // Used in optimisation theory
+  '≺': ['precedes', 'p<'],
+  '≻': ['succeeds', 'p>'],
+  '≼': ['precedeseq', 'p<='],
+  '≽': ['succeedseq', 'p>='],
+
   // ltgt's
   '≶': ['<>', 'ltgt'],
   '≷': ['><', 'gtlt'],
