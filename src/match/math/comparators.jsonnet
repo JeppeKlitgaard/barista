@@ -28,8 +28,10 @@ local rawHits = g.replacementTableToHits({
   // Used in optimisation theory
   '≺': ['precedes', 'p<'],
   '≻': ['succeeds', 'p>'],
-  '≼': ['precedeseq', 'p<='],
-  '≽': ['succeedseq', 'p>='],
+  '⪯': ['precedeseq', 'p<='],
+  '⪰': ['succeedseq', 'p>='],
+  '≼': ['varprecedeseq', 'vp<='],
+  '≽': ['varsucceedseq', 'vp>='],
 
   // ltgt's
   '≶': ['<>', 'ltgt'],
