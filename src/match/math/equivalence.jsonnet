@@ -9,7 +9,7 @@ local rawHits = g.replacementTableToHits({
   '≣': ['4-'],
 
   // Equalities
-  '≔': [':='],
+  '≔': [':=', '='],
   '≕': ['=:'],
   '≐': ['=.'],
   '≗': ['=o'],
