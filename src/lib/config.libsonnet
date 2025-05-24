@@ -15,10 +15,6 @@ local utils = import 'utils.libsonnet';
     SANS_SERIF_SHORT: self.SANS_SERIF,
     SANS_SERIF_LONG: 'SansSerif',
 
-    SCRIPT: 'sc',
-    SCRIPT_SHORT: self.SCRIPT,
-    SCRIPT_LONG: 'script',
-
     ITALIC: 'it',
     ITALIC_SHORT: 'i',
     ITALIC_LONG: 'italic',
@@ -34,6 +30,24 @@ local utils = import 'utils.libsonnet';
     BLACKBOARDBOLD: 'bbb',
     BLACKBOARDBOLD_SHORT: 'bb',
     BLACKBOARDBOLD_LONG: 'blackboardbold',
+
+    // See: https://www.unicode.org/L2/L2020/20275r-math-calligraphic.pdf
+    SCRIPT: 'scr',
+    SCRIPT_SHORT: 'sc',
+    SCRIPT_LONG: 'script',
+    SCRIPT_ALT: 'round',
+    SCRIPT_ALT_SHORT: 'rndh',
+    SCRIPT_ALT_LONG: 'roundhand',
+    SCRIPT_UNICODE_MODIFIER: '\uFE01',  // U+FE01 Variation Selector-1
+
+    // See: https://www.unicode.org/L2/L2020/20275r-math-calligraphic.pdf
+    CALLIGRAPHIC: 'cal',
+    CALLIGRAPHIC_SHORT: 'ca',
+    CALLIGRAPHIC_LONG: 'calligraphic',
+    CALLIGRAPHIC_ALT: 'chancery',
+    CALLIGRAPHIC_ALT_SHORT: 'chan',
+    CALLIGRAPHIC_ALT_LONG: 'chancery',
+    CALLIGRAPHIC_UNICODE_MODIFIER: '\uFE00',  // U+FE00 Variation Selector-1
 
     FRAKTUR: 'fk',
     FRAKTUR_SHORT: self.FRAKTUR,
@@ -109,7 +123,7 @@ local utils = import 'utils.libsonnet';
     // --- Script
     PRE_SCRIPT: utils.compositeStringArrayOuterProduct([
         self.PRE,
-        [self.SCRIPT, self.SCRIPT_SHORT, self.SCRIPT_LONG],
+        [self.SCRIPT, self.SCRIPT_SHORT, self.SCRIPT_LONG, self.SCRIPT_ALT, self.SCRIPT_ALT_SHORT, self.SCRIPT_ALT_LONG],
     ]),
     POST_SCRIPT: self.POST,
 
@@ -119,6 +133,13 @@ local utils = import 'utils.libsonnet';
         [self.BOLD_SHORT, self.BOLD_LONG],
     ]),
     POST_SCRIPT_BOLD: self.POST,
+
+    // --- Calligraphic
+    PRE_CALLIGRAPHIC: utils.compositeStringArrayOuterProduct([
+        self.PRE,
+        [self.CALLIGRAPHIC, self.CALLIGRAPHIC_SHORT, self.CALLIGRAPHIC_LONG, self.CALLIGRAPHIC_ALT, self.CALLIGRAPHIC_ALT_SHORT, self.CALLIGRAPHIC_ALT_LONG],
+    ]),
+    POST_CALLIGRAPHIC: self.POST,
 
     // --- Blackboard bold
     PRE_BBB: utils.compositeStringArrayOuterProduct([
