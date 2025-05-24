@@ -47,6 +47,7 @@ class Match(BaseModel):
 
         return []
 
+
 class EspansoConfigFile(BaseModel):
     matches: list[Match] | None = None
     name: str

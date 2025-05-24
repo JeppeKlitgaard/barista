@@ -12,3 +12,6 @@ dist/
 
 # Env
 .envrc
+
+# Private
+*.private.*

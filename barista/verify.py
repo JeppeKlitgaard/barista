@@ -1,13 +1,14 @@
 """
 Contains logic for verifying objects and outputs.
 """
+
 from typing import Any
 
 from barista.models import EspansoConfigFile, Match
 
 
 def verify_match(obj: dict[str, Any]) -> None:
-    Match.parse_obj(obj)
+    Match.model_validate(obj)
 
 
 def verify_matches(objs: list[dict[str, Any]]) -> None:
@@ -15,9 +16,11 @@ def verify_matches(objs: list[dict[str, Any]]) -> None:
         verify_match(obj)
 
 
-def verify_espanso_config_file(obj: dict[str, Any], verbose: bool = True) -> EspansoConfigFile:
+def verify_espanso_config_file(
+    obj: dict[str, Any], verbose: bool = True
+) -> EspansoConfigFile:
     try:
-        return EspansoConfigFile.parse_obj(obj)
+        return EspansoConfigFile.model_validate(obj)
     except Exception as e:
         if verbose:
             print(f"Object: {obj}")

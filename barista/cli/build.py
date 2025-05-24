@@ -6,6 +6,7 @@ import click
 import yaml
 
 from barista.constants import (
+    JSONNET_GLOB_EXCLUDE_PATTERN,
     JSONNET_GLOB_PATTERN,
     SRC_PATH,
     DST_PATH,
@@ -48,7 +49,9 @@ def build(src: list[Path], dst: Path, clear: bool) -> None:
 
     jsonnet_paths = []
     for path in src:
-        jsonnet_paths.extend(find_files(path, JSONNET_GLOB_PATTERN))
+        jsonnet_paths.extend(
+            find_files(path, JSONNET_GLOB_PATTERN, JSONNET_GLOB_EXCLUDE_PATTERN)
+        )
 
     map_ = {}
     total_triggers = 0
@@ -62,7 +65,9 @@ def build(src: list[Path], dst: Path, clear: bool) -> None:
         ecf_obj = verify_espanso_config_file(obj)
         if ecf_obj.matches is not None:
             total_replacements += len(ecf_obj.matches)
-            total_triggers += sum(len(match.triggers_as_list()) for match in ecf_obj.matches)
+            total_triggers += sum(
+                len(match.triggers_as_list()) for match in ecf_obj.matches
+            )
 
         # Dump as yaml
         yaml_str = yaml.dump(obj)
@@ -85,9 +90,14 @@ def build(src: list[Path], dst: Path, clear: bool) -> None:
             f.write(content)
 
     # Copy over yaml files
-    yaml_paths = [*find_files(SRC_PATH, YML_GLOB_PATTERN), *find_files(SRC_PATH, YAML_GLOB_PATTERN)]
+    yaml_paths = [
+        *find_files(SRC_PATH, YML_GLOB_PATTERN),
+        *find_files(SRC_PATH, YAML_GLOB_PATTERN),
+    ]
     for path in yaml_paths:
-        bits = list(path.parts[1:-1]) + [path.parts[-1].removesuffix(".yml").removesuffix("*.yaml")]
+        bits = list(path.parts[1:-1]) + [
+            path.parts[-1].removesuffix(".yml").removesuffix("*.yaml")
+        ]
         bits[-1] += ".yml"
 
         target = dst.joinpath(*bits)

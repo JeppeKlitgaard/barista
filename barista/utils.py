@@ -35,13 +35,17 @@ def find_duplicates(lst: list[T]) -> list[T]:
     return list(dupes)
 
 
-def find_files(src_path: Path, glob_pattern: str) -> list[Path]:
+def find_files(
+    src_path: Path, glob_pattern: str, glob_exclude_pattern: str | None = None
+) -> list[Path]:
     """
     Returns a list of path objects to the files matching the glob pattern.
 
     Searches in `src_path`
     """
-    files = src_path.glob(glob_pattern)
+    files_all = src_path.glob(glob_pattern)
+    excludes = src_path.glob(glob_exclude_pattern) if glob_exclude_pattern else []
+    files = list(set(files_all) - set(excludes))
     paths = [Path(file) for file in files]
 
     return paths

@@ -12,5 +12,6 @@ def cli() -> None:
 cli.add_command(build)
 cli.add_command(verify)
 
+
 def run() -> None:
     cli(auto_envvar_prefix="BARISTA")
