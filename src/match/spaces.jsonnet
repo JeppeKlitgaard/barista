@@ -15,7 +15,7 @@ local rawHits = g.replacementTableToHits({
   // ' ': ['emquad', 'quad', 'emspace'], // U+2001  // These are canonically equivalent to the non-quad versions, use those
 
   //## Non-breakable spaces in order of increasing size
-  ' ': ['nnnsp', 'thinnbsp', 'narrownobreakspace'], // U+202F
+  ' ': ['nnbsp', 'thinnbsp', 'narrownobreakspace'], // U+202F
   ' ': ['nbsp', 'nobreakspace'], // U+00A0
 
   //## Helpers
